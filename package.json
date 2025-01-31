@@ -7,6 +7,13 @@
 		"build-report": "npx shadow-cljs run shadow.cljs.build-report app target/build-report.html"
 	},
 	"dependencies": {
+		"prosemirror-markdown": "^1.13.1",
+		"prosemirror-model": "^1.24.1",
+		"prosemirror-schema-basic": "^1.2.3",
+		"prosemirror-schema-list": "^1.5.0",
+		"prosemirror-state": "^1.4.3",
+		"prosemirror-transform": "^1.10.2",
+		"prosemirror-view": "^1.37.2",
 		"react": "17.0.2",
 		"react-dom": "17.0.2"
 	},

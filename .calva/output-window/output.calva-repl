@@ -75,3 +75,4 @@ about why stdout printed to this file is prepended with `;` to be line comments.
 cljs꞉user꞉> 
 ; Jack-in done.
 cljs꞉user꞉> 
+; nREPL Connection was closed
