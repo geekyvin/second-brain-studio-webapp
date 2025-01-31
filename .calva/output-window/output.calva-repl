@@ -224,3 +224,351 @@ cljs꞉user꞉> 
 ; --------------------------------------------------------------------------------
 ; [:app] Compiling ...
 ; [:app] Build completed. (485 files, 2 compiled, 0 warnings, 0.12s)
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 1 warnings, 0.14s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:10:21
+; --------------------------------------------------------------------------------
+;    7 |    ["prosemirror-schema-basic" :refer [schema]]))
+;    8 | 
+;    9 | (defn create-editor [element]
+;   10 |   (let [doc (.parse markdownParser schema "# Your Markdown Heading")]
+; ---------------------------^----------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.prosemirror/markdownParser
+; --------------------------------------------------------------------------------
+;   11 |      (EditorView. element #js {:state (.create EditorState #js {:doc doc
+;   12 |                                                                 :schema schema})})))
+;   13 | 
+;   14 | (defn prosemirror-editor []
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.14s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 1 warnings, 0.11s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:32:32
+; --------------------------------------------------------------------------------
+;   29 |          [:div#editor {:ref #(reset! dom-node %)
+;   30 |                        :style {:border "1px solid #ccc"
+;   31 |                                :min-height "300px"}}]
+;   32 |          [:button {:on-click #(save-content @editor-ref)} "Save Content"]])})))
+; --------------------------------------^-----------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.prosemirror/save-content
+; --------------------------------------------------------------------------------
+;   33 | 
+;   34 | 
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 1 warnings, 0.13s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:13:19
+; --------------------------------------------------------------------------------
+;   10 | (def app-db (r/atom {:editor-content nil}))
+;   11 | 
+;   12 | (defn save-content [editor-view]
+;   13 |   (let [markdown (get-markdown editor-view)]
+; -------------------------^------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.prosemirror/get-markdown
+; --------------------------------------------------------------------------------
+;   14 |     (reset! app-db {:editor-content markdown})))
+;   15 | 
+;   16 | (defn create-editor [element]
+;   17 |   (let [doc (.parse markdownParser schema "# Your Markdown Heading")]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 1 warnings, 0.14s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:13:19
+; --------------------------------------------------------------------------------
+;   10 | (def app-db (r/atom {:editor-content nil}))
+;   11 | 
+;   12 | (defn save-content [editor-view]
+;   13 |   (let [markdown (get-markdown editor-view)]
+; -------------------------^------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.prosemirror/get-markdown
+; --------------------------------------------------------------------------------
+;   14 |     (reset! app-db {:editor-content markdown})))
+;   15 | 
+;   16 | (defn create-editor [element]
+;   17 |   (let [doc (.parse markdownParser schema "# Your Markdown Heading")]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.13s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.12s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.12s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.10s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 2 warnings, 0.12s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:12:3
+; --------------------------------------------------------------------------------
+;    9 | 
+;   10 | ;; Initialize markdown-parser properly
+;   11 | (def markdown-parser
+;   12 |   (MarkdownParser. schema markdownSyntax))
+; ---------^----------------------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.prosemirror/MarkdownParser
+; --------------------------------------------------------------------------------
+;   13 | 
+;   14 | (defn create-editor [element]
+;   15 |   ;; Parse initial markdown content
+;   16 |   (let [doc (.parse markdown-parser "# Initial Markdown Content")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:12:27
+; --------------------------------------------------------------------------------
+;    9 | 
+;   10 | ;; Initialize markdown-parser properly
+;   11 | (def markdown-parser
+;   12 |   (MarkdownParser. schema markdownSyntax))
+; ---------------------------------^----------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.prosemirror/markdownSyntax
+; --------------------------------------------------------------------------------
+;   13 | 
+;   14 | (defn create-editor [element]
+;   15 |   ;; Parse initial markdown content
+;   16 |   (let [doc (.parse markdown-parser "# Initial Markdown Content")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 1 warnings, 0.10s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:12:27
+; --------------------------------------------------------------------------------
+;    9 | 
+;   10 | ;; Initialize markdown-parser properly
+;   11 | (def markdown-parser
+;   12 |   (MarkdownParser. schema markdownSyntax))
+; ---------------------------------^----------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.prosemirror/markdownSyntax
+; --------------------------------------------------------------------------------
+;   13 | 
+;   14 | (defn create-editor [element]
+;   15 |   ;; Parse initial markdown content
+;   16 |   (let [doc (.parse markdown-parser "# Initial Markdown Content")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.10s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.11s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.15s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.12s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.15s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.12s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.10s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 4 warnings, 0.16s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:46:27
+; --------------------------------------------------------------------------------
+;   43 | (defn toolbar [editor-ref]
+;   44 |   [:div.toolbar
+;   45 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   46 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. editor -state) -tr) (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x5145f108 "cljs.tagged_literals.JSValue@5145f108"]))
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:46:27
+; --------------------------------------------------------------------------------
+;   43 | (defn toolbar [editor-ref]
+;   44 |   [:div.toolbar
+;   45 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   46 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. (. editor -state) -tr) (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x5145f108 "cljs.tagged_literals.JSValue@5145f108"])) (.dispatch editor))
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:50:27
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. editor -state) -tr) (.addMark (.. editor -state -selection -$from -pos) (.. editor -state -selection -$to -pos) (.. (.-schema editor) -marks -strong)))
+; --------------------------------------------------------------------------------
+;   51 |                               (.addMark (.. editor -state -selection -$from -pos)
+;   52 |                                         (.. editor -state -selection -$to -pos)
+;   53 |                                         (.. (.-schema editor) -marks -strong))
+;   54 |                               (.dispatch editor)))} "Bold"]])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:50:27
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. (. editor -state) -tr) (.addMark (.. editor -state -selection -$from -pos) (.. editor -state -selection -$to -pos) (.. (.-schema editor) -marks -strong))) (.dispatch editor))
+; --------------------------------------------------------------------------------
+;   51 |                               (.addMark (.. editor -state -selection -$from -pos)
+;   52 |                                         (.. editor -state -selection -$to -pos)
+;   53 |                                         (.. (.-schema editor) -marks -strong))
+;   54 |                               (.dispatch editor)))} "Bold"]])
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 4 warnings, 0.11s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:46:27
+; --------------------------------------------------------------------------------
+;   43 | (defn toolbar [editor-ref]
+;   44 |   [:div.toolbar
+;   45 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   46 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. editor -state) -tr) (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x5145f108 "cljs.tagged_literals.JSValue@5145f108"]))
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:46:27
+; --------------------------------------------------------------------------------
+;   43 | (defn toolbar [editor-ref]
+;   44 |   [:div.toolbar
+;   45 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   46 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. (. editor -state) -tr) (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x5145f108 "cljs.tagged_literals.JSValue@5145f108"])) (.dispatch editor))
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:50:27
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. editor -state) -tr) (.addMark (.. editor -state -selection -$from -pos) (.. editor -state -selection -$to -pos) (.. (.-schema editor) -marks -strong)))
+; --------------------------------------------------------------------------------
+;   51 |                               (.addMark (.. editor -state -selection -$from -pos)
+;   52 |                                         (.. editor -state -selection -$to -pos)
+;   53 |                                         (.. (.-schema editor) -marks -strong))
+;   54 |                               (.dispatch editor)))} "Bold"]])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:50:27
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. (. editor -state) -tr) (.addMark (.. editor -state -selection -$from -pos) (.. editor -state -selection -$to -pos) (.. (.-schema editor) -marks -strong))) (.dispatch editor))
+; --------------------------------------------------------------------------------
+;   51 |                               (.addMark (.. editor -state -selection -$from -pos)
+;   52 |                                         (.. editor -state -selection -$to -pos)
+;   53 |                                         (.. (.-schema editor) -marks -strong))
+;   54 |                               (.dispatch editor)))} "Bold"]])
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 4 warnings, 0.11s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:46:27
+; --------------------------------------------------------------------------------
+;   43 | (defn toolbar [editor-ref]
+;   44 |   [:div.toolbar
+;   45 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   46 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. editor -state) -tr) (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x5145f108 "cljs.tagged_literals.JSValue@5145f108"]))
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:46:27
+; --------------------------------------------------------------------------------
+;   43 | (defn toolbar [editor-ref]
+;   44 |   [:div.toolbar
+;   45 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   46 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. (. editor -state) -tr) (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x5145f108 "cljs.tagged_literals.JSValue@5145f108"])) (.dispatch editor))
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:50:27
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. editor -state) -tr) (.addMark (.. editor -state -selection -$from -pos) (.. editor -state -selection -$to -pos) (.. (.-schema editor) -marks -strong)))
+; --------------------------------------------------------------------------------
+;   51 |                               (.addMark (.. editor -state -selection -$from -pos)
+;   52 |                                         (.. editor -state -selection -$to -pos)
+;   53 |                                         (.. (.-schema editor) -marks -strong))
+;   54 |                               (.dispatch editor)))} "Bold"]])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:50:27
+; --------------------------------------------------------------------------------
+;   47 |                               (.setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+;   48 |                               (.dispatch editor)))} "H1"]
+;   49 |    [:button {:on-click #(when-let [editor @editor-ref]
+;   50 |                           (.. editor -state -tr
+; ---------------------------------^----------------------------------------------
+;  Cannot infer target type in expression (. (. (. (. editor -state) -tr) (.addMark (.. editor -state -selection -$from -pos) (.. editor -state -selection -$to -pos) (.. (.-schema editor) -marks -strong))) (.dispatch editor))
+; --------------------------------------------------------------------------------
+;   51 |                               (.addMark (.. editor -state -selection -$from -pos)
+;   52 |                                         (.. editor -state -selection -$to -pos)
+;   53 |                                         (.. (.-schema editor) -marks -strong))
+;   54 |                               (.dispatch editor)))} "Bold"]])
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.11s)
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 0 warnings, 0.15s)
