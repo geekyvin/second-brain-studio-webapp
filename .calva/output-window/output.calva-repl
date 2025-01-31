@@ -76,3 +76,151 @@ cljs꞉user꞉> 
 ; Jack-in done.
 cljs꞉user꞉> 
 ; nREPL Connection was closed
+; [:app] Compiling ...
+; [:app] Build completed. (478 files, 2 compiled, 0 warnings, 0.16s)
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 3 compiled, 1 warnings, 0.15s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:18:26
+; --------------------------------------------------------------------------------
+;   15 |     (r/create-class
+;   16 |      {:component-did-mount
+;   17 |       (fn [this]
+;   18 |         (when-let [node (r/dom-node this)]
+; --------------------------------^-----------------------------------------------
+;  Use of undeclared Var reagent.core/dom-node
+; --------------------------------------------------------------------------------
+;   19 |           (reset! editor-ref (create-editor node))))
+;   20 |       :component-will-unmount
+;   21 |       (fn [_]
+;   22 |         (when-let [editor @editor-ref]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 1 warnings, 0.12s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:18:26
+; --------------------------------------------------------------------------------
+;   15 |     (r/create-class
+;   16 |      {:component-did-mount
+;   17 |       (fn [this]
+;   18 |         (when-let [node (r/dom-node this)]
+; --------------------------------^-----------------------------------------------
+;  Use of undeclared Var reagent.core/dom-node
+; --------------------------------------------------------------------------------
+;   19 |           (reset! editor-ref (create-editor node))))
+;   20 |       :component-will-unmount
+;   21 |       (fn [_]
+;   22 |         (when-let [editor @editor-ref]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 1 warnings, 0.18s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:18:26
+; --------------------------------------------------------------------------------
+;   15 |     (r/create-class
+;   16 |      {:component-did-mount
+;   17 |       (fn [this]
+;   18 |         (when-let [node (r/dom-node this)]
+; --------------------------------^-----------------------------------------------
+;  Use of undeclared Var reagent.core/dom-node
+; --------------------------------------------------------------------------------
+;   19 |           (reset! editor-ref (create-editor node))))
+;   20 |       :component-will-unmount
+;   21 |       (fn [_]
+;   22 |         (when-let [editor @editor-ref]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 1 warnings, 0.11s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:18:26
+; --------------------------------------------------------------------------------
+;   15 |     (r/create-class
+;   16 |      {:component-did-mount
+;   17 |       (fn [this]
+;   18 |         (when-let [node (r/dom-node this)]
+; --------------------------------^-----------------------------------------------
+;  Use of undeclared Var reagent.core/dom-node
+; --------------------------------------------------------------------------------
+;   19 |           (reset! editor-ref (create-editor node))))
+;   20 |       :component-will-unmount
+;   21 |       (fn [_]
+;   22 |         (when-let [editor @editor-ref]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 1 warnings, 0.12s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:18:26
+; --------------------------------------------------------------------------------
+;   15 |     (r/create-class
+;   16 |      {:component-did-mount
+;   17 |       (fn [this]
+;   18 |         (when-let [node (r/dom-node this)]
+; --------------------------------^-----------------------------------------------
+;  Use of undeclared Var reagent.core/dom-node
+; --------------------------------------------------------------------------------
+;   19 |           (reset! editor-ref (create-editor node))))
+;   20 |       :component-will-unmount
+;   21 |       (fn [_]
+;   22 |         (when-let [editor @editor-ref]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 1 warnings, 0.20s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:18:26
+; --------------------------------------------------------------------------------
+;   15 |     (r/create-class
+;   16 |      {:component-did-mount
+;   17 |       (fn [this]
+;   18 |         (when-let [node (r/dom-node this)]
+; --------------------------------^-----------------------------------------------
+;  Use of undeclared Var reagent.core/dom-node
+; --------------------------------------------------------------------------------
+;   19 |           (reset! editor-ref (create-editor node))))
+;   20 |       :component-will-unmount
+;   21 |       (fn [_]
+;   22 |         (when-let [editor @editor-ref]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 1 warnings, 0.14s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:18:26
+; --------------------------------------------------------------------------------
+;   15 |     (r/create-class
+;   16 |      {:component-did-mount
+;   17 |       (fn [this]
+;   18 |         (when-let [node (r/dom-node this)]
+; --------------------------------^-----------------------------------------------
+;  Use of undeclared Var reagent.core/dom-node
+; --------------------------------------------------------------------------------
+;   19 |           (reset! editor-ref (create-editor node))))
+;   20 |       :component-will-unmount
+;   21 |       (fn [_]
+;   22 |         (when-let [editor @editor-ref]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 1 warnings, 0.18s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:18:26
+; --------------------------------------------------------------------------------
+;   15 |     (r/create-class
+;   16 |      {:component-did-mount
+;   17 |       (fn [this]
+;   18 |         (when-let [node (r/dom-node this)]
+; --------------------------------^-----------------------------------------------
+;  Use of undeclared Var reagent.core/dom-node
+; --------------------------------------------------------------------------------
+;   19 |           (reset! editor-ref (create-editor node))))
+;   20 |       :component-will-unmount
+;   21 |       (fn [_]
+;   22 |         (when-let [editor @editor-ref]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (485 files, 2 compiled, 0 warnings, 0.12s)

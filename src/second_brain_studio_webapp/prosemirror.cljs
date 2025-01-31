@@ -1,31 +1,30 @@
 (ns second-brain-studio-webapp.prosemirror
-   (:require [reagent.core :as r]
-    ["prosemirror-model" :refer [Schema DOMParser DOMSerializer]]
-    ["prosemirror-state" :refer [EditorState Plugin]]
-    ["prosemirror-view" :refer [EditorView]]
-    ["prosemirror-schema-basic" :refer [schema]]
-    ["prosemirror-markdown" :refer [markdownParser markdownSerializer]])
-  
-  (defn create-editor [element editor-state]
-    (EditorView. element
-                 #js {:state editor-state}))
-  
-  (defn prosemirror-editor []
-    (let [editor-container (r/atom nil)
-          editor-instance (r/atom nil)]
-      (r/create-class
-       {:component-did-mount
-        (fn [this]
-          (let [editor-state (EditorState.create
-                              #js {:schema schema})
-                container (.querySelector (r/dom-node this) "#editor")]
-            (reset! editor-instance (create-editor container editor-state))))
-        :component-will-unmount
-        (fn [_]
-          (when-let [instance @editor-instance]
-            (.destroy instance)))
-        :reagent-render
-        (fn []
-          [:div
-           [:div#editor {:style {:border "1px solid #ccc"
-                                 :min-height "300px"}}]])}))))
+  (:require
+   [reagent.core :as r]
+   ["prosemirror-model" :refer [Schema DOMParser DOMSerializer]]
+   ["prosemirror-state" :refer [EditorState]]
+   ["prosemirror-view" :refer [EditorView]]
+   ["prosemirror-schema-basic" :refer [schema]]))
+
+(defn create-editor [element]
+  (let [editor-state (.create EditorState #js {:schema schema})]
+    (EditorView. element #js {:state editor-state})))
+
+(defn prosemirror-editor []
+  (let [editor-ref (r/atom nil)   ;; Reference to store the ProseMirror instance
+        dom-node (r/atom nil)]   ;; Reference to the DOM node for the editor
+    (r/create-class
+     {:component-did-mount
+      (fn [_]
+        (when-let [node @dom-node]
+          (reset! editor-ref (create-editor node)))) ;; Initialize the editor
+      :component-will-unmount
+      (fn [_]
+        (when-let [editor @editor-ref]
+          (.destroy editor))) ;; Clean up the editor instance
+      :reagent-render
+      (fn []
+        [:div#editor
+         {:ref #(reset! dom-node %)
+          :style {:border "1px solid #ccc"
+                  :min-height "300px"}}])})))
