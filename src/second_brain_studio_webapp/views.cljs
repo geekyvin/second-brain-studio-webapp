@@ -2,8 +2,7 @@
   (:require
    [re-frame.core :as re-frame]
    [second-brain-studio-webapp.subs :as subs]
-   [second-brain-studio-webapp.markdown-editor :as markdown-editor]
-   [second-brain-studio-webapp.prosemirror :refer [prosemirror-editor]]))
+   [second-brain-studio-webapp.markdown-editor :as markdown-editor]))
   
 (defn main-panel []
   (println "main-panel called")
