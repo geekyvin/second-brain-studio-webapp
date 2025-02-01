@@ -56,3 +56,419 @@ about why stdout printed to this file is prepended with `;` to be line comments.
 cljs꞉user꞉> 
 ; Jack-in done.
 cljs꞉user꞉> 
+; [:app] Compiling ...
+; [:app] Build completed. (499 files, 2 compiled, 3 warnings, 0.12s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:48:29
+; --------------------------------------------------------------------------------
+;   45 |    [:button {:style {:margin-right "5px"}
+;   46 |              :on-click #(when-let [editor @editor-ref]
+;   47 |                           (let [tr (.. editor -state -tr)]
+;   48 |                             (.setNodeMarkup tr (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x4d5aa928 "cljs.tagged_literals.JSValue@4d5aa928"])
+; --------------------------------------------------------------------------------
+;   49 |                             (.dispatch editor tr)))}
+;   50 |     "H1"]
+;   51 |    ;; Bold Button
+;   52 |    [:button {:style {:margin-right "5px"}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:56:29
+; --------------------------------------------------------------------------------
+;   53 |              :on-click #(when-let [editor @editor-ref]
+;   54 |                           (let [state (.-state editor)
+;   55 |                                 tr (.. state -tr)]
+;   56 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -strong))
+; --------------------------------------------------------------------------------
+;   57 |                                       (.. state -selection -from)
+;   58 |                                       (.. state -selection -to)
+;   59 |                                       (.. (.-schema state) -marks -strong))
+;   60 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:67:29
+; --------------------------------------------------------------------------------
+;   64 |              :on-click #(when-let [editor @editor-ref]
+;   65 |                           (let [state (.-state editor)
+;   66 |                                 tr (.. state -tr)]
+;   67 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -em))
+; --------------------------------------------------------------------------------
+;   68 |                                       (.. state -selection -from)
+;   69 |                                       (.. state -selection -to)
+;   70 |                                       (.. (.-schema state) -marks -em))
+;   71 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build failure:
+; Resource does not have expected namespace
+; [:app] Compiling ...
+; [:app] Build completed. (500 files, 3 compiled, 4 warnings, 0.12s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:48:29
+; --------------------------------------------------------------------------------
+;   45 |    [:button {:style {:margin-right "5px"}
+;   46 |              :on-click #(when-let [editor @editor-ref]
+;   47 |                           (let [tr (.. editor -state -tr)]
+;   48 |                             (.setNodeMarkup tr (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x4d5aa928 "cljs.tagged_literals.JSValue@4d5aa928"])
+; --------------------------------------------------------------------------------
+;   49 |                             (.dispatch editor tr)))}
+;   50 |     "H1"]
+;   51 |    ;; Bold Button
+;   52 |    [:button {:style {:margin-right "5px"}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:56:29
+; --------------------------------------------------------------------------------
+;   53 |              :on-click #(when-let [editor @editor-ref]
+;   54 |                           (let [state (.-state editor)
+;   55 |                                 tr (.. state -tr)]
+;   56 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -strong))
+; --------------------------------------------------------------------------------
+;   57 |                                       (.. state -selection -from)
+;   58 |                                       (.. state -selection -to)
+;   59 |                                       (.. (.-schema state) -marks -strong))
+;   60 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:67:29
+; --------------------------------------------------------------------------------
+;   64 |              :on-click #(when-let [editor @editor-ref]
+;   65 |                           (let [state (.-state editor)
+;   66 |                                 tr (.. state -tr)]
+;   67 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -em))
+; --------------------------------------------------------------------------------
+;   68 |                                       (.. state -selection -from)
+;   69 |                                       (.. state -selection -to)
+;   70 |                                       (.. (.-schema state) -marks -em))
+;   71 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/views.cljs:10:32
+; --------------------------------------------------------------------------------
+;    7 |   
+;    8 | (defn main-panel []
+;    9 |   (println "main-panel called")
+;   10 |   (println "markdown-editor: " markdown-editor)
+; --------------------------------------^-----------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.views/markdown-editor
+; --------------------------------------------------------------------------------
+;   11 |   (let [name (re-frame/subscribe [::subs/name])]
+;   12 |     [:div
+;   13 |      [:h1 "Hello from " @name]
+;   14 |      [prosemirror-editor]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (500 files, 2 compiled, 5 warnings, 0.12s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:48:29
+; --------------------------------------------------------------------------------
+;   45 |    [:button {:style {:margin-right "5px"}
+;   46 |              :on-click #(when-let [editor @editor-ref]
+;   47 |                           (let [tr (.. editor -state -tr)]
+;   48 |                             (.setNodeMarkup tr (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x4d5aa928 "cljs.tagged_literals.JSValue@4d5aa928"])
+; --------------------------------------------------------------------------------
+;   49 |                             (.dispatch editor tr)))}
+;   50 |     "H1"]
+;   51 |    ;; Bold Button
+;   52 |    [:button {:style {:margin-right "5px"}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:56:29
+; --------------------------------------------------------------------------------
+;   53 |              :on-click #(when-let [editor @editor-ref]
+;   54 |                           (let [state (.-state editor)
+;   55 |                                 tr (.. state -tr)]
+;   56 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -strong))
+; --------------------------------------------------------------------------------
+;   57 |                                       (.. state -selection -from)
+;   58 |                                       (.. state -selection -to)
+;   59 |                                       (.. (.-schema state) -marks -strong))
+;   60 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:67:29
+; --------------------------------------------------------------------------------
+;   64 |              :on-click #(when-let [editor @editor-ref]
+;   65 |                           (let [state (.-state editor)
+;   66 |                                 tr (.. state -tr)]
+;   67 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -em))
+; --------------------------------------------------------------------------------
+;   68 |                                       (.. state -selection -from)
+;   69 |                                       (.. state -selection -to)
+;   70 |                                       (.. (.-schema state) -marks -em))
+;   71 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/views.cljs:10:32
+; --------------------------------------------------------------------------------
+;    7 |   
+;    8 | (defn main-panel []
+;    9 |   (println "main-panel called")
+;   10 |   (println "markdown-editor: " markdown-editor)
+; --------------------------------------^-----------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.views/markdown-editor
+; --------------------------------------------------------------------------------
+;   11 |   (let [name (re-frame/subscribe [::subs/name])]
+;   12 |     [:div
+;   13 |      [:h1 "Hello from " @name]
+;   14 |      [markdown-editor]
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/views.cljs:14:7
+; --------------------------------------------------------------------------------
+;   11 |   (let [name (re-frame/subscribe [::subs/name])]
+;   12 |     [:div
+;   13 |      [:h1 "Hello from " @name]
+;   14 |      [markdown-editor]
+; -------------^------------------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.views/markdown-editor
+; --------------------------------------------------------------------------------
+;   15 |     ]))
+;   16 | 
+;   17 | 
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (500 files, 2 compiled, 4 warnings, 0.12s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:48:29
+; --------------------------------------------------------------------------------
+;   45 |    [:button {:style {:margin-right "5px"}
+;   46 |              :on-click #(when-let [editor @editor-ref]
+;   47 |                           (let [tr (.. editor -state -tr)]
+;   48 |                             (.setNodeMarkup tr (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x4d5aa928 "cljs.tagged_literals.JSValue@4d5aa928"])
+; --------------------------------------------------------------------------------
+;   49 |                             (.dispatch editor tr)))}
+;   50 |     "H1"]
+;   51 |    ;; Bold Button
+;   52 |    [:button {:style {:margin-right "5px"}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:56:29
+; --------------------------------------------------------------------------------
+;   53 |              :on-click #(when-let [editor @editor-ref]
+;   54 |                           (let [state (.-state editor)
+;   55 |                                 tr (.. state -tr)]
+;   56 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -strong))
+; --------------------------------------------------------------------------------
+;   57 |                                       (.. state -selection -from)
+;   58 |                                       (.. state -selection -to)
+;   59 |                                       (.. (.-schema state) -marks -strong))
+;   60 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:67:29
+; --------------------------------------------------------------------------------
+;   64 |              :on-click #(when-let [editor @editor-ref]
+;   65 |                           (let [state (.-state editor)
+;   66 |                                 tr (.. state -tr)]
+;   67 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -em))
+; --------------------------------------------------------------------------------
+;   68 |                                       (.. state -selection -from)
+;   69 |                                       (.. state -selection -to)
+;   70 |                                       (.. (.-schema state) -marks -em))
+;   71 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/views.cljs:10:32
+; --------------------------------------------------------------------------------
+;    7 |   
+;    8 | (defn main-panel []
+;    9 |   (println "main-panel called")
+;   10 |   (println "markdown-editor: " markdown-editor)
+; --------------------------------------^-----------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.views/markdown-editor
+; --------------------------------------------------------------------------------
+;   11 |   (let [name (re-frame/subscribe [::subs/name])]
+;   12 |     [:div
+;   13 |      [:h1 "Hello from " @name]
+;   14 |      [markdown-editor/markdown-editor]
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (500 files, 2 compiled, 3 warnings, 0.11s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:48:29
+; --------------------------------------------------------------------------------
+;   45 |    [:button {:style {:margin-right "5px"}
+;   46 |              :on-click #(when-let [editor @editor-ref]
+;   47 |                           (let [tr (.. editor -state -tr)]
+;   48 |                             (.setNodeMarkup tr (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x4d5aa928 "cljs.tagged_literals.JSValue@4d5aa928"])
+; --------------------------------------------------------------------------------
+;   49 |                             (.dispatch editor tr)))}
+;   50 |     "H1"]
+;   51 |    ;; Bold Button
+;   52 |    [:button {:style {:margin-right "5px"}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:56:29
+; --------------------------------------------------------------------------------
+;   53 |              :on-click #(when-let [editor @editor-ref]
+;   54 |                           (let [state (.-state editor)
+;   55 |                                 tr (.. state -tr)]
+;   56 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -strong))
+; --------------------------------------------------------------------------------
+;   57 |                                       (.. state -selection -from)
+;   58 |                                       (.. state -selection -to)
+;   59 |                                       (.. (.-schema state) -marks -strong))
+;   60 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:67:29
+; --------------------------------------------------------------------------------
+;   64 |              :on-click #(when-let [editor @editor-ref]
+;   65 |                           (let [state (.-state editor)
+;   66 |                                 tr (.. state -tr)]
+;   67 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -em))
+; --------------------------------------------------------------------------------
+;   68 |                                       (.. state -selection -from)
+;   69 |                                       (.. state -selection -to)
+;   70 |                                       (.. (.-schema state) -marks -em))
+;   71 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (500 files, 2 compiled, 3 warnings, 0.15s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:48:29
+; --------------------------------------------------------------------------------
+;   45 |    [:button {:style {:margin-right "5px"}
+;   46 |              :on-click #(when-let [editor @editor-ref]
+;   47 |                           (let [tr (.. editor -state -tr)]
+;   48 |                             (.setNodeMarkup tr (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x4d5aa928 "cljs.tagged_literals.JSValue@4d5aa928"])
+; --------------------------------------------------------------------------------
+;   49 |                             (.dispatch editor tr)))}
+;   50 |     "H1"]
+;   51 |    ;; Bold Button
+;   52 |    [:button {:style {:margin-right "5px"}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:56:29
+; --------------------------------------------------------------------------------
+;   53 |              :on-click #(when-let [editor @editor-ref]
+;   54 |                           (let [state (.-state editor)
+;   55 |                                 tr (.. state -tr)]
+;   56 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -strong))
+; --------------------------------------------------------------------------------
+;   57 |                                       (.. state -selection -from)
+;   58 |                                       (.. state -selection -to)
+;   59 |                                       (.. (.-schema state) -marks -strong))
+;   60 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:67:29
+; --------------------------------------------------------------------------------
+;   64 |              :on-click #(when-let [editor @editor-ref]
+;   65 |                           (let [state (.-state editor)
+;   66 |                                 tr (.. state -tr)]
+;   67 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -em))
+; --------------------------------------------------------------------------------
+;   68 |                                       (.. state -selection -from)
+;   69 |                                       (.. state -selection -to)
+;   70 |                                       (.. (.-schema state) -marks -em))
+;   71 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (500 files, 2 compiled, 3 warnings, 0.13s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:48:29
+; --------------------------------------------------------------------------------
+;   45 |    [:button {:style {:margin-right "5px"}
+;   46 |              :on-click #(when-let [editor @editor-ref]
+;   47 |                           (let [tr (.. editor -state -tr)]
+;   48 |                             (.setNodeMarkup tr (.. editor -state -selection -$from -pos) "heading" #js {:level 1})
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr setNodeMarkup (.. editor -state -selection -$from -pos) "heading" #object[cljs.tagged_literals.JSValue 0x4d5aa928 "cljs.tagged_literals.JSValue@4d5aa928"])
+; --------------------------------------------------------------------------------
+;   49 |                             (.dispatch editor tr)))}
+;   50 |     "H1"]
+;   51 |    ;; Bold Button
+;   52 |    [:button {:style {:margin-right "5px"}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:56:29
+; --------------------------------------------------------------------------------
+;   53 |              :on-click #(when-let [editor @editor-ref]
+;   54 |                           (let [state (.-state editor)
+;   55 |                                 tr (.. state -tr)]
+;   56 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -strong))
+; --------------------------------------------------------------------------------
+;   57 |                                       (.. state -selection -from)
+;   58 |                                       (.. state -selection -to)
+;   59 |                                       (.. (.-schema state) -marks -strong))
+;   60 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/prosemirror.cljs:67:29
+; --------------------------------------------------------------------------------
+;   64 |              :on-click #(when-let [editor @editor-ref]
+;   65 |                           (let [state (.-state editor)
+;   66 |                                 tr (.. state -tr)]
+;   67 |                             (.addMark tr
+; -----------------------------------^--------------------------------------------
+;  Cannot infer target type in expression (. tr addMark (.. state -selection -from) (.. state -selection -to) (.. (.-schema state) -marks -em))
+; --------------------------------------------------------------------------------
+;   68 |                                       (.. state -selection -from)
+;   69 |                                       (.. state -selection -to)
+;   70 |                                       (.. (.-schema state) -marks -em))
+;   71 |                             (.dispatch editor tr)))}
+; --------------------------------------------------------------------------------

@@ -2,14 +2,15 @@
   (:require
    [re-frame.core :as re-frame]
    [second-brain-studio-webapp.subs :as subs]
-    [second-brain-studio-webapp.prosemirror :refer [prosemirror-editor]]))
+   [second-brain-studio-webapp.markdown-editor :as markdown-editor]
+   [second-brain-studio-webapp.prosemirror :refer [prosemirror-editor]]))
   
 (defn main-panel []
   (println "main-panel called")
-  (println "prosemirror-editor: " prosemirror-editor)
+  (println "markdown-editor: " markdown-editor/markdown-editor)
   (let [name (re-frame/subscribe [::subs/name])]
     [:div
      [:h1 "Hello from " @name]
-     [prosemirror-editor]
+     [markdown-editor/markdown-editor]
     ]))
 
