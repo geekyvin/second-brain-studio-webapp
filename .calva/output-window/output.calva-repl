@@ -500,3 +500,67 @@ clj꞉user꞉> 
 clj꞉user꞉> 
 ; [:app] Compiling ...
 ; [:app] Build completed. (492 files, 2 compiled, 0 warnings, 0.15s)
+; [:app] Compiling ...
+; [:app] Build completed. (511 files, 3 compiled, 0 warnings, 1.67s)
+; [:app] Compiling ...
+; [:app] Build completed. (498 files, 2 compiled, 1 warnings, 0.14s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:24:70
+; --------------------------------------------------------------------------------
+;   21 |                           :extensions #js [(markdown)
+;   22 |                                            (.of view/updateListener
+;   23 |                                                 #js {:update (fn [update]
+;   24 |                                                                (when (.-docChanged update)
+; ----------------------------------------------------------------------------^---
+;  Cannot infer target type in expression (. update -docChanged)
+; --------------------------------------------------------------------------------
+;   25 |                                                                  (reset! content (.. update -state -doc toString))))})]})
+;   26 |               view (EditorView. #js {:state state :parent node})]
+;   27 |           (reset! editor-instance view))))
+;   28 | 
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (511 files, 2 compiled, 1 warnings, 0.16s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:25:70
+; --------------------------------------------------------------------------------
+;   22 |                           :extensions #js [(markdown)
+;   23 |                                            (.of view/updateListener
+;   24 |                                                 #js {:update (fn [update]
+;   25 |                                                                (when (.-docChanged update)
+; ----------------------------------------------------------------------------^---
+;  Cannot infer target type in expression (. update -docChanged)
+; --------------------------------------------------------------------------------
+;   26 |                                                                  (reset! content (.. update -state -doc toString))))})]})
+;   27 |               view (EditorView. #js {:state state :parent node})]
+;   28 |           (reset! editor-instance view))))
+;   29 | 
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (511 files, 2 compiled, 1 warnings, 0.13s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:33:70
+; --------------------------------------------------------------------------------
+;   30 |                           :extensions #js [(markdown)
+;   31 |                                            (.of view/updateListener
+;   32 |                                                 #js {:update (fn [update]
+;   33 |                                                                (when (.-docChanged update)
+; ----------------------------------------------------------------------------^---
+;  Cannot infer target type in expression (. update -docChanged)
+; --------------------------------------------------------------------------------
+;   34 |                                                                  (reset! content (.. update -state -doc toString))))})]})
+;   35 |               view (EditorView. #js {:state state :parent node})]
+;   36 |           (reset! editor-instance view))))
+;   37 | 
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (492 files, 2 compiled, 0 warnings, 0.13s)
+; [:app] Compiling ...
+; [:app] Build completed. (492 files, 2 compiled, 0 warnings, 0.13s)
+; [:app] Compiling ...
+; [:app] Build completed. (492 files, 2 compiled, 0 warnings, 0.12s)
+; [:app] Compiling ...
+; [:app] Build completed. (492 files, 2 compiled, 0 warnings, 0.11s)
