@@ -12,7 +12,8 @@
     (fn []
       [:div {:style {:display "flex"
                      :flex-direction "column"
-                     :gap "20px"}}
+                     :gap "20px"}
+             :class "markdown-window"}
        ;; Radio buttons to toggle modes
        [:div {:style {:margin-bottom "10px"}}
         [:label {:style {:margin-right "10px"}}
@@ -31,18 +32,14 @@
        (case @mode
          :edit [:textarea {:value @content
                            :on-change #(reset! content (-> % .-target .-value))
-                           :style {:width "100%"
-                                   :height "400px"
+                           :class "markdown-editor"
+                           :style {
                                    :padding "10px"
                                    :font-family "monospace"
                                    :font-size "14px"
-                                   :border "1px solid #ccc"
                                    :border-radius "5px"}}]
-         :preview [:div {:style {:width "100%"
-                                 :height "400px"
-                                 :overflow-y "auto"
-                                 :padding "10px"
-                                 :border "1px solid #ccc"
+         :preview [:div {:class "markdown-editor"
+                         :style {:overflow-y "auto"
                                  :border-radius "5px"
                                  :background-color "#f9f9f9"}}
                    [:div {:dangerouslySetInnerHTML
