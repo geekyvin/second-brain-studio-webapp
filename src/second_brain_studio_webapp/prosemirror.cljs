@@ -11,20 +11,24 @@
 (def markdown-parser defaultMarkdownParser)
 
 (def extended-schema
-  (Schema. #js {:nodes (clj->js {:doc {:content "block+"}
-                                 :paragraph {:content "inline*"
-                                             :group "block"
-                                             :parseDOM #js [#js {:tag "p"}]
-                                             :toDOM (fn [] #js ["p" 0])}
-                                 :text {:group "inline"}
-                                 :customHeading {:content "text*"
-                                                 :group "block"
-                                                 :parseDOM #js [#js {:tag "h1"}]
-                                                 :toDOM (fn [] #js ["h1" 0])}})
-                :marks (clj->js {:strong {:parseDOM #js [#js {:tag "strong"}]
-                                          :toDOM (fn [] #js ["strong" 0])}
-                                 :em {:parseDOM #js [#js {:tag "em"}]
-                                      :toDOM (fn [] #js ["em" 0])}})}))
+  (Schema. #js {:nodes (.-nodes schema) ;; Use default nodes
+                :marks (clj->js
+                        {:strong {:parseDOM #js [#js {:tag "strong"}]
+                                  :toDOM (fn [] #js ["strong" 0])
+                                  ;; Include addToSet
+                                  :addToSet (fn [marks mark]
+                                              (if (some #(= % mark) marks)
+                                                marks
+                                                (conj marks mark)))
+                                  ;; Include removeFromSet
+                                  :removeFromSet (fn [marks mark]
+                                                   (remove #(= % mark) marks))
+                                  ;; Include isInSet
+                                  :isInSet (fn [marks mark]
+                                             (some #(= % mark) marks))}
+                         ;; Other marks like em
+                         :em {:parseDOM #js [#js {:tag "em"}]
+                              :toDOM (fn [] #js ["em" 0])}})}))
 
 
 (defn create-editor [element]

@@ -1,5 +1,44 @@
-@import "prosemirror-view/style/prosemirror.css";
-@import "prosemirror-menu/style/menu.css";
+(ns second-brain-studio-webapp.prosemirror
+  (:require
+   [reagent.core :as r]
+   ["prosemirror-model" :refer [Schema DOMParser DOMSerializer]]
+   ["prosemirror-state" :refer [EditorState]]
+   ["prosemirror-view" :refer [EditorView]]
+   ["prosemirror-schema-basic" :refer [schema]]
+   ["prosemirror-markdown" :refer [markdownParser markdownSerializer]]))
 
+(def app-db (r/atom {:editor-content nil}))
 
+(def markdown-parser (markdownParser schema))
+
+(defn get-markdown [editor-view]
+  (.serialize markdownSerializer (.. editor-view -state -doc)))
+
+(defn save-content [editor-view]
+  (let [markdown (get-markdown editor-view)]
+    (reset! app-db {:editor-content markdown})))
+
+(defn create-editor [element]
+  (let [doc (.parse markdown-parser "# Your Markdown Heading")]
+     (EditorView. element #js {:state (.create EditorState #js {:doc doc
+                                                                :schema schema})})))
+(defn prosemirror-editor []
+  (let [editor-ref (r/atom nil)
+        dom-node (r/atom nil)]
+    (r/create-class
+     {:component-did-mount
+      (fn [_]
+        (when-let [node @dom-node]
+          (reset! editor-ref (create-editor node))))
+      :component-will-unmount
+      (fn [_]
+        (when-let [editor @editor-ref]
+          (.destroy editor)))
+      :reagent-render
+      (fn []
+        [:div
+         [:div#editor {:ref #(reset! dom-node %)
+                       :style {:border "1px solid #ccc"
+                               :min-height "300px"}}]
+         [:button {:on-click #(save-content @editor-ref)} "Save Content"]])})))
 
