@@ -42,3 +42,13 @@
                                :min-height "300px"}}]
          [:button {:on-click #(save-content @editor-ref)} "Save Content"]])})))
 
+
+
+    [:div {:style {:display "flex"
+                 :height "100vh"}}
+     ;; Left Pane: Note view
+   [:div {:style {:width "250px"
+                  :border-right "1px solid #ccc"
+                  :overflow-y "auto"
+                  :padding "10px"}}
+    [note-view/left-pane]]
