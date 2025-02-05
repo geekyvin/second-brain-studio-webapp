@@ -35,10 +35,28 @@
     ;; Join the updated lines back into Markdown
     (clojure.string/join "\n" updated-lines)))
 
+(defn call-generate-audio-api [content on-success on-error]
+  (-> (js/fetch "http://localhost:3000/generate-audio"
+                #js {:method "POST"
+                     :headers #js {"Content-Type" "application/json"}
+                     :body (js/JSON.stringify #js {:content content})})
+      (.then (fn [response]
+               (if (.-ok response)
+                 (.blob response) ;; Get the audio file as a Blob
+                 (throw (js/Error (str "HTTP error! status: " (.-status response)))))))
+      (.then (fn [blob]
+               (let [audio-url (js/URL.createObjectURL blob)]
+                 (on-success audio-url))))
+      (.catch (fn [error]
+                (js/console.error "Error generating audio:" error)
+                (when on-error (on-error error))))))
+
 (defn markdown-editor []
   (let [content (r/atom "### Hello World!\n\nWrite some **Markdown** here!")
         mode (r/atom :edit)
         title (r/atom "Untitled") ;; Default title
+        audio-url (r/atom nil) ;; Stores the generated audio URL
+        audio-player (r/atom nil) ;; Audio element reference]
         editing-title (r/atom false) ;; Track if the title is being edited
         highlighted (r/atom false)] ;; Track if the summary is highlighted
     (fn []
@@ -97,6 +115,49 @@
                                                    (js/setTimeout (fn [] (reset! highlighted false)) 2000)))}
          "Summarize"]
 
+        ;; Generate Audio Button
+        [:div {:style {:margin-bottom "10px"}}
+         [:button {:style {:padding "10px"
+                           :background-color "#28A745"
+                           :color "#fff"
+                           :border "none"
+                           :border-radius "5px"
+                           :cursor "pointer"
+                           :margin-right "10px"}
+                   :on-click #(call-generate-audio-api
+                               @content
+                               (fn [url]
+                                 (reset! audio-url url)
+                                 (reset! audio-player (js/Audio. url)))
+                               (fn [error]
+                                 (js/console.error "Error generating audio:" error)))}
+          "Generate Audio"]
+
+         ;; Play Button
+         (when @audio-url
+           [:button {:style {:padding "10px"
+                             :background-color "#007BFF"
+                             :color "#fff"
+                             :border "none"
+                             :border-radius "5px"
+                             :cursor "pointer"
+                             :margin-right "10px"}
+                     :on-click #(when-let [player @audio-player]
+                                  (.play player))}
+            "Play"])
+
+         ;; Pause Button
+         (when @audio-url
+           [:button {:style {:padding "10px"
+                             :background-color "#FFC107"
+                             :color "#fff"
+                             :border "none"
+                             :border-radius "5px"
+                             :cursor "pointer"}
+                     :on-click #(when-let [player @audio-player]
+                                  (.pause player))}
+            "Pause"])]
+        
         ;; Conditionally render Edit or Preview mode
         (case @mode
           :edit [:textarea {:value @content
