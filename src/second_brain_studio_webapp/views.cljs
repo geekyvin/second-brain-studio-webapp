@@ -3,6 +3,7 @@
    [re-frame.core :as re-frame]
    [second-brain-studio-webapp.subs :as subs]
    [second-brain-studio-webapp.note-view :as note-view]
+   [second-brain-studio-webapp.line-chart :as line-chart]
    [second-brain-studio-webapp.markdown-editor :as markdown-editor]))
   
 (defn main-panel []
@@ -13,4 +14,5 @@
    [:div {:style {:flex "1"
                   :padding "20px"}}
     ;;[:h1 (str "Hello from " @name)]
-    [markdown-editor/markdown-editor]]))
+    [markdown-editor/markdown-editor]
+    [line-chart/market-chart]]))
