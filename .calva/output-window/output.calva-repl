@@ -45,3 +45,158 @@ nil
 clj꞉shadow.user꞉> 
 ; Creating cljs repl session...
 ; Connecting cljs repl: shadow-cljs...
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "shadow-cljs" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.47.1 watch :app)
+; Using host:port localhost:8777 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉shadow.user꞉> 
+; Creating cljs repl session...
+; Connecting cljs repl: shadow-cljs...
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "shadow-cljs" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.47.1 watch :app)
+; Using host:port localhost:8777 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉shadow.user꞉> 
+; Creating cljs repl session...
+; Connecting cljs repl: shadow-cljs...
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "shadow-cljs" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.47.1 watch :app)
+; Using host:port localhost:8777 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉shadow.user꞉> 
+; Creating cljs repl session...
+; Connecting cljs repl: shadow-cljs...
+; Connected session: cljs, repl: :app
+; TIPS: You can choose which REPL to use (clj or cljs):
+;    *Calva: Toggle REPL connection*
+;    (There is a button in the status bar for this)
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.cljs'
+nil
+"Please see https://calva.io/output/#about-stdout-in-the-repl-window
+about why stdout printed to this file is prepended with `;` to be line comments."
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Error while connecting cljs REPL: Error: User cancelled waiting for shadow-cljs runtimes.
+; Jack-in done.
+clj꞉user꞉> 
+; [:app] Compiling ...
+; [:app] Build failure:
+; The required namespace "second-brain-studio-webapp.app-state" is not available, it was required by "second_brain_studio_webapp/editor.cljs".
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1099 files, 3 compiled, 0 warnings, 0.30s)
+; [:app] Compiling ...
+; [:app] Build completed. (1099 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1099 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1099 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1099 files, 2 compiled, 0 warnings, 0.29s)
+; [:app] Compiling ...
+; [:app] Build completed. (1099 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1099 files, 2 compiled, 0 warnings, 0.35s)
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/left_pane.cljs:65:30
+; --------------------------------------------------------------------------------
+;   62 |                                       :margin-left "10px"
+;   63 |                                       :padding "5px"}
+;   64 |                               :on-click #(swap! app-state assoc :selected-note note)}
+;   65 |                    note])))))])))
+; ------------------------------------^-------------------------------------------
+; second_brain_studio_webapp/left_pane.cljs [line 65, col 30] Unmatched delimiter ).
+; 
+; --------------------------------------------------------------------------------
+;   66 | 
+;   67 | ;; 🔹 Tag View
+;   68 | (defn tag-view []
+;   69 |   [:div.tag-list
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1106 files, 3 compiled, 0 warnings, 0.33s)
+; [:app] Compiling ...
+; [:app] Build completed. (1425 files, 327 compiled, 1 warnings, 1.92s)
+; 
+; ------ WARNING #1 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/left_pane.cljs:31:8
+; --------------------------------------------------------------------------------
+;   28 |                     :outline "none"
+;   29 |                     :border-radius "5px"
+;   30 |                     :background "#f0f0f0"}}]
+;   31 |    [:> SearchIcon {:class "h-5 w-5 text-gray-500"}]]) ;; 🔹 Adds a search icon
+; --------------^-----------------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.left-pane/SearchIcon
+; --------------------------------------------------------------------------------
+;   32 | 
+;   33 | ;; 🔹 Sidebar Item Component
+;   34 | (defn sidebar-item [{:keys [label icon active?]}]
+;   35 |   [:div {:style {:display "flex"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1425 files, 2 compiled, 0 warnings, 0.32s)
+; [:app] Compiling ...
+; [:app] Build completed. (1425 files, 2 compiled, 0 warnings, 0.36s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.22s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.21s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.22s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1100 files, 2 compiled, 0 warnings, 0.27s)

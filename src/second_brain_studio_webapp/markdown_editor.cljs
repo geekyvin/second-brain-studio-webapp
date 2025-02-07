@@ -64,11 +64,11 @@
                      :height "100vh"
                      :overflow "hidden"}} ;; Ensure the main container is flex and takes full height
        ;; Left Pane: Note view
-       [:div {:style {:width "250px"
-                      :padding "10px"
-                      :padding-top "20px"
-                      :background-color "#f5f5f5"}}
-        [note-view/left-pane]]
+       ;;[:div {:style {:width "250px"
+       ;;               :padding "10px"
+       ;;               :padding-top "20px"
+       ;;              :background-color "#f5f5f5"}}
+       ;; [note-view/left-pane]]
 
        ;; Right Pane: Markdown Editor
        [:div {:style {:flex "1"

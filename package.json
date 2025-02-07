@@ -16,13 +16,14 @@
 		"@codemirror/lang-markdown": "^6.3.2",
 		"@codemirror/state": "^6.5.1",
 		"@codemirror/view": "^6.36.2",
+		"@heroicons/react": "^2.2.0",
 		"markdown-it": "^14.1.0",
 		"prosemirror-markdown": "^1.13.1",
 		"prosemirror-model": "^1.24.1",
 		"prosemirror-schema-basic": "^1.2.3",
 		"prosemirror-state": "^1.4.3",
 		"prosemirror-view": "^1.37.2",
-		"shadow-cljs": "2.26.2",
-		"recharts": "^2.3.2"
+		"recharts": "^2.15.1",
+		"shadow-cljs": "2.26.2"
 	}
 }
