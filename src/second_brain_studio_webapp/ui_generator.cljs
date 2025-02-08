@@ -2,57 +2,61 @@
   (:require
    [reagent.core :as r]
    [cljs.js :as cljs]
-   [ajax.core :refer [POST]]))
+   [cljs.reader :as reader])) ;; Import reader to parse Clojure strings
 
-;; 🔹 State to store user input and generated UI
 (defonce ui-state (r/atom {:input ""
                            :generated-ui nil
                            :loading? false
                            :error nil}))
 
-;; 🔹 Function to Evaluate & Render UI at Runtime
+;; Function to Evaluate & Render UI at Runtime
 (defn evaluate-cljs [cljs-code]
-  (let [state (cljs/empty-state)]
-    (cljs/eval-str
-     state
-     cljs-code
-     nil
-     {:eval cljs/js-eval}
-     (fn [{:keys [value error]}]
-       (if error
-         (swap! ui-state assoc :error (str "Evaluation error: " error))
-         (do
-           (println "Successfully evaluated UI code:" value)
-           ;; Store the evaluated function to be used in UI
-           (swap! ui-state assoc :generated-ui value)))))))
+  (if (string? cljs-code)
+    (let [parsed-code (reader/read-string cljs-code)] ;; ✅ Parse as Clojure data
+      (cljs/eval-str
+       (cljs/empty-state)
+       (str "(do " parsed-code ")") ;; ✅ Ensure it evaluates properly
+       nil
+       {:eval cljs/js-eval}
+       (fn [{:keys [value error]}]
+         (if error
+           (swap! ui-state assoc :error (str "Evaluation error: " error))
+           (do
+             (println "Successfully evaluated UI code:" value)
+             (swap! ui-state assoc :generated-ui value))))))
+    (swap! ui-state assoc :error "Error: Received non-string code for evaluation.")))
 
-;; 🔹 API Call to Fetch Generated UI Code
-(defn fetch-ui []
-   (swap! ui-state assoc :loading? true) ;; Set loading state
+(defn extract-ui-code [response-body]
+  (let [pattern #"(?s)\{\s*:ui-code\s+(.*?)\}" ;; Regex to extract `:ui-code`
+        match (re-find pattern response-body)]
+    (if match
+      (second match) ;; Extract UI Code
+      nil))) ;; If no match, return nil
+
+ (defn fetch-ui []
+   (swap! ui-state assoc :loading? true)
    (-> (js/fetch "http://localhost:3000/generate-ui"
                  #js {:method "POST"
                       :headers #js {"Content-Type" "application/json"}
                       :body (js/JSON.stringify #js {:prompt (:input @ui-state)})})
        (.then (fn [response]
                 (if (.-ok response)
-                  (.json response) ;; Parse JSON response properly
+                  (.text response) ;; ✅ Parse response as text first
                   (throw (js/Error (str "HTTP error! status: " (.-status response)))))))
-       (.then (fn [data]
-                (println "Parsed UI Code:" data)
-               ;; Extract the correct part of the response
-                (let [cljs-code (get-in data ["code" "button_component"])]
-                  (when cljs-code
-                    (evaluate-cljs cljs-code))))
-              (swap! ui-state assoc
-                     :loading? false
-                     :error nil)))
+       (.then (fn [response-text]
+                (println "Raw Response from API:" response-text) ;; Debugging
+                (let [cljs-code (extract-ui-code response-text)]
+                  (println "Extracted CLJS Code:" cljs-code)
+                  (if (string? cljs-code)
+                    (evaluate-cljs cljs-code) ;; ✅ Evaluate extracted CLJS code
+                    (swap! ui-state assoc :error "Error: Failed to extract code from API."))))))
    (.catch (fn [error]
              (js/console.error "Error generating UI:" error)
              (swap! ui-state assoc
                     :error (str "Error: " error)
                     :loading? false))))
 
-;; 🔹 UI Generator Component
+
 (defn ui-generator []
   [:div {:style {:width "100%"
                  :border "1px solid #ccc"
@@ -60,7 +64,6 @@
                  :border-radius "5px"
                  :background "#f9f9f9"
                  :margin-top "10px"}}
-   ;; Input Box
    [:textarea {:value (:input @ui-state)
                :placeholder "Describe the UI component..."
                :on-change #(swap! ui-state assoc :input (-> % .-target .-value))
@@ -68,8 +71,6 @@
                        :padding "10px"
                        :border "1px solid #ccc"
                        :border-radius "5px"}}]
-
-   ;; Generate Button
    [:button {:on-click fetch-ui
              :style {:margin-top "10px"
                      :padding "10px"
@@ -79,27 +80,12 @@
                      :cursor "pointer"
                      :border-radius "5px"}}
     "Generate UI"]
-
-   ;; Loading Indicator
-   (when (:loading? @ui-state)
-     [:p {:style {:color "#888"}} "Loading..."])
-
-   ;; Error Message
-   (when (:error @ui-state)
-     [:p {:style {:color "red"}} (:error @ui-state)])
-
-   ;; Render Evaluated Component
+   (when (:loading? @ui-state) [:p {:style {:color "#888"}} "Loading..."])
+   (when (:error @ui-state) [:p {:style {:color "red"}} (:error @ui-state)])
    (when (:generated-ui @ui-state)
      [:div {:style {:margin-top "10px"
                     :border "1px dashed #999"
                     :padding "10px"
                     :background "#fff"}}
-      ;; Dynamically render the evaluated function
-      [(:generated-ui @ui-state)
-       [:div {:style {:margin-top "10px"
-                    :border "1px dashed #999"
-                    :padding "10px"
-                    :background "#fff"}}
-      ;; Evaluate and Render UI Component
-      (evaluate-cljs (:generated-ui @ui-state))]]])])
-
+      [(fn [] ((:generated-ui @ui-state))) ;; ✅ Render the evaluated component
+       ]])])
