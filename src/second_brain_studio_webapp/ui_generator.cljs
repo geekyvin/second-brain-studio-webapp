@@ -1,62 +1,60 @@
 (ns second-brain-studio-webapp.ui-generator
-  (:require
-   [reagent.core :as r]
-   [cljs.js :as cljs]
-   [cljs.reader :as reader])) ;; Import reader to parse Clojure strings
+  (:require [reagent.core :as r]
+            [cljs.reader :as reader]
+            [clojure.string :as str]))
 
+;; 🔹 State Management
 (defonce ui-state (r/atom {:input ""
                            :generated-ui nil
                            :loading? false
                            :error nil}))
 
-;; Function to Evaluate & Render UI at Runtime
-(defn evaluate-cljs [cljs-code]
-  (if (string? cljs-code)
-    (let [parsed-code (reader/read-string cljs-code)] ;; ✅ Parse as Clojure data
-      (cljs/eval-str
-       (cljs/empty-state)
-       (str "(do " parsed-code ")") ;; ✅ Ensure it evaluates properly
-       nil
-       {:eval cljs/js-eval}
-       (fn [{:keys [value error]}]
-         (if error
-           (swap! ui-state assoc :error (str "Evaluation error: " error))
-           (do
-             (println "Successfully evaluated UI code:" value)
-             (swap! ui-state assoc :generated-ui value))))))
-    (swap! ui-state assoc :error "Error: Received non-string code for evaluation.")))
-
+;; Extract Hiccup UI Code from the AI Response
 (defn extract-ui-code [response-body]
-  (let [pattern #"(?s)\{\s*:ui-code\s+(.*?)\}" ;; Regex to extract `:ui-code`
-        match (re-find pattern response-body)]
+  (let [pattern #"(?s)\$ui-code-start\$(.*?)\$ui-code-end\$"
+        match   (re-find pattern response-body)]
     (if match
-      (second match) ;; Extract UI Code
-      nil))) ;; If no match, return nil
+      (-> (second match)
+          str/trim
+          (str/replace #"\}$" ""))
+      nil)))
 
- (defn fetch-ui []
-   (swap! ui-state assoc :loading? true)
-   (-> (js/fetch "http://localhost:3000/generate-ui"
-                 #js {:method "POST"
-                      :headers #js {"Content-Type" "application/json"}
-                      :body (js/JSON.stringify #js {:prompt (:input @ui-state)})})
-       (.then (fn [response]
-                (if (.-ok response)
-                  (.text response) ;; ✅ Parse response as text first
-                  (throw (js/Error (str "HTTP error! status: " (.-status response)))))))
-       (.then (fn [response-text]
-                (println "Raw Response from API:" response-text) ;; Debugging
-                (let [cljs-code (extract-ui-code response-text)]
-                  (println "Extracted CLJS Code:" cljs-code)
-                  (if (string? cljs-code)
-                    (evaluate-cljs cljs-code) ;; ✅ Evaluate extracted CLJS code
-                    (swap! ui-state assoc :error "Error: Failed to extract code from API."))))))
-   (.catch (fn [error]
-             (js/console.error "Error generating UI:" error)
-             (swap! ui-state assoc
-                    :error (str "Error: " error)
-                    :loading? false))))
+;; 🔹 Convert UI Code String to ClojureScript Hiccup
+(defn parse-hiccup [hiccup-str]
+  (try
+    (reader/read-string hiccup-str) ;; Parse string into Clojure data structure
+    (catch js/Error e
+      (println "Error parsing Hiccup:" (.-message e))
+      nil))) ;; Return nil if parsing fails
 
+;; 🔹 Fetch UI Code from Backend
+(defn fetch-ui []
+  (swap! ui-state assoc :loading? true)
+  (-> (js/fetch "http://localhost:3000/generate-ui"
+                #js {:method "POST"
+                     :headers #js {"Content-Type" "application/json"}
+                     :body (js/JSON.stringify #js {:prompt (:input @ui-state)})})
+      (.then (fn [response]
+               (if (.-ok response)
+                 (.json response) ;; Parse JSON response
+                 (throw (js/Error (str "HTTP error! status: " (.-status response)))))))
+      (.then (fn [data]
+               (let [raw-code (extract-ui-code (.-body data)) ;; 
+                     hiccup-code (parse-hiccup raw-code)]
+                 (println "API Response:" data)
+                 (println "Raw Code:" raw-code)
+                 (println "Hiccup Code:" hiccup-code)
+                 (swap! ui-state assoc
+                        :generated-ui hiccup-code
+                        :loading? false
+                        :error nil))))
+      (.catch (fn [error]
+                (js/console.error "Error generating UI:" error)
+                (swap! ui-state assoc
+                       :error (str "Error: " error)
+                       :loading? false)))))
 
+;; 🔹 UI Generator Component
 (defn ui-generator []
   [:div {:style {:width "100%"
                  :border "1px solid #ccc"
@@ -64,13 +62,17 @@
                  :border-radius "5px"
                  :background "#f9f9f9"
                  :margin-top "10px"}}
+   ;; Text Input for User Query
    [:textarea {:value (:input @ui-state)
                :placeholder "Describe the UI component..."
                :on-change #(swap! ui-state assoc :input (-> % .-target .-value))
-               :style {:width "100%" :height "80px"
+               :style {:width "100%"
+                       :height "80px"
                        :padding "10px"
                        :border "1px solid #ccc"
                        :border-radius "5px"}}]
+
+   ;; Button to Generate UI
    [:button {:on-click fetch-ui
              :style {:margin-top "10px"
                      :padding "10px"
@@ -80,12 +82,21 @@
                      :cursor "pointer"
                      :border-radius "5px"}}
     "Generate UI"]
-   (when (:loading? @ui-state) [:p {:style {:color "#888"}} "Loading..."])
-   (when (:error @ui-state) [:p {:style {:color "red"}} (:error @ui-state)])
-   (when (:generated-ui @ui-state)
-     [:div {:style {:margin-top "10px"
-                    :border "1px dashed #999"
-                    :padding "10px"
-                    :background "#fff"}}
-      [(fn [] ((:generated-ui @ui-state))) ;; ✅ Render the evaluated component
-       ]])])
+
+   ;; Loading Indicator
+   (when (:loading? @ui-state)
+     [:p {:style {:color "#888"}} "Loading..."])
+
+   ;; Error Display
+   (when (:error @ui-state)
+     [:p {:style {:color "red"}} (:error @ui-state)])
+
+   ;; Render UI or Placeholder
+   [:div {:style {:margin-top "10px"
+                  :border "1px dashed #999"
+                  :padding "10px"
+                  :background "#fff"}}
+    (if (:generated-ui @ui-state)
+      [:div (:generated-ui @ui-state)] ;; ✅ Render parsed Hiccup UI
+      [:p "Generated UI will appear here"])]])
+
