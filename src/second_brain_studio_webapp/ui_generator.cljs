@@ -72,7 +72,6 @@
       (println "Error parsing Hiccup:" (.-message e))
       nil)))
 
-
 ;; 🔹 Fetch UI Code from Backend
 (defn fetch-ui []
   (swap! ui-state assoc :loading? true)

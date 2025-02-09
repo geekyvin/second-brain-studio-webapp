@@ -64,7 +64,7 @@
 
    ;; Navigation Links
    [:div
-    [sidebar-item {:label "Daily Tasks" :icon "📝" :active? true}]
+    [sidebar-item {:label "Daily Logs" :icon "📝" :active? true}]
     [sidebar-item {:label "All Notes" :icon "📂"}]
     [sidebar-item {:label "Tasks" :icon "✅"}]
     ;;[sidebar-item {:label "Map" :icon "🌍"}]
