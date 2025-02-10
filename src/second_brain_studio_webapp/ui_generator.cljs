@@ -1,7 +1,7 @@
 (ns second-brain-studio-webapp.ui-generator
   (:require [reagent.core :as r]
             [cljs.reader :as reader]
-            ["recharts" :refer [ResponsiveContainer BarChart Bar XAxis YAxis CartesianGrid Tooltip Legend]]
+            ["recharts" :refer [ResponsiveContainer PieChart Pie Cell BarChart Bar LineChart Line XAxis YAxis CartesianGrid Tooltip Legend]]
             [clojure.string :as str]))
 
 ;; 🔹 State Management
@@ -17,13 +17,18 @@
 
 (def component-map
   {'ResponsiveContainer ResponsiveContainer
+   'PieChart            PieChart
+   'Pie                 Pie
+   'Cell                Cell
    'BarChart            BarChart
    'Bar                 Bar
    'XAxis              XAxis
    'YAxis              YAxis
    'CartesianGrid      CartesianGrid
    'Tooltip            Tooltip
-   'Legend             Legend})
+   'Legend             Legend
+   'Line               Line
+   'LineChart          LineChart})
 
 (defn substitute-placeholders [hiccup]
   (cond
