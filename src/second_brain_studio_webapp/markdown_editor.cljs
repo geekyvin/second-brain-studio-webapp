@@ -57,6 +57,7 @@
         title (r/atom "Untitled") ;; Default title
         audio-url (r/atom nil) ;; Stores the generated audio URL
         audio-player (r/atom nil) ;; Audio element reference]
+        is-playing (r/atom false) ;; Tracks if the audio is playing
         editing-title (r/atom false) ;; Track if the title is being edited
         highlighted (r/atom false)] ;; Track if the summary is highlighted
     (fn []
@@ -103,8 +104,7 @@
                        :margin-bottom "10px"}}
         ;; Summarize Button
         [:button {:class "text-btn"
-                  :style {:margin-bottom "10px"
-                          :padding "10px"
+                  :style {:padding "10px"
                           :color "#fff"
                           :border "none"
                           :border-radius "5px"
@@ -118,43 +118,39 @@
                                                    (js/setTimeout (fn [] (reset! highlighted false)) 2000)))}
          "Summarize"]
 
-        ;; Generate Audio Button
-        [:div {:style {:margin-bottom "10px"}}
-         [:button {:class "text-btn"
-                   :style {:padding "10px"
-                           :color "#fff"
-                           :border "none"
-                           :border-radius "5px"
-                           :cursor "pointer"
-                           :margin-right "2px"}
-                   :on-click #(call-generate-audio-api
-                               @content
-                               (fn [url]
-                                 (reset! audio-url url)
-                                 (reset! audio-player (js/Audio. url)))
-                               (fn [error]
-                                 (js/console.error "Error generating audio:" error)))}
-          "Orate"]]
-         [:div {:style {:margin-bottom "10px"}}
-         ;; Play Button
-         (when @audio-url
-           [:div {:class "play-btn"}
-            [:button {:style {:cursor "pointer"}
-                      :on-click #(when-let [player @audio-player]
-                                   (.play player))}
-             [:img {:src "../images/play.png" :alt "Play"}]]])
+       ;; Generate Audio Button
+        [:button {:class "text-btn"
+                  :style {:padding "10px"
+                          :color "#fff"
+                          :border "none"
+                          :border-radius "5px"
+                          :cursor "pointer"}
+                  :on-click #(call-generate-audio-api
+                              @content
+                              (fn [url]
+                                (reset! audio-url url)
+                                (reset! audio-player (js/Audio. url)))
+                              (fn [error]
+                                (js/console.error "Error generating audio:" error)))}
+         "Orate"]
 
-
-         ;; Pause Button
-         (when @audio-url
-           [:div {:class "pause-btn"}
-            [:button {:style {:cursor "pointer"}
-                      :on-click #(when-let [player @audio-player]
-                                   (.pause player))}
-             [:img {:src "../images/pause.png" :alt "Pause"}]]])]
+        ;; Toggle Play/Pause Button
+        (when @audio-url
+          [:button {:class "text-btn-img"
+                    :style {:padding-top "8px"
+                            :cursor "pointer"
+                            :border "none"
+                            :border-radius "5px"}
+                    :on-click #(when-let [player @audio-player]
+                                 (if @is-playing
+                                   (do (.pause player) (reset! is-playing false)) ;; Pause action
+                                   (do (.play player) (reset! is-playing true))))} ;; Play action
+           (if @is-playing
+             [:img {:src "../images/pause.png" :alt "Pause"}]
+             [:img {:src "../images/play.png" :alt "Play"}])])
         
-                ;; Generate Audio Button
-        [:div {:style {:margin-bottom "10px"}}
+                
+        [:div 
          [:button {:class "text-btn"
                    :style {:padding "10px"
                            :color "#fff"
@@ -163,8 +159,39 @@
                            :cursor "pointer"
                            :margin-right "2px"}
                   }
-          "CoCreate"]]]
+          "CoCreate"]]
+        [:div
+         [:button {:class "text-btn"
+                   :style {:padding "10px"
+                           :color "#fff"
+                           :border "none"
+                           :border-radius "5px"
+                           :cursor "pointer"
+                           :margin-right "2px"}}
+          "Castify"]]
         
+       ;; **🔹 Edit / Preview Mode Toggle**
+       [:div {:style {:margin-bottom "10px"
+                      :margin-top "20px"
+                      :display "flex"
+                      :font-size "18px"
+                      :font-family "'atkinson-hyper', 'dm-sans'"
+                      :color "#cc6633"
+                      :align-items "center"
+                      :gap "4px"}}
+        [:label
+         [:input {:type "radio"
+                  :name "mode"
+                  :checked (= @mode :edit)
+                  :on-change #(reset! mode :edit)}]
+         " Edit"]
+        [:label
+         [:input {:type "radio"
+                  :name "mode"
+                  :checked (= @mode :preview)
+                  :on-change #(reset! mode :preview)}]
+         " Preview"]]]
+       
         ;; Conditionally render Edit or Preview mode
         (case @mode
           :edit [:textarea {:value @content

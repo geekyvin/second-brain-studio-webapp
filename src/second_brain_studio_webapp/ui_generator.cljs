@@ -111,7 +111,10 @@
    [:textarea {:value (:input @ui-state)
                :placeholder "Describe the UI component..."
                :on-change #(swap! ui-state assoc :input (-> % .-target .-value))
-               :style {:height "80px"
+               :style {:height "auto"
+                       :overflow-y "auto"
+                       :word-wrap "break-word"
+                       :min-height "100px"
                        :width "100%"}}]
    [:button {:on-click fetch-ui
              :class "text-btn"

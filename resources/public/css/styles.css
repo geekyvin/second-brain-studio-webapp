@@ -45,7 +45,7 @@ body {
   font-family: 'atkinson-hyper', 'dm-sans';
   background-color: #f9f9f9;
   margin: 0;
-  padding: 0;
+  padding-bottom: 100px;
 }
 
 body textarea{
@@ -90,15 +90,15 @@ body textarea{
     font-family: 'atkinson-hyper', 'dm-sans';
     font-size: 18px;
     color: #f9f9f9;
+    margin-bottom: "10px";
     background-color: #cc6633;
   }
 
-  button:focus,
-  button:hover,
-  button:focus-visible {
+
+  .text-btn:hover {
     background-color: #f6a77e;
   }
- 
+
 
   .highlight {
     background-color: #cc6633;
@@ -116,30 +116,28 @@ body textarea{
     font-size: 18px;
   }
 
-  .play-btn img {
-    background: url(../images/play.png) 0 0 no-repeat;
+  .text-btn-img {
+    font-family: 'atkinson-hyper', 'dm-sans';
+    font-size: 18px;
+    color: #f9f9f9;
+    margin-bottom: 2px;
     background-size: 100%;
-    background-color: none;
+    background-color: transparent;
     border: none;
-    width: 38px;
-    padding-bottom: 5px;
+    padding: 2px;
   }
 
-  .play-btn button {
+  .text-btn-img img {
+    width: 35px;
+  }
+
+  .text-btn button {
     background-color: transparent;
     border: none;
   }
 
-  .pause-btn img {
-    background: url(../images/pause.png) 0 0 no-repeat;
-    background-size: 100%;
-    background-color: none;
-    border: none;
-    width: 38px;
-    padding-bottom: 5px;
-  }
-
-  .pause-btn button {
-    background-color: transparent;
-    border: none;
+  .ui-generator-output {
+    background-color: #f9f9f9;
+    margin: 10px;
+    padding: 4px;
   }

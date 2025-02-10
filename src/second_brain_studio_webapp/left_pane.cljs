@@ -60,6 +60,7 @@
                  :flex-direction "column"}}
 
    ;; Search Bar
+   
    [search-bar]
 
    ;; Navigation Links
