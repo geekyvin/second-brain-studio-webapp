@@ -104,7 +104,6 @@
 ;; 🔹 UI Generator Component
 (defn ui-generator []
   [:div {:style {:width "100%"
-                 :border "1px solid #ccc"
                  :padding "10px"
                  :border-radius "5px"
                  :background "#f9f9f9"
@@ -112,29 +111,35 @@
    [:textarea {:value (:input @ui-state)
                :placeholder "Describe the UI component..."
                :on-change #(swap! ui-state assoc :input (-> % .-target .-value))
-               :style {:width "100%"
-                       :height "80px"
-                       :padding "10px"
-                       :border "1px solid #ccc"
-                       :border-radius "5px"}}]
+               :style {:height "80px"
+                       :width "100%"}}]
    [:button {:on-click fetch-ui
+             :class "text-btn"
              :style {:margin-top "10px"
                      :padding "10px"
                      :border "none"
-                     :background "#007BFF"
-                     :color "#fff"
                      :cursor "pointer"
                      :border-radius "5px"}}
-    "Generate UI"]
-   (when (:loading? @ui-state)
-     [:p {:style {:color "#888"}} "Loading..."])
-   (when (:error @ui-state)
-     [:p {:style {:color "red"}} (:error @ui-state)])
-   [:div {:style {:margin-top "10px"
-                  :border "1px dashed #999"
-                  :padding "10px"
-                  :background "#fff"}}
-    (if-let [ui (:generated-ui @ui-state)]
-      ui
-      [:p "Generated UI will appear here"])]])
+    "Generate Visual"]
+ ;; Conditionally Render UI Output **Only When Data is Available**
+   (when (or (:generated-ui @ui-state) (:loading? @ui-state))
+     [:div {:class "ui-generator-output"
+            :style {:margin-top "10px"
+                    :border "1px dashed #999"
+                    :padding "10px"
+                    :background "#fff"}}
+      ;; Show Loading Indicator
+      (when (:loading? @ui-state)
+        [:p {:style {:color "#888"}} "Loading..."])
+
+      ;; Show Error Message (if any)
+      (when (:error @ui-state)
+        [:p {:style {:color "red"}} (:error @ui-state)])
+
+      ;; Render Generated UI
+      (if-let [ui (:generated-ui @ui-state)]
+        ui
+        [:p "Generated UI will appear here"])])])
+
+   
 

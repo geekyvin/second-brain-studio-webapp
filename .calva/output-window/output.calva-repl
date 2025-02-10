@@ -3445,3 +3445,469 @@ clj꞉user꞉> 
 ; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
 ; [:app] Compiling ...
 ; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.31s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.31s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.34s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.30s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.34s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.36s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.35s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.32s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.29s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/left_pane.cljs:23:41
+; --------------------------------------------------------------------------------
+;   20 |                  :background "#f0f0f0"
+;   21 |                  :border-radius "8px"
+;   22 |                  :padding "8px"
+;   23 |                  :margin-bottom "10px"}}
+; -----------------------------------------------^--------------------------------
+; second_brain_studio_webapp/left_pane.cljs [line 23, col 41] The map literal starting with {:class "searc..."} on line 18 column 9 contains 3 form(s). Map literals must contain an even number of forms.
+; 
+; --------------------------------------------------------------------------------
+;   24 |    [:input {:type "text"
+;   25 |             :placeholder "Search anything..."
+;   26 |             :value (:search-query @app-state)
+;   27 |             :on-change #(swap! app-state assoc :search-query (-> % .-target .-value))
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/left_pane.cljs:23:41
+; --------------------------------------------------------------------------------
+;   20 |                  :background "#f0f0f0"
+;   21 |                  :border-radius "8px"
+;   22 |                  :padding "8px"
+;   23 |                  :margin-bottom "10px"}}
+; -----------------------------------------------^--------------------------------
+; second_brain_studio_webapp/left_pane.cljs [line 23, col 41] The map literal starting with {:class "searc..."} on line 18 column 9 contains 3 form(s). Map literals must contain an even number of forms.
+; 
+; --------------------------------------------------------------------------------
+;   24 |    [:input {:type "text"
+;   25 |             :placeholder "Search anything..."
+;   26 |             :value (:search-query @app-state)
+;   27 |             :on-change #(swap! app-state assoc :search-query (-> % .-target .-value))
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/left_pane.cljs:24:41
+; --------------------------------------------------------------------------------
+;   21 |                  :background "#f0f0f0"
+;   22 |                  :border-radius "8px"
+;   23 |                  :padding "8px"
+;   24 |                  :margin-bottom "10px"}}
+; -----------------------------------------------^--------------------------------
+; second_brain_studio_webapp/left_pane.cljs [line 24, col 41] The map literal starting with {:class "searc..."} on line 18 column 9 contains 3 form(s). Map literals must contain an even number of forms.
+; 
+; --------------------------------------------------------------------------------
+;   25 |    [:input {:type "text"
+;   26 |             :placeholder "Search anything..."
+;   27 |             :value (:search-query @app-state)
+;   28 |             :on-change #(swap! app-state assoc :search-query (-> % .-target .-value))
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/left_pane.cljs:24:41
+; --------------------------------------------------------------------------------
+;   21 |                  :background "#f0f0f0"
+;   22 |                  :border-radius "8px"
+;   23 |                  :padding "8px"
+;   24 |                  :margin-bottom "10px"}}
+; -----------------------------------------------^--------------------------------
+; second_brain_studio_webapp/left_pane.cljs [line 24, col 41] The map literal starting with {:class "searc..."} on line 18 column 9 contains 3 form(s). Map literals must contain an even number of forms.
+; 
+; --------------------------------------------------------------------------------
+;   25 |    [:input {:type "text"
+;   26 |             :placeholder "Search anything..."
+;   27 |             :value (:search-query @app-state)
+;   28 |             :on-change #(swap! app-state assoc :search-query (-> % .-target .-value))
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 1 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.32s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.40s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.34s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.32s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.29s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.29s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:180:82
+; --------------------------------------------------------------------------------
+;  177 |                                   :border-radius "5px"
+;  178 |                                   :background-color "#f9f9f9"}}
+;  179 |                     [:div {:dangerouslySetInnerHTML
+;  180 |                            #js {:__html (.render markdown-parser @content)}}]])]])))
+; ----------------------------------------------------------------------------------------^
+; second_brain_studio_webapp/markdown_editor.cljs [line 180, col 82] Unmatched delimiter ].
+; 
+; --------------------------------------------------------------------------------
+;  181 | 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:180:82
+; --------------------------------------------------------------------------------
+;  177 |                                   :border-radius "5px"
+;  178 |                                   :background-color "#f9f9f9"}}
+;  179 |                     [:div {:dangerouslySetInnerHTML
+;  180 |                            #js {:__html (.render markdown-parser @content)}}]])]])))
+; ----------------------------------------------------------------------------------------^
+; second_brain_studio_webapp/markdown_editor.cljs [line 180, col 82] Unmatched delimiter ].
+; 
+; --------------------------------------------------------------------------------
+;  181 | 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 1 compiled, 0 warnings, 0.18s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.28s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.33s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.31s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.30s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:163:22
+; --------------------------------------------------------------------------------
+;  160 |                              :cursor "pointer"}
+;  161 |                      :on-click #(when-let [player @audio-player]
+;  162 |                                   (.pause player))}
+;  163 |             "Pause"])]
+; ----------------------------^---------------------------------------------------
+; second_brain_studio_webapp/markdown_editor.cljs [line 163, col 22] Unmatched delimiter ).
+; 
+; --------------------------------------------------------------------------------
+;  164 |         
+;  165 |         ;; Conditionally render Edit or Preview mode
+;  166 |         (case @mode
+;  167 |           :edit [:textarea {:value @content
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:163:22
+; --------------------------------------------------------------------------------
+;  160 |                              :cursor "pointer"}
+;  161 |                      :on-click #(when-let [player @audio-player]
+;  162 |                                   (.pause player))}
+;  163 |             "Pause"])]
+; ----------------------------^---------------------------------------------------
+; second_brain_studio_webapp/markdown_editor.cljs [line 163, col 22] Unmatched delimiter ).
+; 
+; --------------------------------------------------------------------------------
+;  164 |         
+;  165 |         ;; Conditionally render Edit or Preview mode
+;  166 |         (case @mode
+;  167 |           :edit [:textarea {:value @content
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 1 compiled, 0 warnings, 0.18s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.29s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.34s)
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:177:83
+; --------------------------------------------------------------------------------
+;  174 |                                   :border-radius "5px"
+;  175 |                                   :background-color "#f9f9f9"}}
+;  176 |                     [:div {:dangerouslySetInnerHTML
+;  177 |                            #js {:__html (.render markdown-parser @content)}}]])]])))
+; -----------------------------------------------------------------------------------------^
+; second_brain_studio_webapp/markdown_editor.cljs [line 177, col 83] Unmatched delimiter ).
+; 
+; --------------------------------------------------------------------------------
+;  178 | 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 1 compiled, 0 warnings, 0.18s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.30s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.30s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.32s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.30s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 2 warnings, 0.25s)
+; 
+; ------ WARNING #1 - :undeclared-ns ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:178:29
+; --------------------------------------------------------------------------------
+;  175 |                     [:div {:dangerouslySetInnerHTML
+;  176 |                            #js {:__html (.render markdown-parser @content)}}]])]
+;  177 |                            [:h3 "Generated UI"]
+;  178 |                            [ui-generator/ui-generator]])))
+; -----------------------------------^--------------------------------------------
+;  No such namespace: ui-generator, could not locate ui_generator.cljs, ui_generator.cljc, or JavaScript source providing "ui-generator" (Please check that namespaces with dashes use underscores in the ClojureScript file name)
+; --------------------------------------------------------------------------------
+;  179 | 
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:178:29
+; --------------------------------------------------------------------------------
+;  175 |                     [:div {:dangerouslySetInnerHTML
+;  176 |                            #js {:__html (.render markdown-parser @content)}}]])]
+;  177 |                            [:h3 "Generated UI"]
+;  178 |                            [ui-generator/ui-generator]])))
+; -----------------------------------^--------------------------------------------
+;  Use of undeclared Var ui-generator/ui-generator
+; --------------------------------------------------------------------------------
+;  179 | 
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.31s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.28s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.33s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.34s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.31s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.24s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.33s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.28s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.31s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.35s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:263:1
+; --------------------------------------------------------------------------------
+;  260 | 
+;  261 | 
+;  262 | 
+;  263 | 
+; -------^------------------------------------------------------------------------
+; second_brain_studio_webapp/ui_generator.cljs [line 263, col 1] Unexpected EOF while reading item 14 of vector, starting at line 106 and column 3.
+; 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:271:1
+; --------------------------------------------------------------------------------
+;  268 | 
+;  269 | 
+;  270 | 
+;  271 | 
+; -------^------------------------------------------------------------------------
+; second_brain_studio_webapp/ui_generator.cljs [line 271, col 1] Unexpected EOF while reading item 14 of vector, starting at line 106 and column 3.
+; 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 1 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.23s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.32s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.25s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.28s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.26s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)

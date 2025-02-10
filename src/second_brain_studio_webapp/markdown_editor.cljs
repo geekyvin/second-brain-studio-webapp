@@ -60,9 +60,6 @@
         editing-title (r/atom false) ;; Track if the title is being edited
         highlighted (r/atom false)] ;; Track if the summary is highlighted
     (fn []
-      [:div {:style {:display "flex"
-                     :height "100vh"
-                     :overflow "hidden"}} ;; Ensure the main container is flex and takes full height
        ;; Left Pane: Note view
        ;;[:div {:style {:width "250px"
        ;;               :padding "10px"
@@ -98,10 +95,16 @@
                          :cursor "pointer"}}
             @title])]
 
+        
+;; Button Container
+      [:div {:style {:display "flex"
+                       :align-items "center"
+                       :gap "10px"    ;; Adds spacing between buttons
+                       :margin-bottom "10px"}}
         ;; Summarize Button
-        [:button {:style {:margin-bottom "10px"
+        [:button {:class "text-btn"
+                  :style {:margin-bottom "10px"
                           :padding "10px"
-                          :background-color "#007BFF"
                           :color "#fff"
                           :border "none"
                           :border-radius "5px"
@@ -117,13 +120,13 @@
 
         ;; Generate Audio Button
         [:div {:style {:margin-bottom "10px"}}
-         [:button {:style {:padding "10px"
-                           :background-color "#28A745"
+         [:button {:class "text-btn"
+                   :style {:padding "10px"
                            :color "#fff"
                            :border "none"
                            :border-radius "5px"
                            :cursor "pointer"
-                           :margin-right "10px"}
+                           :margin-right "2px"}
                    :on-click #(call-generate-audio-api
                                @content
                                (fn [url]
@@ -131,32 +134,36 @@
                                  (reset! audio-player (js/Audio. url)))
                                (fn [error]
                                  (js/console.error "Error generating audio:" error)))}
-          "Generate Audio"]
-
+          "Orate"]]
+         [:div {:style {:margin-bottom "10px"}}
          ;; Play Button
          (when @audio-url
-           [:button {:style {:padding "10px"
-                             :background-color "#007BFF"
-                             :color "#fff"
-                             :border "none"
-                             :border-radius "5px"
-                             :cursor "pointer"
-                             :margin-right "10px"}
-                     :on-click #(when-let [player @audio-player]
-                                  (.play player))}
-            "Play"])
+           [:div {:class "play-btn"}
+            [:button {:style {:cursor "pointer"}
+                      :on-click #(when-let [player @audio-player]
+                                   (.play player))}
+             [:img {:src "../images/play.png" :alt "Play"}]]])
+
 
          ;; Pause Button
          (when @audio-url
-           [:button {:style {:padding "10px"
-                             :background-color "#FFC107"
-                             :color "#fff"
-                             :border "none"
-                             :border-radius "5px"
-                             :cursor "pointer"}
-                     :on-click #(when-let [player @audio-player]
-                                  (.pause player))}
-            "Pause"])]
+           [:div {:class "pause-btn"}
+            [:button {:style {:cursor "pointer"}
+                      :on-click #(when-let [player @audio-player]
+                                   (.pause player))}
+             [:img {:src "../images/pause.png" :alt "Pause"}]]])]
+        
+                ;; Generate Audio Button
+        [:div {:style {:margin-bottom "10px"}}
+         [:button {:class "text-btn"
+                   :style {:padding "10px"
+                           :color "#fff"
+                           :border "none"
+                           :border-radius "5px"
+                           :cursor "pointer"
+                           :margin-right "2px"}
+                  }
+          "CoCreate"]]]
         
         ;; Conditionally render Edit or Preview mode
         (case @mode
@@ -166,16 +173,13 @@
                             :style {:width "100%"
                                     :height "70vh"
                                     :padding "10px"
-                                    :font-family "monospace"
-                                    :font-size "14px"
-                                    :border "1px solid #ccc"
+                                    :border "none"
                                     :border-radius "5px"}}]
           :preview [:div {:style {:width "100%"
                                   :height "70vh"
                                   :padding "10px"
                                   :overflow-y "auto"
-                                  :border "1px solid #ccc"
                                   :border-radius "5px"
                                   :background-color "#f9f9f9"}}
                     [:div {:dangerouslySetInnerHTML
-                           #js {:__html (.render markdown-parser @content)}}]])]])))
+                           #js {:__html (.render markdown-parser @content)}}]])])))

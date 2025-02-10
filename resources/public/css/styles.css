@@ -1,5 +1,68 @@
 
 
+@font-face {
+  font-family: 'work-sans'; /* Name it as you wish */
+  src: url('../font/WorkSans-VariableFont_wght.ttf') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'atkinson-hyper'; /* Name it as you wish */
+  src: url('../font/AtkinsonHyperlegible-Regular.ttf') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'atkinson-hyper-bold'; /* Name it as you wish */
+  src: url('../font/AtkinsonHyperlegible-Bold.ttf') format('woff');
+}
+
+
+@font-face {
+  font-family: 'dm-sans'; /* Name it as you wish */
+  src: url('../font/DMSans-VariableFont_opsz\,wght.ttf') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+ font-family: 'dm-sans18r'; /* Name it as you wish */
+ src: url('../font/DMSans_18pt-Regular.ttf') format('woff');
+ font-weight: 400;
+ font-style: normal;
+}
+
+@font-face {
+  font-family: 'dm-sans18m'; /* Name it as you wish */
+  src: url('../font/DMSans_18pt-Medium.ttf') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'atkinson-hyper', 'dm-sans';
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+body textarea{
+  font-family: 'atkinson-hyper', 'dm-sans';
+  background-color: #f9f9f9;
+  font-size: 16px;
+  border: none;        /* Removes default border */
+  outline: none;       /* Removes focus outline */
+  resize: none;        /* Optional: Prevents resizing */
+}
+
+ body textarea:focus,
+ body textarea:focus-visible {
+   outline: none; /* Ensures no outline when focused */
+   border: none;  /* Ensures no border when focused */
+ }
+
 .markdown-window {
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -23,8 +86,60 @@
     user-select: none;
   }
 
+  .text-btn {
+    font-family: 'atkinson-hyper', 'dm-sans';
+    font-size: 18px;
+    color: #f9f9f9;
+    background-color: #cc6633;
+  }
+
+  button:focus,
+  button:hover,
+  button:focus-visible {
+    background-color: #f6a77e;
+  }
+ 
+
   .highlight {
-    background-color: yellow;
+    background-color: #cc6633;
     transition: background-color 2s ease-out;
   }
   
+  .search-bar {
+    font-family: 'atkinson-hyper', 'dm-sans';
+    font-size: 18px;
+    background: #f0f0f0;
+  }
+
+  .search-bar input {
+    font-family: 'atkinson-hyper', 'dm-sans';
+    font-size: 18px;
+  }
+
+  .play-btn img {
+    background: url(../images/play.png) 0 0 no-repeat;
+    background-size: 100%;
+    background-color: none;
+    border: none;
+    width: 38px;
+    padding-bottom: 5px;
+  }
+
+  .play-btn button {
+    background-color: transparent;
+    border: none;
+  }
+
+  .pause-btn img {
+    background: url(../images/pause.png) 0 0 no-repeat;
+    background-size: 100%;
+    background-color: none;
+    border: none;
+    width: 38px;
+    padding-bottom: 5px;
+  }
+
+  .pause-btn button {
+    background-color: transparent;
+    border: none;
+  }

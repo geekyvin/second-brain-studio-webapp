@@ -17,16 +17,14 @@
   (let [name (re-frame/subscribe [::subs/name])]
     [:div {:style {:display "flex" :height "100vh"}}
      ;; Sidebar (left panel)
-     [:div {:style {:width "300px"
-                    :border-right "1px solid #ccc"
-                    :padding "10px"}}
+     [:div {:style {:width "280px"
+                    :padding "6px"}}
       ;;[sidebar/sidebar]
       [left-pane/left-pane]]
      ;; Main Content (Markdown Editor)
      [:div {:style {:flex "1"
-                    :padding "20px"}}
+                    :padding "12px"}}
       ;;[:h1 (str "Hello from " @name)]
       [markdown-editor/markdown-editor]
-      [:h3 "Generated UI"]
       [ui-generator/ui-generator]]]))
 

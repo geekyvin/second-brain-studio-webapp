@@ -15,10 +15,11 @@
 
 ;; 🔹 Search Bar Component
 (defn search-bar []
-  [:div {:style {:display "flex"
+  [:div { :class "search-bar"
+         :style {:display "flex"
                  :align-items "center"
-                 :background "#f0f0f0"
-                 :border-radius "8px"
+                 ;;:background "#f0f0f0"
+                 ;; :border-radius "8px"
                  :padding "8px"
                  :margin-bottom "10px"}}
    [:input {:type "text"
@@ -29,8 +30,7 @@
                     :padding "8px"
                     :border "none"
                     :outline "none"
-                    :background "transparent"
-                    :font-size "14px"}}]])
+                    :background "transparent"}}]])
 
 ;; 🔹 Sidebar Item Component
 (defn sidebar-item [{:keys [label icon active?]}]
@@ -40,7 +40,6 @@
                  :padding "10px 15px"
                  :cursor "pointer"
                  :border-radius "8px"
-                 :font-size "14px"
                  :font-weight "500"
                  :color (if active? "#000" "#444")
                  :background (if active? "#e8e8e8" "transparent")
@@ -55,7 +54,8 @@
                  :height "100vh"
                  :background "#f9f9f9"
                  :border-right "1px solid #ddd"
-                 :padding "15px"
+                 :padding-top "20px"
+                 :padding-right "8px"
                  :display "flex"
                  :flex-direction "column"}}
 
@@ -72,15 +72,14 @@
 
    ;; Pinned Notes Section
    [:h4 {:style {:margin "15px 0 5px 10px"
-                 :font-size "12px"
-                 :font-weight "600"
+                 :font-size "18px"
+                 :font-family "atkinson-hyper-bold"
                  :color "#666"
                  :text-transform "uppercase"}} "Pinned Notes"]
    [:div
     [:div {:style {:padding "5px 10px"
                    :cursor "pointer"
                    :color "#444"
-                   :font-size "13px"
                    :border-radius "5px"
                    :hover {:background "#f2f2f2"}}} "How to use Second Brain Studio"]
     ;;[:div {:style {:padding "5px 10px"
@@ -92,12 +91,10 @@
     [:div {:style {:padding "5px 10px"
                    :cursor "pointer"
                    :color "#444"
-                   :font-size "13px"
                    :border-radius "5px"
                    :hover {:background "#f2f2f2"}}} "Favorites"]
     [:div {:style {:padding "5px 10px"
                    :cursor "pointer"
                    :color "#444"
-                   :font-size "13px"
                    :border-radius "5px"
                    :hover {:background "#f2f2f2"}}} "Tips"]]])
