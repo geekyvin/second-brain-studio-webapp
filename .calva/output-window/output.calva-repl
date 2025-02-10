@@ -4391,3 +4391,119 @@ clj꞉user꞉> 
 ; --------------------------------------------------------------------------------
 ; [:app] Compiling ...
 ; [:app] Build completed. (1101 files, 2 compiled, 0 warnings, 0.27s)
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 5 warnings, 0.24s)
+; 
+; ------ WARNING #1 - :redef-in-file ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:117:1
+; --------------------------------------------------------------------------------
+;  114 |                            :loading? false
+;  115 |                            :error nil}))
+;  116 | 
+;  117 | (def my-data [{:Year 2023, :TAM 7.5, :SAM 0.5, :SOM 0}
+; -------^------------------------------------------------------------------------
+;  my-data at line 13 is being replaced
+; --------------------------------------------------------------------------------
+;  118 |               {:Year 2025, :TAM 11, :SAM 0.825, :SOM 0.015}
+;  119 |               {:Year 2030, :TAM 27.5, :SAM 1.65, :SOM 0.033}
+;  120 |               {:Year 2033, :TAM 35, :SAM 2.45, :SOM 0.1225}])
+;  121 | 
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :redef-in-file ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:122:1
+; --------------------------------------------------------------------------------
+;  119 |               {:Year 2030, :TAM 27.5, :SAM 1.65, :SOM 0.033}
+;  120 |               {:Year 2033, :TAM 35, :SAM 2.45, :SOM 0.1225}])
+;  121 | 
+;  122 | (defn extract-ui-code [response-body]
+; -------^------------------------------------------------------------------------
+;  extract-ui-code at line 65 is being replaced
+; --------------------------------------------------------------------------------
+;  123 |   (let [pattern #"(?s)\$ui-code-start\$(.*?)\$ui-code-end\$"
+;  124 |         match   (re-find pattern response-body)]
+;  125 |     (if match
+;  126 |       (-> (second match)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :redef-in-file ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:131:1
+; --------------------------------------------------------------------------------
+;  128 |           (str/replace #"\(def my-data .*?\)\n*" "")) ;; remove def my-data if present
+;  129 |       nil)))
+;  130 | 
+;  131 | (defn parse-hiccup [hiccup-str]
+; -------^------------------------------------------------------------------------
+;  parse-hiccup at line 73 is being replaced
+; --------------------------------------------------------------------------------
+;  132 |   (try
+;  133 |     (reader/read-string hiccup-str)
+;  134 |     (catch js/Error e
+;  135 |       (println "Error parsing Hiccup:" (.-message e))
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:152:37
+; --------------------------------------------------------------------------------
+;  149 |                :on-change (fn [e]
+;  150 |                             (let [el (.-target e)]
+;  151 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  152 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  153 |                               ;; Set height to match content
+;  154 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  155 |                               (swap! ui-state assoc :input (.-value el))))
+;  156 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:154:37
+; --------------------------------------------------------------------------------
+;  151 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  152 |                               (set! (.-style.height el) "auto")
+;  153 |                               ;; Set height to match content
+;  154 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  155 |                               (swap! ui-state assoc :input (.-value el))))
+;  156 |                :style {:height "auto"
+;  157 |                        :overflow-y "hidden"
+;  158 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1101 files, 2 compiled, 2 warnings, 0.23s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------

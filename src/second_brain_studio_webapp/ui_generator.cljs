@@ -102,17 +102,25 @@
 
 
 ;; 🔹 UI Generator Component
+
 (defn ui-generator []
   [:div {:style {:width "100%"
                  :padding "10px"
                  :border-radius "5px"
                  :background "#f9f9f9"
                  :margin-top "10px"}}
+   ;; Auto-resizing Textarea
    [:textarea {:value (:input @ui-state)
                :placeholder "Describe the UI component..."
-               :on-change #(swap! ui-state assoc :input (-> % .-target .-value))
+               :on-change (fn [e]
+                            (let [el (.-target e)]
+                              ;; Reset height to auto first so scrollHeight is recalculated
+                              (set! (.-style.height el) "auto")
+                              ;; Set height to match content
+                              (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+                              (swap! ui-state assoc :input (.-value el))))
                :style {:height "auto"
-                       :overflow-y "auto"
+                       :overflow-y "hidden"
                        :word-wrap "break-word"
                        :min-height "100px"
                        :width "100%"}}]
@@ -124,7 +132,7 @@
                      :cursor "pointer"
                      :border-radius "5px"}}
     "Generate Visual"]
- ;; Conditionally Render UI Output **Only When Data is Available**
+   ;; Conditionally Render UI Output **Only When Data is Available**
    (when (or (:generated-ui @ui-state) (:loading? @ui-state))
      [:div {:class "ui-generator-output"
             :style {:margin-top "10px"
@@ -134,15 +142,12 @@
       ;; Show Loading Indicator
       (when (:loading? @ui-state)
         [:p {:style {:color "#888"}} "Loading..."])
-
       ;; Show Error Message (if any)
       (when (:error @ui-state)
         [:p {:style {:color "red"}} (:error @ui-state)])
-
       ;; Render Generated UI
       (if-let [ui (:generated-ui @ui-state)]
         ui
         [:p "Generated UI will appear here"])])])
-
    
 
