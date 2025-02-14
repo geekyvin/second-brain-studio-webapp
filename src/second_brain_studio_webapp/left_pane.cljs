@@ -54,13 +54,19 @@
                  :height "100vh"
                  :background "#f9f9f9"
                  :border-right "1px solid #ddd"
-                 :padding-top "20px"
+                 :padding-top "4px"
                  :padding-right "8px"
                  :display "flex"
                  :flex-direction "column"}}
 
-   ;; Search Bar
+    ;; Logo
+    [:div 
+     [:img {:src "../images/logo_banner.png"
+            :class "logo"
+            :style {:width "92%"
+                    :margin "10px"}}]]
    
+   ;; Search Bar
    [search-bar]
 
    ;; Navigation Links

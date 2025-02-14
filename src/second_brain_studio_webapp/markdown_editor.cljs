@@ -52,7 +52,7 @@
                 (when on-error (on-error error))))))
 
 (defn markdown-editor []
-  (let [content (r/atom "### Hello World!\n\nWrite some **Markdown** here!")
+  (let [content (r/atom "")
         mode (r/atom :edit)
         title (r/atom "Untitled") ;; Default title
         audio-url (r/atom nil) ;; Stores the generated audio URL
@@ -195,6 +195,7 @@
         ;; Conditionally render Edit or Preview mode
         (case @mode
           :edit [:textarea {:value @content
+                            :placeholder "What Would you Like to Do Today!"
                             :on-change #(reset! content (-> % .-target .-value))
                             :class (when @highlighted "highlight") ;; Apply highlight class
                             :style {:width "100%"
