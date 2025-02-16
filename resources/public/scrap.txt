@@ -52,3 +52,6 @@
                   :overflow-y "auto"
                   :padding "10px"}}
     [note-view/left-pane]]
+
+    https://us-east-1ziyiutvzy.auth.us-east-1.amazoncognito.com/signup?client_id=3hqle652223aot9csu1pqqpr5j&redirect_uri=https%3A%2F%2Fsecondbrainstudio.com%2Fcallback&response_type=code&scope=email+openid+phone
+    https://us-east-1ziyiutvzy.auth.us-east-1.amazoncognito.com/signup?client_id=3hqle652223aot9csu1pqqpr5j&redirect_uri=https%3A%2F%2Fsecondbrainstudio.com%2Fcallback&response_type=code&scope=openid+email+phone

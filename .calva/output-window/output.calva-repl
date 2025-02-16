@@ -940,3 +940,1483 @@ clj꞉user꞉> 
 ;  123 |                        :overflow-y "hidden"
 ;  124 |                        :word-wrap "break-word"
 ; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:1:1
+; --------------------------------------------------------------------------------
+; 
+;    1 | (ns second-brain-studio-webapp.core
+; -------^------------------------------------------------------------------------
+; Invalid :refer, var second-brain-studio-webapp.cognito-auth/AuthProvider does not exist
+; --------------------------------------------------------------------------------
+;    2 |   (:require
+;    3 |     [reagent.core :as r]
+;    4 |     [reagent.dom :as rdom]
+;    5 |     ["react" :refer [createElement]]
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.22s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.27s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.22s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.24s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.26s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 3 warnings, 0.14s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:20:9
+; --------------------------------------------------------------------------------
+;   17 |     ;; Wrap the main-panel with auth-provider so that useAuth is valid
+;   18 |     (rdom/render
+;   19 |        [auth-provider-adapted
+;   20 |         cognito-config
+; ---------------^----------------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.core/cognito-config
+; --------------------------------------------------------------------------------
+;   21 |         [views/main-panel]]
+;   22 |        root-el)))
+;   23 | 
+;   24 | (defn init []
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.22s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 2 compiled, 2 warnings, 0.30s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.21s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 2 compiled, 2 warnings, 0.26s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 2 compiled, 2 warnings, 0.25s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 2 compiled, 2 warnings, 0.23s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 4 warnings, 0.18s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:19:6
+; --------------------------------------------------------------------------------
+;   16 |   (re-frame/clear-subscription-cache!)
+;   17 |   (let [root-el (.getElementById js/document "app")]
+;   18 |    (rdom/render
+;   19 |     [auth-provider-adapted cognito-config
+; ------------^-------------------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.core/auth-provider-adapted
+; --------------------------------------------------------------------------------
+;   20 |      [views/main-panel]]
+;   21 |     root-el)))
+;   22 | 
+;   23 | (defn init []
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:19:28
+; --------------------------------------------------------------------------------
+;   16 |   (re-frame/clear-subscription-cache!)
+;   17 |   (let [root-el (.getElementById js/document "app")]
+;   18 |    (rdom/render
+;   19 |     [auth-provider-adapted cognito-config
+; ----------------------------------^---------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.core/cognito-config
+; --------------------------------------------------------------------------------
+;   20 |      [views/main-panel]]
+;   21 |     root-el)))
+;   22 | 
+;   23 | (defn init []
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 4 warnings, 0.16s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:19:6
+; --------------------------------------------------------------------------------
+;   16 |   (re-frame/clear-subscription-cache!)
+;   17 |   (let [root-el (.getElementById js/document "app")]
+;   18 |    (rdom/render
+;   19 |     [auth-provider-adapted cognito-config
+; ------------^-------------------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.core/auth-provider-adapted
+; --------------------------------------------------------------------------------
+;   20 |      [views/main-panel]]
+;   21 |     root-el)))
+;   22 | 
+;   23 | (defn init []
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:19:28
+; --------------------------------------------------------------------------------
+;   16 |   (re-frame/clear-subscription-cache!)
+;   17 |   (let [root-el (.getElementById js/document "app")]
+;   18 |    (rdom/render
+;   19 |     [auth-provider-adapted cognito-config
+; ----------------------------------^---------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.core/cognito-config
+; --------------------------------------------------------------------------------
+;   20 |      [views/main-panel]]
+;   21 |     root-el)))
+;   22 | 
+;   23 | (defn init []
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 4 warnings, 0.18s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:19:6
+; --------------------------------------------------------------------------------
+;   16 |   (re-frame/clear-subscription-cache!)
+;   17 |   (let [root-el (.getElementById js/document "app")]
+;   18 |    (rdom/render
+;   19 |     [auth-provider-adapted cognito-config
+; ------------^-------------------------------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.core/auth-provider-adapted
+; --------------------------------------------------------------------------------
+;   20 |      [views/main-panel]]
+;   21 |     root-el)))
+;   22 | 
+;   23 | (defn init []
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:19:28
+; --------------------------------------------------------------------------------
+;   16 |   (re-frame/clear-subscription-cache!)
+;   17 |   (let [root-el (.getElementById js/document "app")]
+;   18 |    (rdom/render
+;   19 |     [auth-provider-adapted cognito-config
+; ----------------------------------^---------------------------------------------
+;  Use of undeclared Var second-brain-studio-webapp.core/cognito-config
+; --------------------------------------------------------------------------------
+;   20 |      [views/main-panel]]
+;   21 |     root-el)))
+;   22 | 
+;   23 | (defn init []
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.20s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.27s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:65:18
+; --------------------------------------------------------------------------------
+;   62 | (defn sign-up-btn []
+;   63 |   (fn []
+;   64 |     [:button {:on-click #(sign-up-redirect)}
+;   65 |      "Sign up"]))
+; ------------------------^-------------------------------------------------------
+; second_brain_studio_webapp/cognito_auth.cljs [line 65, col 18] Unexpected EOF while reading item 7 of list, starting at line 44 and column 1.
+; 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.15s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.35s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.25s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:1:1
+; --------------------------------------------------------------------------------
+; 
+;    1 | (ns second-brain-studio-webapp.core
+; -------^------------------------------------------------------------------------
+; Invalid :refer, var second-brain-studio-webapp.cognito-auth/auth-provider-adapted does not exist
+; --------------------------------------------------------------------------------
+;    2 |   (:require
+;    3 |    [reagent.dom :as rdom]
+;    4 |    [re-frame.core :as re-frame]
+;    5 |    [second-brain-studio-webapp.events :as events]
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.23s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.21s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.21s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.23s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.22s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.25s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.29s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.30s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.23s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.25s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 4 warnings, 0.15s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :undeclared-ns ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:20:7
+; --------------------------------------------------------------------------------
+;   17 |   (re-frame/clear-subscription-cache!)
+;   18 |   (let [root-el (.getElementById js/document "app")]
+;   19 |     (rdom/render
+;   20 |      (r/as-element [auth-provider [views/main-panel]])
+; -------------^------------------------------------------------------------------
+;  No such namespace: r, could not locate r.cljs, r.cljc, or JavaScript source providing "r"
+; --------------------------------------------------------------------------------
+;   21 |      root-el)))
+;   22 | 
+;   23 | (defn init []
+;   24 |   (re-frame/dispatch-sync [::events/initialize-db])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:20:7
+; --------------------------------------------------------------------------------
+;   17 |   (re-frame/clear-subscription-cache!)
+;   18 |   (let [root-el (.getElementById js/document "app")]
+;   19 |     (rdom/render
+;   20 |      (r/as-element [auth-provider [views/main-panel]])
+; -------------^------------------------------------------------------------------
+;  Use of undeclared Var r/as-element
+; --------------------------------------------------------------------------------
+;   21 |      root-el)))
+;   22 | 
+;   23 | (defn init []
+;   24 |   (re-frame/dispatch-sync [::events/initialize-db])
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 4 warnings, 0.17s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :undeclared-ns ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:19:7
+; --------------------------------------------------------------------------------
+;   16 |   (re-frame/clear-subscription-cache!)
+;   17 |   (let [root-el (.getElementById js/document "app")]
+;   18 |     (rdom/render
+;   19 |      (r/as-element [auth-provider [views/main-panel]])
+; -------------^------------------------------------------------------------------
+;  No such namespace: r, could not locate r.cljs, r.cljc, or JavaScript source providing "r"
+; --------------------------------------------------------------------------------
+;   20 |      root-el)))
+;   21 | 
+;   22 | (defn init []
+;   23 |   (re-frame/dispatch-sync [::events/initialize-db])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :undeclared-var --------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/core.cljs:19:7
+; --------------------------------------------------------------------------------
+;   16 |   (re-frame/clear-subscription-cache!)
+;   17 |   (let [root-el (.getElementById js/document "app")]
+;   18 |     (rdom/render
+;   19 |      (r/as-element [auth-provider [views/main-panel]])
+; -------------^------------------------------------------------------------------
+;  Use of undeclared Var r/as-element
+; --------------------------------------------------------------------------------
+;   20 |      root-el)))
+;   21 | 
+;   22 | (defn init []
+;   23 |   (re-frame/dispatch-sync [::events/initialize-db])
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.22s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.25s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.26s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 1 compiled, 2 warnings, 0.24s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1105 files, 3 compiled, 2 warnings, 0.24s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:118:37
+; --------------------------------------------------------------------------------
+;  115 |                :on-change (fn [e]
+;  116 |                             (let [el (.-target e)]
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/ui_generator.cljs:120:37
+; --------------------------------------------------------------------------------
+;  117 |                               ;; Reset height to auto first so scrollHeight is recalculated
+;  118 |                               (set! (.-style.height el) "auto")
+;  119 |                               ;; Set height to match content
+;  120 |                               (set! (.-style.height el) (str (.-scrollHeight el) "px"))
+; -------------------------------------------^------------------------------------
+;  Cannot infer target type in expression (. el -style.height)
+; --------------------------------------------------------------------------------
+;  121 |                               (swap! ui-state assoc :input (.-value el))))
+;  122 |                :style {:height "auto"
+;  123 |                        :overflow-y "hidden"
+;  124 |                        :word-wrap "break-word"
+; --------------------------------------------------------------------------------

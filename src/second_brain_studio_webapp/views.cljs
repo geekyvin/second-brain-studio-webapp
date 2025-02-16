@@ -16,10 +16,12 @@
   (println "markdown-editor: " markdown-editor/markdown-editor) ;; Debug
 
   (let [name (re-frame/subscribe [::subs/name])]
+    
     [:div {:style {:display "flex" :height "100vh"}}
      ;; Sidebar (left panel)
      [:div {:style {:width "280px"
                     :padding "6px"}}
+      
       [sign-in-btn]
       [sign-up-btn]
       [left-pane/left-pane]]
