@@ -1,0 +1,22 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+);  </React.StrictMode>    </AuthProvider>      <App />    <AuthProvider {...cognitoAuthConfig}>  <React.StrictMode>root.render(const root = ReactDOM.createRoot(document.getElementById('root'));};  scope: "phone openid email"  response_type: "code",  redirect_uri: "https://secondbrainstudio.com/callback",  client_id: "<your-client-id>",  authority: "https://<cognito-domain>.amazonaws.com/<your-user-pool-id>",const cognitoAuthConfig = {import { AuthProvider } from "react-oidc-context";import App from './App';import ReactDOM from 'react-dom/client';import React from 'react';

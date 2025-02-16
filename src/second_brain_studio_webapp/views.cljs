@@ -8,6 +8,7 @@
    [second-brain-studio-webapp.editor :as editor]
    [second-brain-studio-webapp.ui-generator :as ui-generator]
    [second-brain-studio-webapp.left-pane :as left-pane]
+   [second-brain-studio-webapp.cognito-auth :refer [sign-in-btn sign-up-btn]]
    [second-brain-studio-webapp.markdown-editor :as markdown-editor]))
 
 (defn main-panel []
@@ -19,7 +20,8 @@
      ;; Sidebar (left panel)
      [:div {:style {:width "280px"
                     :padding "6px"}}
-      ;;[sidebar/sidebar]
+      [sign-in-btn]
+      [sign-up-btn]
       [left-pane/left-pane]]
      ;; Main Content (Markdown Editor)
      [:div {:style {:flex "1"
