@@ -1,4 +1,3 @@
-;; filepath: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs
 (ns second-brain-studio-webapp.cognito-auth
   (:require
     [reagent.core :as r]
@@ -19,7 +18,7 @@
 ;; Redirect the browser to the Cognito logout endpoint.
 (defn sign-out-redirect []
   (let [clientId "3hqle652223aot9csu1pqqpr5j"
-        cognitoDomain "https://us-east-1ziyiutvzy.auth.us-east-1.amazoncognito.com"
+        cognitoDomain "https://auth.secondbrainstudio.com"
         ;; Note: logoutUri should be an allowed URL in your Cognito settings.
         logoutUri (str cognitoDomain "/logout?client_id=" clientId
                        "&logout_uri=https://secondbrainstudio.com/home")]
@@ -30,7 +29,7 @@
 ;; Redirect the browser to the Cognito signup endpoint.
 (defn sign-up-redirect []
   (let [clientId "3hqle652223aot9csu1pqqpr5j"
-        cognitoDomain "https://us-east-1ziyiutvzy.auth.us-east-1.amazoncognito.com"
+        cognitoDomain "https://auth.secondbrainstudio.com"
         redirectUri "https://secondbrainstudio.com/callback"
         scope "openid+email+phone" ;; Adjust if needed
         final-url (str cognitoDomain

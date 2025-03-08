@@ -51,6 +51,45 @@
                 (js/console.error "Error generating audio:" error)
                 (when on-error (on-error error))))))
 
+(defn call-capture-api [file on-success]
+  (let [form-data (js/FormData.)]
+    (.append form-data "file" file)
+    (.append form-data "fileType" (.-type file))
+    (-> (js/fetch "http://localhost:3000/capture"
+                  #js {:method "POST"
+                       :body form-data})
+        (.then (fn [response]
+                 (if (.-ok response)
+                   (.json response)
+                   (throw (js/Error. (str "HTTP error! status: " (.-status response)))))))
+        (.then (fn [data]
+                 (js/console.log "Capture API Response:" data)
+                 (on-success data)))
+        (.catch (fn [error]
+                 (js/console.error "Error capturing file content:" error))))))
+
+(defn handle-file-upload [file content-atom]
+  (if (str/starts-with? (.-type file) "image/")
+    ;; For images, create a temporary placeholder
+    (let [temp-tag (str "![" (.-name file) "](uploading...)\n")]
+      (swap! content-atom #(str % "\n" temp-tag))
+      (call-capture-api 
+       file
+       (fn [response]
+         ;; Check if response has status and markdown fields
+         (if (and (= (.-status response) "success") (.-markdown response))
+           ;; Use the markdown content from the response
+           (swap! content-atom #(str/replace % temp-tag (str (.-markdown response) "\n\n")))
+           ;; If response format is different, handle the error
+           (swap! content-atom #(str/replace % temp-tag "Error processing image\n"))))))
+    ;; For text files, handle as before
+    (call-capture-api 
+     file
+     (fn [response]
+       (if (and (= (.-status response) "success") (.-markdown response))
+         (swap! content-atom #(str % "\n" (.-markdown response)))
+         (swap! content-atom #(str % "\n" "Error processing file")))))))
+
 (defn markdown-editor []
   (let [content (r/atom "")
         mode (r/atom :edit)
@@ -59,7 +98,8 @@
         audio-player (r/atom nil) ;; Audio element reference]
         is-playing (r/atom false) ;; Tracks if the audio is playing
         editing-title (r/atom false) ;; Track if the title is being edited
-        highlighted (r/atom false)] ;; Track if the summary is highlighted
+        highlighted (r/atom false) ;; Track if the summary is highlighted
+        file-input-ref (r/atom nil)] ;; Add this atom for file input reference
     (fn []
        ;; Left Pane: Note view
        ;;[:div {:style {:width "250px"
@@ -150,6 +190,24 @@
              [:img {:src "../images/play.png" :alt "Play"}])])
         
                 
+        [:div
+         [:input {:type "file"
+                  :ref #(reset! file-input-ref %)
+                  :style {:display "none"}
+                  :accept ".md,.txt,image/*"
+                  :on-change #(when-let [file (-> % .-target .-files (aget 0))]
+                               (handle-file-upload file content))}]
+         [:button {:class "text-btn"
+                   :style {:padding "10px"
+                           :color "#fff"
+                           :border "none"
+                           :border-radius "5px"
+                           :cursor "pointer"
+                           :margin-right "2px"}
+                   :on-click #(when-let [input @file-input-ref]
+                               (.click input))}
+          "Capture"]]
+
         [:div 
          [:button {:class "text-btn"
                    :style {:padding "10px"
