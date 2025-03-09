@@ -76,10 +76,20 @@
       (call-capture-api 
        file
        (fn [response]
-         ;; Check if response has status and markdown fields
+         (js/console.log "Processing response:" response) ;; Debug log
          (if (and (= (.-status response) "success") (.-markdown response))
-           ;; Use the markdown content from the response
-           (swap! content-atom #(str/replace % temp-tag (str (.-markdown response) "\n\n")))
+           (let [;; Create image URL with query param
+                 image-name (.-name file)
+                 image-url (str "http://localhost:3000/image?name=" 
+                              (js/encodeURIComponent image-name))
+                 ;; Replace any existing image URLs in the markdown with query param version
+                 updated-markdown (-> (.-markdown response)
+                                    (str/replace #"\(http://localhost:3000/uploads/[^\)]+\)"
+                                               (str "(" image-url ")")))]
+             (swap! content-atom 
+                    #(str/replace % 
+                                temp-tag 
+                                (str updated-markdown "\n\n"))))
            ;; If response format is different, handle the error
            (swap! content-atom #(str/replace % temp-tag "Error processing image\n"))))))
     ;; For text files, handle as before
@@ -267,5 +277,16 @@
                                   :overflow-y "auto"
                                   :border-radius "5px"
                                   :background-color "#f9f9f9"}}
-                    [:div {:dangerouslySetInnerHTML
+                    [:style "
+                      .markdown-preview img {
+                        max-width: 100%;
+                        height: auto;
+                        display: block;
+                        margin: 20px 0;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                      }
+                    "]
+                    [:div {:class "markdown-preview"
+                           :dangerouslySetInnerHTML
                            #js {:__html (.render markdown-parser @content)}}]])])))
