@@ -7,7 +7,7 @@
 (def cognito-config
   #js {:authority "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_zIyIuTvzY",
        :client_id "3hqle652223aot9csu1pqqpr5j"
-       :redirect_uri "https://secondbrainstudio.com/callback"
+       :redirect_uri "http://localhost:8280/callback"
        :response_type "code"
        :scope "openid email"})
 
@@ -30,7 +30,7 @@
 (defn sign-up-redirect []
   (let [clientId "3hqle652223aot9csu1pqqpr5j"
         cognitoDomain "https://auth.secondbrainstudio.com"
-        redirectUri "https://secondbrainstudio.com/callback"
+        redirectUri "http://localhost:8280/callback"
         scope "openid+email+phone" ;; Adjust if needed
         final-url (str cognitoDomain
                        "/signup"

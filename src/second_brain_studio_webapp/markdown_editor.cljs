@@ -100,6 +100,25 @@
          (swap! content-atom #(str % "\n" (.-markdown response)))
          (swap! content-atom #(str % "\n" "Error processing file")))))))
 
+(defn save-note [user-id namespace note-id content on-success on-error]
+  (-> (js/fetch "http://localhost:3000/save-note"
+                #js {:method "POST"
+                     :headers #js {"Content-Type" "application/json"}
+                     :body (js/JSON.stringify #js {:user-id user-id
+                                                   :namespace namespace
+                                                  :note-id note-id
+                                                  :content content})})
+      (.then (fn [response]
+               (if (.-ok response)
+                 (.json response)
+                 (throw (js/Error. (str "HTTP error! status: " (.-status response)))))))
+      (.then (fn [data]
+               (js/console.log "Note saved successfully:" data)
+               (when on-success (on-success data))))
+      (.catch (fn [error]
+                (js/console.error "Error saving note:" error)
+                (when on-error (on-error error))))))
+
 (defn markdown-editor []
   (let [content (r/atom "")
         mode (r/atom :edit)
@@ -109,7 +128,14 @@
         is-playing (r/atom false) ;; Tracks if the audio is playing
         editing-title (r/atom false) ;; Track if the title is being edited
         highlighted (r/atom false) ;; Track if the summary is highlighted
-        file-input-ref (r/atom nil)] ;; Add this atom for file input reference
+        file-input-ref (r/atom nil) ;; Add this atom for file input reference
+        ;; Add atoms for save status
+        saving? (r/atom false)
+        save-error (r/atom nil)
+        ;; TODO: These should come from your auth system
+        user-id (r/atom "default-user") 
+        namespace (r/atom "default-namespace")
+        note-id (r/atom (str (random-uuid)))] ;; Generate a new note ID or get from props
     (fn []
        ;; Left Pane: Note view
        ;;[:div {:style {:width "250px"
@@ -120,7 +146,9 @@
 
        ;; Right Pane: Markdown Editor
        [:div {:style {:flex "1"
-                      :padding "20px"}}
+                      :padding "20px"
+                      :display "flex"
+                      :flex-direction "column"}}
         ;; Title Section
         [:div {:style {:margin-bottom "10px"}}
          (if @editing-title
@@ -265,7 +293,7 @@
           :edit [:textarea {:value @content
                             :placeholder "What Would you Like to Do Today!"
                             :on-change #(reset! content (-> % .-target .-value))
-                            :class (when @highlighted "highlight") ;; Apply highlight class
+                            :class (when @highlighted "highlight")
                             :style {:width "100%"
                                     :height "70vh"
                                     :padding "10px"
@@ -289,4 +317,41 @@
                     "]
                     [:div {:class "markdown-preview"
                            :dangerouslySetInnerHTML
-                           #js {:__html (.render markdown-parser @content)}}]])])))
+                           #js {:__html (.render markdown-parser @content)}}]])
+        
+        ;; Bottom bar with save functionality
+        [:div.bottom-bar
+         [:div.left-actions
+          [:button.generate-visual-btn
+           [:span "✨"]
+           "Generate Visual"]]
+         
+         [:div.right-actions
+          (when @saving?
+            [:span.saving-indicator "Saving..."])
+          
+          (when @save-error
+            [:span.save-error @save-error])
+          
+          [:button.save-note-btn
+           {:class (when @saving? "saving")
+            :disabled @saving?
+            :on-click #(do
+                        (reset! saving? true)
+                        (reset! save-error nil)
+                        (js/console.log "Content to save:" @content)
+                        (save-note @user-id 
+                                   @namespace
+                                   @note-id 
+                                   @content
+                                   ;; Success callback
+                                   (fn [data]
+                                     (reset! saving? false)
+                                     (js/console.log "Save successful:" data))
+                                   ;; Error callback
+                                   (fn [error]
+                                     (reset! saving? false)
+                                     (reset! save-error "Failed to save note"))))}
+           (if @saving?
+             "Saving..."
+             "Save Note")]]]])))

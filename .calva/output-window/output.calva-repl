@@ -36,41 +36,4 @@ You can configure this with the setting:
 ;   - See https://calva.io/connect-sequences/
 ; 
 
-; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.47.1 watch :app)
-; Jacking in...
-; Connecting using "shadow-cljs" project type.
-; You can make Calva auto-select this.
-;   - See https://calva.io/connect-sequences/
-; 
-
-; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.47.1 watch :app)
-; Using host:port localhost:8777 ...
-; Hooking up nREPL sessions ...
-; Connected session: clj
-; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
-nil
-clj꞉shadow.user꞉> 
-; Creating cljs repl session...
-; Connecting cljs repl: shadow-cljs...
-; nREPL connection failed: Error: read ECONNRESET
-; Failed connecting.
-; nREPL Connection was closed
-; Error while connecting cljs REPL: Error: User cancelled waiting for shadow-cljs runtimes.
-; Jacking in...
-; Connecting using "shadow-cljs" project type.
-; You can make Calva auto-select this.
-;   - See https://calva.io/connect-sequences/
-; 
-
-; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.47.1 watch :app)
-; Using host:port localhost:8777 ...
-; Hooking up nREPL sessions ...
-; Connected session: clj
-; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
-nil
-clj꞉shadow.user꞉> 
-; Creating cljs repl session...
-; Connecting cljs repl: shadow-cljs...
-; nREPL connection failed: Error: read ECONNRESET
-; Failed connecting.
-; nREPL Connection was closed
+; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.52.1 watch :app)
