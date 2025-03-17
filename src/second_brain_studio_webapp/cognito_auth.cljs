@@ -94,13 +94,16 @@
     (set! (.-location js/window) auth-url)))
 
 (defn sign-out []
+  (js/console.log "Signing out...")
   (.removeItem js/localStorage "access_token")
   (.removeItem js/localStorage "refresh_token")
   (re-frame/dispatch [:set-user nil])
   (let [encoded-logout-uri (js/encodeURIComponent logout-uri)
         logout-url (str cognito-domain "/logout"
                        "?client_id=" client-id
-                       "&logout_uri=" encoded-logout-uri)]
+                       "&logout_uri=" encoded-logout-uri
+                       "&response_type=code"
+                       "&redirect_uri=" (js/encodeURIComponent redirect-uri))]
     (js/console.log "Redirecting to logout:" logout-url)
     (set! (.-location js/window) logout-url)))
 
