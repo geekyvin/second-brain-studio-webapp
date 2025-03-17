@@ -6,8 +6,7 @@
    [second-brain-studio-webapp.events :as events]
    [second-brain-studio-webapp.views :as views]
    [second-brain-studio-webapp.config :as config]
-
-   [second-brain-studio-webapp.cognito-auth :refer [auth-provider]]))
+   [second-brain-studio-webapp.cognito-auth :as auth]))
 
 
 (defn dev-setup []
@@ -17,10 +16,13 @@
 (defn ^:dev/after-load mount-root []
   (re-frame/clear-subscription-cache!)
   (let [root-el (.getElementById js/document "app")]
-    (rdom/render [auth-provider [views/main-panel]]
-     root-el)))
+    (rdom/unmount-component-at-node root-el)
+    (rdom/render [views/main-panel] root-el)))
 
 (defn init []
   (re-frame/dispatch-sync [::events/initialize-db])
+  ;; Only initialize auth if we're not on the callback path
+  (when-not (= (.-pathname js/window.location) "/callback")
+    (auth/init-auth))
   (dev-setup)
   (mount-root))

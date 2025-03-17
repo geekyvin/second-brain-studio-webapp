@@ -8,27 +8,44 @@
    [second-brain-studio-webapp.editor :as editor]
    [second-brain-studio-webapp.ui-generator :as ui-generator]
    [second-brain-studio-webapp.left-pane :as left-pane]
-   [second-brain-studio-webapp.cognito-auth :refer [sign-in-btn sign-up-btn]]
-   [second-brain-studio-webapp.markdown-editor :as markdown-editor]))
+   [second-brain-studio-webapp.cognito-auth :as auth]
+   [second-brain-studio-webapp.markdown-editor :as markdown-editor]
+   [second-brain-studio-webapp.events :as events]))
+
+(defn left-panel []
+  [:div.left-panel
+   {:style {:width "250px"
+            :background-color "#ffffff"
+            :border-right "1px solid #e5e7eb"
+            :height "100vh"
+            :padding "16px"}}
+   [auth/user-info-section]
+   [left-pane/left-pane]])
+
+(defn callback-page []
+  (auth/handle-auth-callback)
+  [:div.loading
+   {:style {:display "flex"
+            :justify-content "center"
+            :align-items "center"
+            :height "100vh"}}
+   [:div
+    {:style {:text-align "center"}}
+    [:h2 "Processing login..."]
+    [:p "Please wait while we complete your authentication."]]])
 
 (defn main-panel []
-  (println "main-panel called")
-  (println "markdown-editor: " markdown-editor/markdown-editor) ;; Debug
-
-  (let [name (re-frame/subscribe [::subs/name])]
-    
-    [:div {:style {:display "flex" :height "100vh"}}
-     ;; Sidebar (left panel)
-     [:div {:style {:width "280px"
-                    :padding "6px"}}
+  (let [path (.-pathname js/window.location)]
+    (cond
+      (= path "/callback")
+      [callback-page]
       
-      [sign-in-btn]
-      [sign-up-btn]
-      [left-pane/left-pane]]
-     ;; Main Content (Markdown Editor)
-     [:div {:style {:flex "1"
-                    :padding "12px"}}
-      ;;[:h1 (str "Hello from " @name)]
-      [markdown-editor/markdown-editor]
-      [ui-generator/ui-generator]]]))
-
+      :else
+      [:div.app-container
+       {:style {:display "flex"}}
+       [left-panel]
+       [:div.main-content
+        {:style {:flex 1
+                 :padding "20px"}}
+        [markdown-editor/markdown-editor]
+        [ui-generator/ui-generator]]])))

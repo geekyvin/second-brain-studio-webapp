@@ -37,3 +37,24 @@ You can configure this with the setting:
 ; 
 
 ; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.52.1 watch :app)
+; Jacking in...
+; Connecting using "shadow-cljs" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.52.1 watch :app)
+; Jacking in...
+; Connecting using "shadow-cljs" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.52.1 watch :app)
+; Jacking in...
+; Connecting using "shadow-cljs" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in: (cd /Users/vinoth/Documents/workspace/second-brain-studio-webapp; npx shadow-cljs -d cider/cider-nrepl:0.52.1 watch :app)
