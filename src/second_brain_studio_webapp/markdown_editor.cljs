@@ -3,6 +3,9 @@
    [reagent.core :as r]
    ["markdown-it" :as MarkdownIt]
    [clojure.string :as str]
+   [re-frame.core :as re-frame]
+   [second-brain-studio-webapp.events :as events]
+   [second-brain-studio-webapp.subs :as subs]
    [second-brain-studio-webapp.sb-backend-client :as sbb-client]
    [second-brain-studio-webapp.note-view :as note-view]))
 
@@ -66,6 +69,46 @@
                   (js/console.error "Error saving note:" error)
                   (when on-error (on-error error)))))))
 
+(defn save-current-note! [content saving? save-error last-saved-content user-id namespace note-id]
+  (let [current-content @content]
+    (js/console.log "Trying to save note, content:" (pr-str current-content))
+    (js/console.log "Content length:" (count current-content) "Content type:" (type current-content))
+    (js/console.log "Saving? " @saving? ", Content changed? " (not= current-content @last-saved-content))
+    (when (and (not @saving?) 
+               (not= current-content @last-saved-content)
+               (not (nil? current-content))
+               (not (empty? current-content)))
+      (js/console.log "Starting save with content:" (pr-str current-content))
+      (reset! saving? true)
+      (reset! save-error nil)
+      
+      ;; Update re-frame app-db for sidebar status
+      (re-frame/dispatch [::events/set-current-content current-content])
+      (re-frame/dispatch [::events/set-saving true])
+      (re-frame/dispatch [::events/set-save-error nil])
+      
+      (save-note 
+       user-id 
+       namespace 
+       note-id 
+       current-content
+       (fn [data]
+         (js/console.log "Save succeeded with response:" data)
+         (reset! last-saved-content current-content)
+         (reset! saving? false)
+         
+         ;; Update re-frame app-db for sidebar status
+         (re-frame/dispatch [::events/set-last-saved-content current-content])
+         (re-frame/dispatch [::events/set-saving false]))
+       (fn [err]
+         (js/console.error "Save failed with error:" err)
+         (reset! save-error (str err))
+         (reset! saving? false)
+         
+         ;; Update re-frame app-db for sidebar status
+         (re-frame/dispatch [::events/set-save-error (str err)])
+         (re-frame/dispatch [::events/set-saving false]))))))
+
 (defn markdown-editor []
   (let [content (r/atom "")
         title (r/atom "Untitled")
@@ -104,6 +147,12 @@
                                  (js/console.log "Starting save with content:" (pr-str current-content))
                                  (reset! saving? true)
                                  (reset! save-error nil)
+                                 
+                                 ;; Update re-frame app-db for sidebar status
+                                 (re-frame/dispatch [::events/set-current-content current-content])
+                                 (re-frame/dispatch [::events/set-saving true])
+                                 (re-frame/dispatch [::events/set-save-error nil])
+                                 
                                  (save-note 
                                   user-id 
                                   namespace 
@@ -112,11 +161,19 @@
                                   (fn [data]
                                     (js/console.log "Save succeeded with response:" data)
                                     (reset! last-saved-content current-content)
-                                    (reset! saving? false))
+                                    (reset! saving? false)
+                                    
+                                    ;; Update re-frame app-db for sidebar status
+                                    (re-frame/dispatch [::events/set-last-saved-content current-content])
+                                    (re-frame/dispatch [::events/set-saving false]))
                                   (fn [err]
                                     (js/console.error "Save failed with error:" err)
                                     (reset! save-error (str err))
-                                    (reset! saving? false))))))]
+                                    (reset! saving? false)
+                                    
+                                    ;; Update re-frame app-db for sidebar status
+                                    (re-frame/dispatch [::events/set-save-error (str err)])
+                                    (re-frame/dispatch [::events/set-saving false]))))))]
     
     ;; Setup auto-save when component mounts
     (r/create-class
@@ -126,6 +183,10 @@
         (let [initial-content "This is a test note. Edit me!"]
           (reset! content initial-content)
           (js/console.log "Initial content set:" initial-content "Length:" (count initial-content))
+          
+          ;; Update re-frame app-db for sidebar status
+          (re-frame/dispatch [::events/set-current-content initial-content])
+          
           ;; Trigger initial save immediately (with slight delay to ensure atom is updated)
           (js/setTimeout #(do
                             (js/console.log "Triggering initial save, content:" @content)
@@ -266,35 +327,7 @@
                            (reset! content new-value)
                            ;; Reset audio state when content changes
                            (reset-audio-state!)))
-            :class (when @highlighted "highlight")}]
-          
-          [:div.editor-status-bar
-           [:div.save-status
-            (cond
-              @saving? [:span.saving "Saving..."]
-              @save-error [:span.save-error (str "Error: " @save-error)]
-              (not= @content @last-saved-content) [:span.unsaved "Unsaved changes"]
-              :else [:span.saved "All changes saved"])]
-           [:button.save-button 
-            {:on-click (fn []
-                         (js/console.log "Manual save button clicked")
-                         (let [current-content @content]
-                           (js/console.log "Force saving with content:" (pr-str current-content))
-                           (when (not @saving?)
-                             (reset! saving? true)
-                             (reset! save-error nil)
-                             (save-note 
-                              user-id 
-                              namespace 
-                              note-id 
-                              current-content
-                              (fn [data]
-                                (js/console.log "Manual save succeeded with response:" data)
-                                (reset! last-saved-content current-content)
-                                (reset! saving? false))
-                              (fn [err]
-                                (js/console.error "Manual save failed with error:" err)
-                                (reset! save-error (str err))
-                                (reset! saving? false))))))
-             :disabled @saving?}
-            "Save"]]]])})))
+            :on-blur (fn [_]
+                       (js/console.log "Editor lost focus, triggering save")
+                       (save-current-note!))
+            :class (when @highlighted "highlight")}]]])})))

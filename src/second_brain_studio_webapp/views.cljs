@@ -96,7 +96,20 @@
           [:div.icon-text
            [:svg.icon {:xmlns "http://www.w3.org/2000/svg" :width "20" :height "20" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
             [:path {:d "M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"}]]
-           (when-not @collapsed? [:span "Favorites"])]]]]])))
+           (when-not @collapsed? [:span "Favorites"])]]]]
+        
+       ;; Status bar at the bottom of sidebar
+       [:div.editor-status-bar
+        [:div.save-status
+         (let [content @(re-frame/subscribe [::subs/current-content])
+               last-saved-content @(re-frame/subscribe [::subs/last-saved-content])
+               saving? @(re-frame/subscribe [::subs/saving?])
+               save-error @(re-frame/subscribe [::subs/save-error])]
+           (cond
+             saving? [:span.saving "Saving..."]
+             save-error [:span.save-error (str "Error: " save-error)]
+             (and content last-saved-content (not= content last-saved-content)) [:span.unsaved "Unsaved changes"]
+             :else [:span.saved "All changes saved"]))]]])))
 
 (defn callback-page []
   (auth/handle-auth-callback)
