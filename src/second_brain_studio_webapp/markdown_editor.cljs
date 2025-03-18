@@ -3,77 +3,18 @@
    [reagent.core :as r]
    ["markdown-it" :as MarkdownIt]
    [clojure.string :as str]
+   [second-brain-studio-webapp.sb-backend-client :as sbb-client]
    [second-brain-studio-webapp.note-view :as note-view]))
 
 ;; Initialize the Markdown parser
 (def markdown-parser (MarkdownIt.))
-
-(defn call-summarize-api [content on-success]
-  (-> (js/fetch "http://localhost:3000/get-summary"
-                #js {:method "POST"
-                     :headers #js {"Content-Type" "application/json"}
-                     :body (js/JSON.stringify #js {:content content})})
-      (.then (fn [response]
-               (if (.-ok response)
-                 (.json response)
-                 (throw (js/Error (str "HTTP error! status: " (.-status response)))))))
-      (.then (fn [data]
-               (js/console.log "API Response:" data)
-               (on-success (.-message data))))
-      (.catch (fn [error]
-                (js/console.error "Error fetching summary:" error)))))
-
-(defn update-summary-section [content summary]
-  ;; Find or create the `#### Summary` section
-  (let [lines (clojure.string/split content #"\n")
-        summary-index (.indexOf lines "#### Summary")
-        updated-lines (if (>= summary-index 0)
-                        ;; Replace existing summary section
-                        (concat (take (inc summary-index) lines) [summary])
-                        ;; Append new summary section
-                        (concat lines ["#### Summary" summary]))]
-    ;; Join the updated lines back into Markdown
-    (clojure.string/join "\n" updated-lines)))
-
-(defn call-generate-audio-api [content on-success on-error]
-  (-> (js/fetch "http://localhost:3000/generate-audio"
-                #js {:method "POST"
-                     :headers #js {"Content-Type" "application/json"}
-                     :body (js/JSON.stringify #js {:content content})})
-      (.then (fn [response]
-               (if (.-ok response)
-                 (.blob response) ;; Get the audio file as a Blob
-                 (throw (js/Error (str "HTTP error! status: " (.-status response)))))))
-      (.then (fn [blob]
-               (let [audio-url (js/URL.createObjectURL blob)]
-                 (on-success audio-url))))
-      (.catch (fn [error]
-                (js/console.error "Error generating audio:" error)
-                (when on-error (on-error error))))))
-
-(defn call-capture-api [file on-success]
-  (let [form-data (js/FormData.)]
-    (.append form-data "file" file)
-    (.append form-data "fileType" (.-type file))
-    (-> (js/fetch "http://localhost:3000/capture"
-                  #js {:method "POST"
-                       :body form-data})
-        (.then (fn [response]
-                 (if (.-ok response)
-                   (.json response)
-                   (throw (js/Error. (str "HTTP error! status: " (.-status response)))))))
-        (.then (fn [data]
-                 (js/console.log "Capture API Response:" data)
-                 (on-success data)))
-        (.catch (fn [error]
-                 (js/console.error "Error capturing file content:" error))))))
 
 (defn handle-file-upload [file content-atom]
   (if (str/starts-with? (.-type file) "image/")
     ;; For images, create a temporary placeholder
     (let [temp-tag (str "![" (.-name file) "](uploading...)\n")]
       (swap! content-atom #(str % "\n" temp-tag))
-      (call-capture-api 
+      (sbb-client/call-capture-api 
        file
        (fn [response]
          (js/console.log "Processing response:" response) ;; Debug log
@@ -93,7 +34,7 @@
            ;; If response format is different, handle the error
            (swap! content-atom #(str/replace % temp-tag "Error processing image\n"))))))
     ;; For text files, handle as before
-    (call-capture-api 
+    (sbb-client/call-capture-api 
      file
      (fn [response]
        (if (and (= (.-status response) "success") (.-markdown response))
@@ -121,237 +62,141 @@
 
 (defn markdown-editor []
   (let [content (r/atom "")
-        mode (r/atom :edit)
-        title (r/atom "Untitled") ;; Default title
-        audio-url (r/atom nil) ;; Stores the generated audio URL
-        audio-player (r/atom nil) ;; Audio element reference]
-        is-playing (r/atom false) ;; Tracks if the audio is playing
-        editing-title (r/atom false) ;; Track if the title is being edited
-        highlighted (r/atom false) ;; Track if the summary is highlighted
-        file-input-ref (r/atom nil) ;; Add this atom for file input reference
-        ;; Add atoms for save status
-        saving? (r/atom false)
-        save-error (r/atom nil)
-        ;; TODO: These should come from your auth system
-        user-id (r/atom "default-user") 
-        namespace (r/atom "default-namespace")
-        note-id (r/atom (str (random-uuid)))] ;; Generate a new note ID or get from props
+        title (r/atom "Untitled")
+        editing-title (r/atom false)
+        highlighted (r/atom false)
+        file-input-ref (r/atom nil)
+        audio-url (r/atom nil)
+        audio-player (r/atom nil)
+        is-playing (r/atom false)
+        audio-progress (r/atom 0)
+        audio-duration (r/atom 0)
+        reset-audio-state! (fn []
+                             (when @is-playing
+                               (when @audio-player (.pause ^js @audio-player)))
+                             (reset! audio-url nil)
+                             (reset! audio-player nil)
+                             (reset! is-playing false)
+                             (reset! audio-progress 0)
+                             (reset! audio-duration 0))]
     (fn []
-       ;; Left Pane: Note view
-       ;;[:div {:style {:width "250px"
-       ;;               :padding "10px"
-       ;;               :padding-top "20px"
-       ;;              :background-color "#f5f5f5"}}
-       ;; [note-view/left-pane]]
-
-       ;; Right Pane: Markdown Editor
-       [:div {:style {:flex "1"
-                      :padding "20px"
-                      :display "flex"
-                      :flex-direction "column"}}
-        ;; Title Section
-        [:div {:style {:margin-bottom "10px"}}
+      [:div.editor-container
+       [:div.action-bar
+        [:div.action-bar-left
          (if @editing-title
-           ;; Title in edit mode
-           [:input {:type "text"
-                    :value @title
-                    :auto-focus true
-                    :on-change #(reset! title (-> % .-target .-value))
-                    :on-blur #(reset! editing-title false)
-                    :on-key-down #(when (= (.-key %) "Enter")
-                                    (reset! editing-title false))
-                    :style {:font-size "20px"
-                            :font-weight "bold"
-                            :margin-bottom "10px"
-                            :border "1px solid #ccc"
-                            :border-radius "5px"
-                            :padding "5px"}}]
-           ;; Title in label mode
-           [:h2 {:on-click #(reset! editing-title true)
-                 :style {:font-size "20px"
-                         :font-weight "bold"
-                         :margin-bottom "10px"
-                         :cursor "pointer"}}
-            @title])]
+           [:input.note-title
+            {:type "text"
+             :value @title
+             :auto-focus true
+             :on-change #(reset! title (-> % .-target .-value))
+             :on-blur #(reset! editing-title false)
+             :on-key-down #(when (= (.-key %) "Enter")
+                            (reset! editing-title false))}]
+           [:h2.note-title
+            {:on-click #(reset! editing-title true)}
+            @title])
 
-        
-;; Button Container
-      [:div {:style {:display "flex"
-                       :align-items "center"
-                       :gap "10px"    ;; Adds spacing between buttons
-                       :margin-bottom "10px"}}
-        ;; Summarize Button
-        [:button {:class "text-btn"
-                  :style {:padding "10px"
-                          :color "#fff"
-                          :border "none"
-                          :border-radius "5px"
-                          :cursor "pointer"}
-                  :on-click #(call-summarize-api @content
-                                                 (fn [summary]
-                                                   ;; Replace the Summary section
-                                                   (reset! content (update-summary-section @content summary))
-                                                   ;; Trigger highlight effect
-                                                   (reset! highlighted true)
-                                                   (js/setTimeout (fn [] (reset! highlighted false)) 2000)))}
-         "Summarize"]
+         [:div.feature-buttons
+          [:button.feature-button
+           {:on-click #(sbb-client/call-summarize-api 
+                       @content
+                       (fn [summary]
+                         (reset! content (sbb-client/update-summary-section @content summary))
+                         (reset! highlighted true)
+                         (js/setTimeout (fn [] (reset! highlighted false)) 2000)))}
+           [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
+            [:path {:d "M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"}]
+            [:polyline {:points "14 2 14 8 20 8"}]]
+           "Summarize"]
 
-       ;; Generate Audio Button
-        [:button {:class "text-btn"
-                  :style {:padding "10px"
-                          :color "#fff"
-                          :border "none"
-                          :border-radius "5px"
-                          :cursor "pointer"}
-                  :on-click #(call-generate-audio-api
-                              @content
-                              (fn [url]
-                                (reset! audio-url url)
-                                (reset! audio-player (js/Audio. url)))
-                              (fn [error]
-                                (js/console.error "Error generating audio:" error)))}
-         "Orate"]
+          [:button.feature-button
+           {:class (when @audio-url "has-audio")
+            :on-click (fn []
+                        (if @audio-url
+                          (if @is-playing
+                            (do
+                              (.pause ^js @audio-player)
+                              (reset! is-playing false))
+                            (do
+                              (.play ^js @audio-player)
+                              (reset! is-playing true)))
+                          (sbb-client/call-generate-audio-api
+                           @content
+                           (fn [url]
+                             (reset! audio-url url)
+                             (let [player (js/Audio. url)]
+                               (reset! audio-player player)
+                               (set! (.-onplay player) #(reset! is-playing true))
+                               (set! (.-onpause player) #(reset! is-playing false))
+                               (set! (.-onended player) #(do (reset! is-playing false)
+                                                             (reset! audio-progress 0)))
+                               (set! (.-ondurationchange player) #(reset! audio-duration (.-duration player)))
+                               (set! (.-ontimeupdate player) #(reset! audio-progress (.-currentTime player)))
+                               (.play player)
+                               (reset! is-playing true)))
+                           (fn [error]
+                             (js/console.error "Error generating audio:" error)))))}
+           [:div.audio-controls
+            [:svg.audio-icon {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
+             [:path {:d "M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"}]
+             [:path {:d "M19 10v2a7 7 0 0 1-14 0v-2"}]
+             [:line {:x1 "12" :x2 "12" :y1 "19" :y2 "22"}]]
+            
+            (when @audio-url
+              [:div.audio-player
+               [:div.play-pause-button
+                (if @is-playing
+                  [:svg.pause-icon {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
+                   [:rect {:x "6" :y "4" :width "4" :height "16"}]
+                   [:rect {:x "14" :y "4" :width "4" :height "16"}]]
+                  [:svg.play-icon {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
+                   [:polygon {:points "5 3 19 12 5 21 5 3"}]])]
+               [:div.progress-bar
+                [:div.progress-fill {:style {:width (str (* 100 (/ @audio-progress (if (pos? @audio-duration) @audio-duration 1))) "%")}}]]])]
+           (if @audio-url 
+             (if @is-playing "Playing..." "Paused") 
+             "Transcribe")]
 
-        ;; Toggle Play/Pause Button
-        (when @audio-url
-          [:button {:class "text-btn-img"
-                    :style {:padding-top "8px"
-                            :cursor "pointer"
-                            :border "none"
-                            :border-radius "5px"}
-                    :on-click #(when-let [player @audio-player]
-                                 (if @is-playing
-                                   (do (.pause player) (reset! is-playing false)) ;; Pause action
-                                   (do (.play player) (reset! is-playing true))))} ;; Play action
-           (if @is-playing
-             [:img {:src "../images/pause.png" :alt "Pause"}]
-             [:img {:src "../images/play.png" :alt "Play"}])])
-        
-                
-        [:div
-         [:input {:type "file"
-                  :ref #(reset! file-input-ref %)
-                  :style {:display "none"}
-                  :accept ".md,.txt,image/*"
-                  :on-change #(when-let [file (-> % .-target .-files (aget 0))]
-                               (handle-file-upload file content))}]
-         [:button {:class "text-btn"
-                   :style {:padding "10px"
-                           :color "#fff"
-                           :border "none"
-                           :border-radius "5px"
-                           :cursor "pointer"
-                           :margin-right "2px"}
-                   :on-click #(when-let [input @file-input-ref]
-                               (.click input))}
-          "Capture"]]
+          [:div
+           [:input.hidden
+            {:type "file"
+             :ref #(reset! file-input-ref %)
+             :accept ".md,.txt,image/*"
+             :on-change #(when-let [file (-> % .-target .-files (aget 0))]
+                          (handle-file-upload file content))}]
+           [:button.feature-button
+            {:on-click #(when-let [input @file-input-ref]
+                         (.click input))}
+            [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
+             [:path {:d "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"}]
+             [:circle {:cx "12" :cy "13" :r "3"}]]
+            "Capture"]]
 
-        [:div 
-         [:button {:class "text-btn"
-                   :style {:padding "10px"
-                           :color "#fff"
-                           :border "none"
-                           :border-radius "5px"
-                           :cursor "pointer"
-                           :margin-right "2px"}
-                  }
-          "CoCreate"]]
-        [:div
-         [:button {:class "text-btn"
-                   :style {:padding "10px"
-                           :color "#fff"
-                           :border "none"
-                           :border-radius "5px"
-                           :cursor "pointer"
-                           :margin-right "2px"}}
-          "Castify"]]
-        
-       ;; **🔹 Edit / Preview Mode Toggle**
-       [:div {:style {:margin-bottom "10px"
-                      :margin-top "20px"
-                      :display "flex"
-                      :font-size "18px"
-                      :font-family "'atkinson-hyper', 'dm-sans'"
-                      :color "#cc6633"
-                      :align-items "center"
-                      :gap "4px"}}
-        [:label
-         [:input {:type "radio"
-                  :name "mode"
-                  :checked (= @mode :edit)
-                  :on-change #(reset! mode :edit)}]
-         " Edit"]
-        [:label
-         [:input {:type "radio"
-                  :name "mode"
-                  :checked (= @mode :preview)
-                  :on-change #(reset! mode :preview)}]
-         " Preview"]]]
-       
-        ;; Conditionally render Edit or Preview mode
-        (case @mode
-          :edit [:textarea {:value @content
-                            :placeholder "What Would you Like to Do Today!"
-                            :on-change #(reset! content (-> % .-target .-value))
-                            :class (when @highlighted "highlight")
-                            :style {:width "100%"
-                                    :height "70vh"
-                                    :padding "10px"
-                                    :border "none"
-                                    :border-radius "5px"}}]
-          :preview [:div {:style {:width "100%"
-                                  :height "70vh"
-                                  :padding "10px"
-                                  :overflow-y "auto"
-                                  :border-radius "5px"
-                                  :background-color "#f9f9f9"}}
-                    [:style "
-                      .markdown-preview img {
-                        max-width: 100%;
-                        height: auto;
-                        display: block;
-                        margin: 20px 0;
-                        border-radius: 8px;
-                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                      }
-                    "]
-                    [:div {:class "markdown-preview"
-                           :dangerouslySetInnerHTML
-                           #js {:__html (.render markdown-parser @content)}}]])
-        
-        ;; Bottom bar with save functionality
-        [:div.bottom-bar
-         [:div.left-actions
-          [:button.generate-visual-btn
-           [:span "✨"]
-           "Generate Visual"]]
-         
-         [:div.right-actions
-          (when @saving?
-            [:span.saving-indicator "Saving..."])
-          
-          (when @save-error
-            [:span.save-error @save-error])
-          
-          [:button.save-note-btn
-           {:class (when @saving? "saving")
-            :disabled @saving?
-            :on-click #(do
-                        (reset! saving? true)
-                        (reset! save-error nil)
-                        (js/console.log "Content to save:" @content)
-                        (save-note @user-id 
-                                   @namespace
-                                   @note-id 
-                                   @content
-                                   ;; Success callback
-                                   (fn [data]
-                                     (reset! saving? false)
-                                     (js/console.log "Save successful:" data))
-                                   ;; Error callback
-                                   (fn [error]
-                                     (reset! saving? false)
-                                     (reset! save-error "Failed to save note"))))}
-           (if @saving?
-             "Saving..."
-             "Save Note")]]]])))
+          [:button.feature-button
+           [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
+            [:path {:d "M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"}]
+            [:path {:d "M9 18h6"}]
+            [:path {:d "M10 22h4"}]]
+           "CoCreate"]
+
+          [:button.feature-button
+           [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
+            [:path {:d "M4 21a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14a2 2 0 0 0 2 2"}]
+            [:path {:d "m9 7 2 2 4-4"}]]
+           "Classify"]]]
+
+        [:div.user-info
+         [:div.user-avatar "A"]
+         [:span "Alex"]
+         [:button.sign-out-button "Sign out"]]]
+
+       [:div.note-editor
+        [:textarea.note-content
+         {:value @content
+          :placeholder "Start writing your thoughts here..."
+          :on-change (fn [e]
+                       (let [new-value (-> e .-target .-value)]
+                         (reset! content new-value)
+                         ;; Reset audio state when content changes
+                         (reset-audio-state!)))
+          :class (when @highlighted "highlight")}]]])))

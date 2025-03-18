@@ -38,5 +38,14 @@
     {:ns-aliases
      {day8.re-frame.tracing day8.re-frame.tracing-stubs}}}
    :npm-deps {"amazon-cognito-identity-js" "6.3.7"
-             "jwt-decode" "3.1.2"}}}}
+             "jwt-decode" "3.1.2"}}
+  
+  :test
+  {:target    :browser-test
+   :test-dir  "resources/public/js/test"
+   :ns-regexp "-test$"
+   :runner-ns second-brain-studio-webapp.test-runner
+   :devtools
+   {:http-port 8290
+    :http-root "resources/public/js/test"}}}}
 
