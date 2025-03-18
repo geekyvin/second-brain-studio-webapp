@@ -2642,3 +2642,2603 @@ clj꞉user꞉> 
 ;  267 |             (js/console.log "Token is invalid or expired, clearing...")
 ;  268 |             (.removeItem js/localStorage "access_token")
 ; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:246:57
+; --------------------------------------------------------------------------------
+;  243 |                            (reset! content new-value)
+;  244 |                            ;; Reset audio state when content changes
+;  245 |                            (reset-audio-state!)))
+;  246 |             :class (when @highlighted "highlight")}]]])))
+; ---------------------------------------------------------------^----------------
+; second_brain_studio_webapp/markdown_editor.cljs [line 246, col 57] Unmatched delimiter ).
+; 
+; --------------------------------------------------------------------------------
+;  247 | 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:246:57
+; --------------------------------------------------------------------------------
+;  243 |                            (reset! content new-value)
+;  244 |                            ;; Reset audio state when content changes
+;  245 |                            (reset-audio-state!)))
+;  246 |             :class (when @highlighted "highlight")}]]])))
+; ---------------------------------------------------------------^----------------
+; second_brain_studio_webapp/markdown_editor.cljs [line 246, col 57] Unmatched delimiter ).
+; 
+; --------------------------------------------------------------------------------
+;  247 | 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:245:57
+; --------------------------------------------------------------------------------
+;  242 |                            (reset! content new-value)
+;  243 |                            ;; Reset audio state when content changes
+;  244 |                            (reset-audio-state!)))
+;  245 |             :class (when @highlighted "highlight")}]]])))
+; ---------------------------------------------------------------^----------------
+; second_brain_studio_webapp/markdown_editor.cljs [line 245, col 57] Unmatched delimiter ).
+; 
+; --------------------------------------------------------------------------------
+;  246 | 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:245:57
+; --------------------------------------------------------------------------------
+;  242 |                            (reset! content new-value)
+;  243 |                            ;; Reset audio state when content changes
+;  244 |                            (reset-audio-state!)))
+;  245 |             :class (when @highlighted "highlight")}]]])))
+; ---------------------------------------------------------------^----------------
+; second_brain_studio_webapp/markdown_editor.cljs [line 245, col 57] Unmatched delimiter ).
+; 
+; --------------------------------------------------------------------------------
+;  246 | 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 1 compiled, 7 warnings, 0.22s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.28s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.40s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.35s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.31s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.26s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:260:1
+; --------------------------------------------------------------------------------
+;  257 |               @save-error [:span.save-error (str "Error: " @save-error)]
+;  258 |               (not= @content @last-saved-content) [:span.unsaved "Unsaved changes"]
+;  259 |               :else [:span.saved "All changes saved"])]]]])})))
+;  260 | 
+; -------^------------------------------------------------------------------------
+; second_brain_studio_webapp/markdown_editor.cljs [line 260, col 1] Unexpected EOF while reading item 5 of list, starting at line 44 and column 1.
+; 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build failure:
+; ------ ERROR -------------------------------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/markdown_editor.cljs:260:1
+; --------------------------------------------------------------------------------
+;  257 |               @save-error [:span.save-error (str "Error: " @save-error)]
+;  258 |               (not= @content @last-saved-content) [:span.unsaved "Unsaved changes"]
+;  259 |               :else [:span.saved "All changes saved"])]]]])})))
+;  260 | 
+; -------^------------------------------------------------------------------------
+; second_brain_studio_webapp/markdown_editor.cljs [line 260, col 1] Unexpected EOF while reading item 5 of list, starting at line 44 and column 1.
+; 
+; --------------------------------------------------------------------------------
+; 
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 1 compiled, 7 warnings, 0.20s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.30s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.30s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.35s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.31s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.27s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.29s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.26s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.28s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.25s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.31s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.30s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.30s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.26s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.42s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; [:app] Compiling ...
+; [:app] Build completed. (1147 files, 2 compiled, 7 warnings, 0.27s)
+; 
+; ------ WARNING #1 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:96:38
+; --------------------------------------------------------------------------------
+;   93 |                        [:set-user 
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+; --------------------------------------------^-----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;   97 |                          :family_name (.-family_name user-info)
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #2 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:97:39
+; --------------------------------------------------------------------------------
+;   94 |                         {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;   95 |                          :name (or (.-name user-info) (:name decoded) (:username decoded))
+;   96 |                          :given_name (.-given_name user-info)
+;   97 |                          :family_name (.-family_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;   98 |                          :sub (:sub decoded)}]))))
+;   99 |            (do
+;  100 |              (.removeItem js/localStorage "access_token")
+;  101 |              (.removeItem js/localStorage "refresh_token")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #3 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:193:54
+; --------------------------------------------------------------------------------
+;  190 |                                            {:email (or (.-email user-info) 
+;  191 |                                                      (.-username decoded))
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+; ------------------------------------------------------------^-------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #4 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:195:57
+; --------------------------------------------------------------------------------
+;  192 |                                             :name (or (.-name user-info)
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+; ---------------------------------------------------------------^----------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  196 |                                             :family_name (.-family_name user-info)
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #5 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:196:58
+; --------------------------------------------------------------------------------
+;  193 |                                                      (.-given_name user-info)
+;  194 |                                                      (.-username decoded))
+;  195 |                                             :given_name (.-given_name user-info)
+;  196 |                                             :family_name (.-family_name user-info)
+; ----------------------------------------------------------------^---------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  197 |                                             :sub (:sub decoded)
+;  198 |                                             :tokens {:access_token access-token
+;  199 |                                                    :refresh_token refresh-token}}])
+;  200 |                                          
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #6 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:263:39
+; --------------------------------------------------------------------------------
+;  260 |                         [:set-user 
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+; ---------------------------------------------^----------------------------------
+;  Cannot infer target type in expression (. user-info -given_name)
+; --------------------------------------------------------------------------------
+;  264 |                           :family_name (.-family_name user-info)
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+; --------------------------------------------------------------------------------
+; 
+; ------ WARNING #7 - :infer-warning ---------------------------------------------
+;  File: /Users/vinoth/Documents/workspace/second-brain-studio-webapp/src/second_brain_studio_webapp/cognito_auth.cljs:264:40
+; --------------------------------------------------------------------------------
+;  261 |                          {:email (or (.-email user-info) (:email decoded) (:username decoded))
+;  262 |                           :name (or (.-name user-info) (:name decoded) (:username decoded))
+;  263 |                           :given_name (.-given_name user-info)
+;  264 |                           :family_name (.-family_name user-info)
+; ----------------------------------------------^---------------------------------
+;  Cannot infer target type in expression (. user-info -family_name)
+; --------------------------------------------------------------------------------
+;  265 |                           :sub (:sub decoded)}])))))
+;  266 |           (do
+;  267 |             (js/console.log "Token is invalid or expired, clearing...")
+;  268 |             (.removeItem js/localStorage "access_token")
+; --------------------------------------------------------------------------------
