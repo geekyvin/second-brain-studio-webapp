@@ -128,5 +128,4 @@
       [:div.app-container
        [left-panel]
        [:div.editor-container
-        [markdown-editor/markdown-editor]
-        [ui-generator/ui-generator]]])))
+        [markdown-editor/markdown-editor]]])))

@@ -7,7 +7,8 @@
    [second-brain-studio-webapp.events :as events]
    [second-brain-studio-webapp.subs :as subs]
    [second-brain-studio-webapp.sb-backend-client :as sbb-client]
-   [second-brain-studio-webapp.note-view :as note-view]))
+   [second-brain-studio-webapp.note-view :as note-view]
+   [second-brain-studio-webapp.ui-generator :as ui-generator]))
 
 ;; Initialize the Markdown parser
 (def markdown-parser (MarkdownIt.))
@@ -210,6 +211,14 @@
           ;; Update re-frame app-db for sidebar status
           (re-frame/dispatch [::events/set-current-content initial-content])
           
+          ;; Expose content to window for ui-generator access
+          (set! js/window.editorContent @content)
+          
+          ;; Add watch to update global content reference
+          (add-watch content :update-global
+                     (fn [_ _ _ new-value]
+                       (set! js/window.editorContent new-value)))
+          
           ;; Trigger initial save immediately (with slight delay to ensure atom is updated)
           (js/setTimeout #(do
                             (js/console.log "Triggering initial save, content:" @content)
@@ -220,6 +229,10 @@
       
       :component-will-unmount
       (fn [_]
+        ;; Clean up watchers
+        (remove-watch content :update-global)
+        
+        ;; Clear auto-save interval
         (when @auto-save-interval
           (js/clearInterval @auto-save-interval)
           (reset! auto-save-interval nil)))
@@ -367,4 +380,7 @@
             :on-blur (fn [_]
                        (js/console.log "Editor lost focus, triggering save")
                        (save-current-note!))
-            :class (when @highlighted "highlight")}]]])})))
+            :class (when @highlighted "highlight")}]
+          
+          ;; Add UI Generator component
+          [ui-generator/ui-generator]]])})))

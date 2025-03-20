@@ -457,7 +457,7 @@
                [:pre.code-block code]]))
           [:div.fallback-visualization
            [:h4 "Failed to execute visualization code"]
-           [:pre.code-block code]])))
+           [:pre.code-block code]]))
     (catch js/Error e
       (js/console.error "Error executing UI code:" e)
       [:div.fallback-visualization
