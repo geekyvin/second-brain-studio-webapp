@@ -27,3 +27,9 @@
  ::save-error
  (fn [db]
    (:save-error db)))
+
+;; Authentication subscriptions
+(re-frame/reg-sub
+ ::auth-token
+ (fn [db]
+   (get-in db [:auth :token])))

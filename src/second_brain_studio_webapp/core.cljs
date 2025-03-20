@@ -21,8 +21,12 @@
 
 (defn init []
   (re-frame/dispatch-sync [::events/initialize-db])
-  ;; Only initialize auth if we're not on the callback path
-  (when-not (= (.-pathname js/window.location) "/callback")
-    (auth/init-auth))
+  (auth/init-auth) ;; Initialize auth and retrieve token if available
+  
+  ;; Debug auth token status after a delay
+  (js/setTimeout (fn []
+                   (js/console.log "Debugging token status after initialization")
+                   (auth/debug-log-token)) 1000)
+  
   (dev-setup)
   (mount-root))

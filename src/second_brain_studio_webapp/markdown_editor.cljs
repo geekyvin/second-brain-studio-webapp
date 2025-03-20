@@ -46,16 +46,39 @@
 
 (defn save-note [user-id namespace note-id content on-success on-error]
   (let [content-str (if (nil? content) "" content)
+        auth-token @(re-frame/subscribe [::subs/auth-token])
         request-body #js {:user-id user-id
                           :namespace namespace
                           :note-id note-id
                           :content content-str}
-        json-body (js/JSON.stringify request-body)]
+        json-body (js/JSON.stringify request-body)
+        headers (cond-> #js {"Content-Type" "application/json"}
+                  auth-token (js/Object.assign #js {"Authorization" (str "Bearer " auth-token)}))]
     (js/console.log "Sending save request with body:" json-body)
     (js/console.log "Content length:" (count content-str) "Content type:" (type content-str))
+    
+    (js/console.log "=== AUTH TOKEN DEBUG IN SAVE REQUEST ===")
+    (if auth-token
+      (let [token-preview (if (> (count auth-token) 10)
+                          (str (subs auth-token 0 10) "...")
+                          auth-token)
+            auth-header (str "Bearer " auth-token)
+            header-preview (if (> (count auth-header) 20)
+                           (str (subs auth-header 0 20) "...")
+                           auth-header)]
+        (js/console.log "Token found - length: " (count auth-token))
+        (js/console.log "Token preview: " token-preview)
+        (js/console.log "Authorization header: " header-preview))
+      (js/console.warn "No auth token available for save request"))
+    
+    ;; Log the actual headers being sent
+    (let [auth-header (.-Authorization headers)]
+      (js/console.log "Final Authorization header: " (if auth-header (str (subs auth-header 0 20) "...") "NONE")))
+    (js/console.log "=== END AUTH TOKEN DEBUG ===")
+    
     (-> (js/fetch "http://localhost:3000/save-note"
                   #js {:method "POST"
-                       :headers #js {"Content-Type" "application/json"}
+                       :headers headers
                        :body json-body})
         (.then (fn [response]
                  (js/console.log "Save response status:" (.-status response))
@@ -180,7 +203,7 @@
      {:component-did-mount
       (fn [_]
         ;; Set initial test content for debugging
-        (let [initial-content "This is a test note. Edit me!"]
+        (let [initial-content "What would you like to do today?"]
           (reset! content initial-content)
           (js/console.log "Initial content set:" initial-content "Length:" (count initial-content))
           
@@ -310,9 +333,23 @@
              "Classify"]]]
 
           [:div.user-info
-           [:div.user-avatar "A"]
-           [:span "Alex"]
-           [:button.sign-out-button "Sign out"]]]
+           [:div.user-avatar 
+            (let [user-name @(re-frame/subscribe [:user])
+                  first-initial (when (and user-name (:given_name user-name))
+                                  (first (:given_name user-name)))]
+              (if first-initial 
+                (clojure.string/upper-case (str first-initial))
+                "A"))]
+           [:span 
+            (let [user-name @(re-frame/subscribe [:user])]
+              (if (and user-name (:given_name user-name))
+                (:given_name user-name)
+                "Alex"))]
+           [:button.sign-out-button 
+            {:on-click (fn [] 
+                         (js/console.log "Sign out button clicked")
+                         (re-frame/dispatch [:sign-out]))}
+            "Sign out"]]]
 
          [:div.note-editor
           [:textarea.note-content

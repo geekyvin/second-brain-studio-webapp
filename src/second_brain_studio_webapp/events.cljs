@@ -66,3 +66,37 @@
             (assoc :saving? true)
             (assoc :current-content content))}))
 
+;; Authentication events
+(re-frame/reg-event-db
+ ::set-auth-token
+ (fn [db [_ token]]
+   (assoc-in db [:auth :token] token)))
+
+(re-frame/reg-event-db
+ ::clear-auth-token
+ (fn [db _]
+   (update db :auth dissoc :token)))
+
+;; Sign-out event handler
+(re-frame/reg-event-fx
+ :sign-out
+ (fn [{:keys [db]} _]
+   (js/console.log "Sign-out event triggered")
+   ;; Call all necessary sign-out functions
+   (try
+     (.removeItem js/localStorage "access_token")
+     (.removeItem js/localStorage "refresh_token")
+     (.removeItem js/sessionStorage "auth-token")
+     (js/console.log "Auth tokens cleared from storage")
+     (catch js/Error e
+       (js/console.error "Error clearing tokens:" e)))
+   
+   ;; Clear auth state in app-db
+   {:db (-> db
+            (assoc :user nil)
+            (update :auth dissoc :token))
+    ;; Redirect to home page and clear tokens
+    :fx [[:dispatch [::clear-auth-token]]
+         [:dispatch [::set-user-signed-in false]]
+         [:sign-out-fx]]}))
+
