@@ -87,3 +87,27 @@
                  (on-success data)))
         (.catch (fn [error]
                   (js/console.error "Error capturing file content:" error))))))
+
+(defn call-generate-ui-api
+  "Call the generate-ui API with the given prompt and editor content"
+  [prompt editor-content on-success on-error]
+  (let [headers (get-auth-headers)
+        combined-prompt (str "Markdown content:\n\n" editor-content "\n\nCommand: " prompt)]
+    
+    (js/console.log "Calling generate-ui API with prompt:" prompt)
+    (js/console.log "Combined prompt length:" (count combined-prompt))
+    
+    (-> (js/fetch "http://localhost:3000/generate-ui"
+                 (clj->js {:method "POST"
+                          :headers headers
+                          :body (js/JSON.stringify #js {:prompt combined-prompt})}))
+        (.then (fn [response]
+                (if (.-ok response)
+                  (.json response)
+                  (throw (new js/Error (str "Failed to fetch UI. Status: " (.-status response)))))))
+        (.then (fn [data]
+                (js/console.log "Generate UI API Response:" data)
+                (on-success data)))
+        (.catch (fn [error]
+                 (js/console.error "Error fetching UI:" error)
+                 (when on-error (on-error error)))))))

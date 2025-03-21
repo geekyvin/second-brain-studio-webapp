@@ -2,7 +2,10 @@
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
             [cljs.reader :as reader]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [second-brain-studio-webapp.sb-backend-client :as sbb-client]
+            ["recharts" :refer [ResponsiveContainer BarChart LineChart PieChart Bar Line Pie
+                                XAxis YAxis CartesianGrid Tooltip Legend Cell]]))
 
 ;; 🔹 State Management
 (def ui-state (r/atom {:loading? false
@@ -20,20 +23,22 @@
               {:Year 2030, :TAM 27.5, :SAM 1.65, :SOM 0.033}
               {:Year 2033, :TAM 35, :SAM 2.45, :SOM 0.1225}])
 
+;; Define a map of React components that we might receive in [:> Component] syntax
+;; This is just for documentation purposes - we aren't actually importing these components
 (def component-map
-  {'ResponsiveContainer ResponsiveContainer
-   'PieChart            PieChart
-   'Pie                 Pie
-   'Cell                Cell
-   'BarChart            BarChart
-   'Bar                 Bar
-   'XAxis              XAxis
-   'YAxis              YAxis
-   'CartesianGrid      CartesianGrid
-   'Tooltip            Tooltip
-   'Legend             Legend
-   'Line               Line
-   'LineChart          LineChart})
+  {'ResponsiveContainer "A container component that resizes the chart to fit its parent container"
+   'PieChart           "A circular statistical graphic divided into slices"
+   'Pie                "A component to render pie/donut chart"
+   'Cell               "A component for customizing sectors/points/bars"
+   'BarChart           "A chart with rectangular bars proportional to the values they represent"
+   'Bar                "A component to render bars in a bar chart"
+   'XAxis              "A component to render an axis on the bottom of a chart"
+   'YAxis              "A component to render an axis on the left or right of a chart"
+   'CartesianGrid      "A component to render grid lines within the chart"
+   'Tooltip            "A component to show data when hovering over chart elements"
+   'Legend             "A component to render a legend for the chart"
+   'Line               "A component to render a line in a line chart"
+   'LineChart          "A chart that displays data as a series of points connected by lines"})
 
 (defn substitute-placeholders [hiccup]
   (cond
@@ -68,11 +73,41 @@
     :else hiccup))
 
 (defn extract-ui-code [response-body]
-  (let [pattern #"(?s)\$ui-code-start\$(.*?)\$ui-code-end\$"
-        match   (re-find pattern response-body)]
-    (if match
-      (-> (second match)
-          str/trim)
+  (try
+    (js/console.log "Extracting UI code from response:" (pr-str response-body))
+    
+    ;; Ensure response-body is a string
+    (let [response-str (cond
+                         (nil? response-body) 
+                         (do
+                           (js/console.warn "Response body is nil")
+                           nil)
+                         
+                         (string? response-body) 
+                         response-body
+                         
+                         :else 
+                         (do
+                           (js/console.log "Converting response to string, type:" (type response-body))
+                           (str response-body)))
+          pattern #"(?s)\$ui-code-start\$(.*?)\$ui-code-end\$"]
+      
+      (if response-str
+        (let [match (re-find pattern response-str)]
+          (if match
+            (do
+              (js/console.log "Found UI code between delimiters")
+              (-> (second match)
+                  str/trim))
+            (do
+              (js/console.log "No UI code delimiters found, returning full response")
+              ;; If it contains vector notation, it might be code
+              (if (re-find #"^\s*\[" response-str)
+                response-str
+                nil))))
+        nil))
+    (catch js/Error e
+      (js/console.error "Error extracting UI code:" e)
       nil)))
 
 (defn parse-hiccup [hiccup-str]
@@ -82,55 +117,89 @@
       (println "Error parsing Hiccup:" (.-message e))
       nil)))
 
-;; 🔹 Fetch UI Code from Backend
-(defn fetch-ui
-  "Fetch UI from the API based on the prompt and editor content"
-  [prompt editor-content]
-  (js/console.log "Fetching UI with prompt:" prompt)
-  (js/console.log "Editor content:" editor-content)
-  
-  ;; Combine prompt and editor content for the API call
-  (let [combined-prompt (str "Markdown content:\n\n" editor-content "\n\nCommand: " prompt)]
-    (js/console.log "Combined prompt:" combined-prompt)
+;; Forward declare chart functions
+(declare bar-chart line-chart pie-chart scatter-chart)
+
+;; React component lookup map for resolving symbols to imported components
+(def react-components
+  {'ResponsiveContainer ResponsiveContainer
+   'BarChart BarChart
+   'LineChart LineChart 
+   'PieChart PieChart
+   'Bar Bar 
+   'Line Line
+   'Pie Pie
+   'XAxis XAxis 
+   'YAxis YAxis
+   'CartesianGrid CartesianGrid
+   'Tooltip Tooltip
+   'Legend Legend
+   'Cell Cell})
+
+(defn process-hiccup
+  "Process Hiccup form, resolving :> React component references"
+  [form]
+  (cond
+    ;; React component reference [:> Component {...}]
+    (and (vector? form) (= :> (first form)))
+    (let [component-name (second form)
+          component (get react-components component-name)
+          props (nth form 2 {})
+          children (drop 3 form)]
+      (if component
+        (into [:> component props] (map process-hiccup children))
+        [:div.missing-component 
+         [:strong "Missing React component: "] 
+         (str component-name)]))
     
-    (swap! ui-state assoc :loading? true :error? false)
+    ;; Regular vector (nested elements)
+    (vector? form)
+    (mapv process-hiccup form)
     
-    (-> (js/fetch "/api/generate-ui"
-                 (clj->js {:method "POST"
-                           :headers {"Content-Type" "application/json"}
-                           :body (js/JSON.stringify (clj->js {:prompt combined-prompt}))}))
-        (.then (fn [response]
-                 (if (.-ok response)
-                   (.json response)
-                   (throw (new js/Error "Failed to fetch UI")))))
-        (.then (fn [data]
-                 (js/console.log "API Response:" data)
-                 (let [ui-code (.-code data)]
-                   (js/console.log "Received UI code:" ui-code)
-                   (swap! ui-state assoc 
-                          :loading? false 
-                          :ui-code ui-code)
-                   ;; Try to parse the visualization information from the code
-                   (try
-                     (let [type-match (re-find #"type: ['\"]([^'\"]+)" ui-code)
-                           data-match (re-find #"data: (\[.+\])" ui-code)
-                           labels-match (re-find #"labels: (\[.+\])" ui-code)
-                           title-match (re-find #"title: ['\"]([^'\"]+)" ui-code)]
-                       
-                       (when (and type-match data-match)
-                         (swap! ui-state assoc
-                                :visual-type (second type-match)
-                                :visual-data (js/JSON.parse (second data-match))
-                                :visual-labels (when labels-match (js/JSON.parse (second labels-match)))
-                                :visual-title (when title-match (second title-match)))))
-                     (catch js/Error e
-                       (js/console.warn "Failed to parse visualization data:" e))))))
-        (.catch (fn [error]
-                  (js/console.error "Error fetching UI:" error)
-                  (swap! ui-state assoc 
-                         :loading? false
-                         :error? true
-                         :error-message (.-message error)))))))
+    ;; Map (props/attributes)
+    (map? form)
+    (reduce-kv (fn [m k v] 
+                 (assoc m k (if (or (vector? v) (map? v)) 
+                              (process-hiccup v) 
+                              v)))
+               {} form)
+    
+    ;; Everything else remains unchanged
+    :else form))
+
+(defn execute-ui-code
+  "Execute the UI code and render the result"
+  [code]
+  (try
+    (js/console.log "Executing UI code, raw format:", code)
+    
+    ;; Handle Hiccup format
+    (if (and (string? code) (or (str/starts-with? (str/trim code) "[:") 
+                                (str/starts-with? (str/trim code) "[:")))
+      (try
+        (js/console.log "Detected Hiccup format, parsing and processing")
+        (let [hiccup (reader/read-string code)]
+          (if (vector? hiccup)
+            ;; Process the Hiccup to resolve React components
+            (process-hiccup hiccup)
+            [:div.error
+             [:h4 "Parsing Error"]
+             [:pre.code-block code]]))
+        (catch js/Error e
+          (js/console.error "Error parsing Hiccup:" e)
+          [:div.error
+           [:h4 "Error parsing UI code"]
+           [:pre.code-block code]]))
+      
+      ;; If not Hiccup, show the raw code
+      [:div.error
+       [:h4 "Unexpected code format"]
+       [:pre.code-block code]])
+    (catch js/Error e
+      (js/console.error "Error executing UI code:" e)
+      [:div.error
+       [:h4 "Error executing code"]
+       [:pre.code-block code]])))
 
 ;; 🔹 Generated UI Container Component
 (defn generated-ui-container []
@@ -156,6 +225,72 @@
                [:h4 "Generated Code"]
                [:pre.code-block ui-code]]])]))
 
+;; 🔹 Fetch UI Code from Backend
+(defn fetch-ui
+  "Fetch UI from the API based on the prompt and editor content"
+  [prompt editor-content]
+  (js/console.log "Fetching UI with prompt:" prompt)
+  (js/console.log "Editor content:" (if editor-content (subs editor-content 0 (min 50 (count editor-content))) "nil"))
+  
+  (swap! ui-state assoc :loading? true :error? false)
+  
+  (sbb-client/call-generate-ui-api
+   prompt
+   editor-content
+   ;; Success callback
+   (fn [data]
+     (js/console.log "API Response type:" (type data))
+     (js/console.log "API Response:" (pr-str data))
+     
+     (let [ui-code (cond
+                     ;; If data has a 'code' property, use that
+                     (and data (.-code data))
+                     (.-code data)
+                     
+                     ;; If data has a 'body' property (which might contain code between delimiters)
+                     (and data (.-body data))
+                     (extract-ui-code (.-body data))
+                     
+                     ;; If data itself is a string, try to extract code
+                     (string? data)
+                     (extract-ui-code data)
+                     
+                     ;; Otherwise try to use the data itself
+                     :else
+                     (do
+                       (js/console.log "No code or body property found, trying to use full data")
+                       (extract-ui-code (str data))))]
+       
+       (js/console.log "Extracted UI code:" (if ui-code (subs ui-code 0 (min 50 (count ui-code))) "nil"))
+       (swap! ui-state assoc 
+              :loading? false 
+              :ui-code ui-code)
+       
+       ;; Try to parse the visualization information from the code
+       (try
+         (when ui-code
+           (let [type-match (re-find #"type: ['\"]([^'\"]+)" ui-code)
+                 data-match (re-find #"data: (\[.+\])" ui-code)
+                 labels-match (re-find #"labels: (\[.+\])" ui-code)
+                 title-match (re-find #"title: ['\"]([^'\"]+)" ui-code)]
+             
+             (when (and type-match data-match)
+               (swap! ui-state assoc
+                      :visual-type (second type-match)
+                      :visual-data (js/JSON.parse (second data-match))
+                      :visual-labels (when labels-match (js/JSON.parse (second labels-match)))
+                      :visual-title (when title-match (second title-match))))))
+         (catch js/Error e
+           (js/console.warn "Failed to parse visualization data:" e)))))
+   
+   ;; Error callback
+   (fn [error]
+     (js/console.error "Error fetching UI:" error)
+     (swap! ui-state assoc 
+            :loading? false
+            :error? true
+            :error-message (.-message error)))))
+
 ;; 🔹 UI Generator Component
 (defn ui-generator []
   [:div.ui-generator
@@ -167,9 +302,9 @@
       :value (:command @ui-state)
       :on-change #(swap! ui-state assoc :command (.. % -target -value))
       :on-key-down #(when (= (.-key %) "Enter")
-                      (fetch-ui (:command @ui-state) (.-secondBrainEditorContent js/window)))}]
+                      (fetch-ui (:command @ui-state) (or js/window.editorContent "")))}]
     [:button.generate-visual-button
-     {:on-click #(fetch-ui (:command @ui-state) (.-secondBrainEditorContent js/window))}
+     {:on-click #(fetch-ui (:command @ui-state) (or js/window.editorContent ""))}
      [:svg
       {:xmlns "http://www.w3.org/2000/svg"
        :viewBox "0 0 24 24"
@@ -225,7 +360,7 @@
                       :overflow "hidden"
                       :text-overflow "ellipsis"}}
              (get labels idx (str "Item " idx))]]))
-       data)]]]))
+       data)]]))
 
 (defn line-chart
   "Render a line chart with the given data"
@@ -424,44 +559,4 @@
        [:h3 "Visualization Code"]
        [:pre code]])))
 
-(defn execute-ui-code
-  "Execute the UI code and render the result"
-  [code]
-  (try
-    (let [js-code (str "
-      (function() {
-        try {
-          const chartConfig = " code "
-          return chartConfig;
-        } catch(e) {
-          console.error('Error executing UI code:', e);
-          return null;
-        }
-      })()
-    ")]
-      (js/console.log "Executing UI code")
-      (let [result (js/eval js-code)]
-        (js/console.log "UI code execution result:" result)
-        (if result
-          (let [chart-type (.-type result)
-                data (.-data result)
-                labels (.-labels result)
-                title (.-title result)]
-            (case chart-type
-              "bar" [bar-chart (js->clj data) (js->clj labels) title]
-              "line" [line-chart (js->clj data) (js->clj labels) title]
-              "pie" [pie-chart (js->clj data) (js->clj labels) title]
-              "scatter" [scatter-chart (js->clj data) (js->clj labels) title]
-              [:div.fallback-visualization
-               [:h4 "Unknown Chart Type"]
-               [:pre.code-block code]]))
-          [:div.fallback-visualization
-           [:h4 "Failed to execute visualization code"]
-           [:pre.code-block code]])))
-    (catch js/Error e
-      (js/console.error "Error executing UI code:" e)
-      [:div.fallback-visualization
-       [:h4 "Error executing code"]
-       [:pre.code-block code]])))
-   
 
