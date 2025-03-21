@@ -204,23 +204,25 @@
 ;; 🔹 Generated UI Container Component
 (defn generated-ui-container []
   (let [{:keys [loading? error? error-message ui-code]} @ui-state]
-    [:div.generated-ui-container
-     (cond
-       loading? [:div.ui-loading
-                [:div.loading-spinner]
-                [:p "Generating visualization..."]]
-       
-       error? [:div.ui-error
-               [:p "Error: " error-message]
-               [:p.hint "Try a different prompt or check your connection."]]
-       
-       (nil? ui-code) [:div.ui-empty
-                        [:p "No visualization generated yet."]
-                        [:p.hint "Type a command and click 'Generate Visual' to create a visualization."]]
-       
-       :else [:div.ui-result
-              [:div.ui-preview
-               [execute-ui-code ui-code]]])]))
+    (if (or loading? error? ui-code)
+      [:div.generated-ui-container
+       (cond
+         loading? [:div.ui-loading
+                  [:div.loading-spinner]
+                  [:p "Generating visualization..."]]
+         
+         error? [:div.ui-error
+                 [:p "Error: " error-message]
+                 [:p.hint "Try a different prompt or check your connection."]]
+         
+         (nil? ui-code) [:div.ui-empty
+                          [:p "No visualization generated yet."]
+                          [:p.hint "Type a command and click 'Generate Visual' to create a visualization."]]
+         
+         :else [:div.ui-result
+                [:div.ui-preview
+                 [execute-ui-code ui-code]]])]
+      nil)))
 
 ;; 🔹 Fetch UI Code from Backend
 (defn fetch-ui
