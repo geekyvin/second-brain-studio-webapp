@@ -220,10 +220,7 @@
        
        :else [:div.ui-result
               [:div.ui-preview
-               [execute-ui-code ui-code]]
-              [:div.ui-code-preview
-               [:h4 "Generated Code"]
-               [:pre.code-block ui-code]]])]))
+               [execute-ui-code ui-code]]])]))
 
 ;; 🔹 Fetch UI Code from Backend
 (defn fetch-ui
