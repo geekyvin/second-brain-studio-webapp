@@ -204,7 +204,7 @@
      {:component-did-mount
       (fn [_]
         ;; Set initial test content for debugging
-        (let [initial-content "What would you like to do today?"]
+        (let [initial-content nil]
           (reset! content initial-content)
           (js/console.log "Initial content set:" initial-content "Length:" (count initial-content))
           
@@ -357,7 +357,7 @@
             (let [user-name @(re-frame/subscribe [:user])]
               (if (and user-name (:given_name user-name))
                 (:given_name user-name)
-                "Alex"))]
+                "Username"))]
            [:button.sign-out-button 
             {:on-click (fn [] 
                          (js/console.log "Sign out button clicked")
