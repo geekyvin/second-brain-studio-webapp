@@ -11,11 +11,15 @@
 ;; Initialize markdown-it parser with all options enabled
 (def md-parser
   (-> (MarkdownIt. #js {:html true
-                         :linkify true
-                         :typographer true})
-      (.enable "table") ;; Enable table parsing
+                        :linkify true
+                        :typographer true
+                        :breaks true})  ;; Enable line breaks
+      (.enable "table")                 ;; Explicitly enable table support
       (.use (fn [md]
-              ;; This is where you'd add plugins if needed
+              ;; Add custom table attributes for better styling
+              (set! (.. md -renderer -rules -table_open)
+                    (fn [tokens idx options env]
+                      "<table class=\"mdx-table\">"))
               md))))
 
 ;; Custom component for code blocks with syntax highlighting
@@ -65,6 +69,11 @@
       (fn [props]
         (let [{:keys [content class-name]} props]
           [:div.mdx-viewer {:class class-name}
+           [:style ".mdx-table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+                   .mdx-table th, .mdx-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                   .mdx-table th { background-color: #f2f2f2; font-weight: bold; }
+                   .mdx-table tr:nth-child(even) { background-color: #f9f9f9; }
+                   .mdx-table tr:hover { background-color: #f5f5f5; }"]
            (if (vector? @processed-content)
              ;; Render content with embedded visualizations
              @processed-content
@@ -76,6 +85,11 @@
 ;; Simpler component for just viewing markdown without MDX features
 (defn simple-markdown-viewer [content]
   [:div.markdown-content
+   [:style ".markdown-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+           .markdown-content table th, .markdown-content table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+           .markdown-content table th { background-color: #f2f2f2; font-weight: bold; }
+           .markdown-content table tr:nth-child(even) { background-color: #f9f9f9; }
+           .markdown-content table tr:hover { background-color: #f5f5f5; }"]
    {:dangerouslySetInnerHTML 
     {:__html (.render md-parser (or content ""))}}])
 

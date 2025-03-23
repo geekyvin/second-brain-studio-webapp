@@ -617,6 +617,54 @@ body {
   color: var(--text);
 }
 
+/* Edit/Split/Preview Option Selector */
+.option-selector {
+  display: flex;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  padding: 3px;
+  border: 1px solid #ddd;
+}
+
+.option-button {
+  padding: 6px 16px;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.option-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.option-button.active {
+  background-color: white;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Option 1 is selected by default */
+.option-button:first-child {
+  color: #333;
+}
+
+/* Remove the old toggle switch styles that we're no longer using */
+.mode-switch {
+  display: none;
+}
+
+.toggle-switch, 
+.toggle-slider,
+.toggle-handle,
+.mode-label {
+  display: none;
+}
+
 /* Editor Container */
 .editor-container {
   flex: 1;
@@ -1260,28 +1308,13 @@ body {
 
 .mdx-editor-container .view-toggle {
   display: flex;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
 }
 
 .mdx-editor-container .view-toggle-btn {
-  padding: 0.25rem 0.75rem;
-  background-color: var(--background-color-light);
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  font-size: 0.875rem;
-}
-
-.mdx-editor-container .view-toggle-btn:first-child {
-  border-radius: 4px 0 0 4px;
-}
-
-.mdx-editor-container .view-toggle-btn:last-child {
-  border-radius: 0 4px 4px 0;
-}
-
-.mdx-editor-container .view-toggle-btn.active {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
+  display: none;
 }
 
 .mdx-editor-container .save-status {
@@ -1319,8 +1352,13 @@ body {
 
 .mdx-editor-container .editor-preview-container {
   display: flex;
+  flex-direction: column;
   flex: 1;
   overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--background-color-light);
+  margin-bottom: 1rem;
 }
 
 .mdx-editor-container .preview-container,
@@ -1335,17 +1373,17 @@ body {
 }
 
 .mdx-editor-container .mdx-editor-textarea {
+  flex: 1;
   width: 100%;
-  height: 60%;
-  padding: 1rem;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  border: none;
   resize: none;
-  background-color: var(--code-background);
-  color: var(--text-color);
+  border: none;
   outline: none;
+  font-family: var(--code-font);
+  padding: 1rem;
+  background-color: var(--editor-bg);
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .mdx-editor-container .editor-tools {
@@ -1711,4 +1749,134 @@ body {
   border-radius: 0.25rem;
   overflow-x: auto;
   font-size: 0.75rem;
+}
+
+/* MDX Editor - Live Mode */
+.live-mode-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.live-preview-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--card-background);
+}
+
+.live-editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add styles for split mode */
+.split-mode-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 1px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.split-editor-container,
+.split-preview-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.split-editor-container .mdx-editor-textarea {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+  font-family: 'Menlo', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: var(--editor-bg);
+  color: var(--text-color);
+}
+
+.split-preview-container {
+  padding: 1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-left: 1px solid var(--border-color);
+}
+
+/* Ensure the toggle buttons layout properly with the new split button */
+.mdx-editor-container .view-toggle-btn:nth-child(2) {
+  border-radius: 0;
+  border-right: 1px solid var(--border-color);
+}
+
+.mdx-editor-container .view-toggle-btn:nth-child(3) {
+  border-radius: 0;
+  border-right: 1px solid var(--border-color);
+}
+
+.mdx-editor-container .view-toggle-btn:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+/* Responsive layout for mobile */
+@media (max-width: 768px) {
+  .split-mode-container {
+    flex-direction: column;
+  }
+  
+  .split-editor-container,
+  .split-preview-container {
+    width: 100%;
+    height: 50%;
+  }
+  
+  .split-preview-container {
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+/* Keyboard shortcuts styling */
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.shortcut-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.shortcut-item:first-child {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.shortcut-item span {
+  opacity: 0.8;
+}
+
+/* Responsive layout for mobile */
+@media (max-width: 768px) {
+  .shortcuts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
