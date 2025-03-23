@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading MDX Editor...</title>
+    <script>
+        window.onload = function() {
+            // Set the active panel in localStorage
+            localStorage.setItem('active-panel', 'editor-panel');
+            
+            // Redirect to the main app
+            window.location.href = 'http://localhost:8280';
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9fafb;
+            color: #333;
+        }
+        .loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 0, 0, 0.1);
+            border-top-color: #ff0000;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to {transform: rotate(360deg);}
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <h2>Loading MDX Editor...</h2>
+        <p>If you are not redirected automatically, <a href="http://localhost:8280">click here</a>.</p>
+    </div>
+</body>
+</html> 

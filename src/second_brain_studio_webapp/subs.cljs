@@ -7,6 +7,11 @@
  (fn [db]
    (:name db)))
 
+(re-frame/reg-sub
+ ::active-panel
+ (fn [db]
+   (:active-panel db)))
+
 ;; Save status subscriptions
 (re-frame/reg-sub
  ::current-content

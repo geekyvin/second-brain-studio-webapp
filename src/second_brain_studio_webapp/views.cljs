@@ -11,7 +11,9 @@
    [second-brain-studio-webapp.left-pane :as left-pane]
    [second-brain-studio-webapp.cognito-auth :as auth]
    [second-brain-studio-webapp.markdown-editor :as markdown-editor]
-   [second-brain-studio-webapp.events :as events]))
+   [second-brain-studio-webapp.events :as events]
+   [second-brain-studio-webapp.mdx-viewer :as mdx-viewer]
+   [second-brain-studio-webapp.mdx-editor :as mdx-editor]))
 
 (defn left-panel []
   (let [collapsed? (r/atom false)
@@ -118,8 +120,22 @@
     [:h2 "Processing login..."]
     [:p "Please wait while we complete your authentication."]]])
 
+(defn home-panel []
+  [:div.panel-container
+   [:h1 "Welcome to Second Brain Studio"]
+   [:button.button-primary 
+    {:on-click #(re-frame/dispatch [::events/set-active-panel :mdx-panel])}
+    "Open MDX Editor"]])
+
+(defn mdx-panel []
+  [:div.mdx-panel-container
+   [:div.mdx-panel-content
+    [mdx-editor/mdx-editor]]])
+
 (defn main-panel []
-  (let [path (.-pathname js/window.location)]
+  (let [path (.-pathname js/window.location)
+        active-panel @(re-frame/subscribe [::subs/active-panel])]
+    (js/console.log "Current active panel:" (pr-str active-panel))
     (cond
       (= path "/callback")
       [callback-page]
@@ -127,5 +143,12 @@
       :else
       [:div.app-container
        [left-panel]
-       [:div.editor-container
-        [markdown-editor/markdown-editor]]])))
+       (case active-panel
+         :home-panel [home-panel]
+         :editor-panel [:div.editor-container
+                       [markdown-editor/markdown-editor]]
+         :mdx-panel [:div.editor-container
+                    [mdx-panel]]
+         ;; default to MDX panel
+         [:div.editor-container
+          [mdx-panel]])])))

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open MDX Editor</title>
+    <script>
+        window.onload = function() {
+            // First navigate to the main app
+            window.location.href = 'http://localhost:8280';
+            
+            // Wait for the page to load, then find and click the button
+            setTimeout(function() {
+                try {
+                    const button = document.querySelector('.primary-cta');
+                    if (button) {
+                        console.log('Found button, clicking...');
+                        button.click();
+                    } else {
+                        console.error('Button not found');
+                    }
+                } catch (e) {
+                    console.error('Error:', e);
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to MDX Editor...</p>
+</body>
+</html> 

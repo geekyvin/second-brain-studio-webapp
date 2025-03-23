@@ -56,22 +56,6 @@
     (doall (map substitute-placeholders hiccup))
     :else hiccup))
 
-(defn resolve-components [hiccup]
-  (cond
-    (symbol? hiccup)
-    (if (contains? component-map hiccup)
-      (get component-map hiccup)
-      hiccup)
-    (vector? hiccup)
-    (vec (map resolve-components hiccup))
-    (map? hiccup)
-    (into {} (map (fn [[k v]]
-                    [k (resolve-components v)])
-                  hiccup))
-    (seq? hiccup)
-    (doall (map resolve-components hiccup))
-    :else hiccup))
-
 (defn extract-ui-code [response-body]
   (try
     (js/console.log "Extracting UI code from response:" (pr-str response-body))
@@ -135,6 +119,23 @@
    'Tooltip Tooltip
    'Legend Legend
    'Cell Cell})
+
+;; Move the resolve-components function here, after react-components is defined
+(defn resolve-components [hiccup]
+  (cond
+    (symbol? hiccup)
+    (if (contains? react-components hiccup)
+      (get react-components hiccup)
+      hiccup)
+    (vector? hiccup)
+    (vec (map resolve-components hiccup))
+    (map? hiccup)
+    (into {} (map (fn [[k v]]
+                    [k (resolve-components v)])
+                  hiccup))
+    (seq? hiccup)
+    (doall (map resolve-components hiccup))
+    :else hiccup))
 
 (defn process-hiccup
   "Process Hiccup form, resolving :> React component references"

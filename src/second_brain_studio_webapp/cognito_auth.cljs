@@ -11,10 +11,14 @@
 (def cognito-domain "https://us-east-1km00lsjbx.auth.us-east-1.amazoncognito.com")
 (def client-id "75nerovj6gl86nrlm1iuoa5aui")
 (def redirect-uri "http://localhost:8280/callback")
+(def redirect-url "/") ;; Add default redirect URL
 (def logout-uri "http://localhost:8280")
+(def user-pool nil) ;; Define user-pool to fix unresolved symbol error
+(def sign-in-error (r/atom nil)) ;; Define sign-in-error atom
 
 ;; Forward declarations
 (declare sign-in-redirect)
+(declare debug-log-token) ;; Forward declaration for debug-log-token
 
 (defn fetch-user-info [access-token]
   (js/console.log "Fetching user info with token..." (if access-token "[PRESENT]" "[MISSING]"))
@@ -290,6 +294,32 @@
         (catch js/Error e
           (js/console.error "Error syncing token from localStorage:" e))))))
 
+;; Function to check and log token availability everywhere
+(defn debug-log-token []
+  (js/console.log "========================")
+  (js/console.log "TOKEN DEBUG INFORMATION")
+  (js/console.log "========================")
+  
+  ;; Check localStorage
+  (let [local-token (.getItem js/localStorage "access_token")]
+    (js/console.log "localStorage access_token:" (if local-token "[PRESENT]" "[MISSING]"))
+    (when local-token
+      (js/console.log "localStorage token preview:" (subs local-token 0 (min 15 (count local-token))) "...")))
+  
+  ;; Check sessionStorage
+  (let [session-token (.getItem js/sessionStorage "auth-token")]
+    (js/console.log "sessionStorage auth-token:" (if session-token "[PRESENT]" "[MISSING]"))
+    (when session-token
+      (js/console.log "sessionStorage token preview:" (subs session-token 0 (min 15 (count session-token))) "...")))
+  
+  ;; Check token in app-db
+  (let [auth-token @(re-frame/subscribe [::subs/auth-token])]
+    (js/console.log "app-db auth token:" (if auth-token "[PRESENT]" "[MISSING]"))
+    (when auth-token
+      (js/console.log "app-db token preview:" (subs auth-token 0 (min 15 (count auth-token))) "...")))
+  
+  (js/console.log "========================"))
+
 (defn init-auth []
   (js/console.log "Initializing auth...")
   ;; First try to get token from localStorage
@@ -345,32 +375,6 @@
                  :font-family "'atkinson-hyper', 'dm-sans'"}}
         "Not signed in"])
      [sign-out-button]]))
-
-;; Function to check and log token availability everywhere
-(defn debug-log-token []
-  (js/console.log "========================")
-  (js/console.log "TOKEN DEBUG INFORMATION")
-  (js/console.log "========================")
-  
-  ;; Check localStorage
-  (let [local-token (.getItem js/localStorage "access_token")]
-    (js/console.log "localStorage access_token:" (if local-token "[PRESENT]" "[MISSING]"))
-    (when local-token
-      (js/console.log "localStorage token preview:" (subs local-token 0 (min 15 (count local-token))) "...")))
-  
-  ;; Check sessionStorage
-  (let [session-token (.getItem js/sessionStorage "auth-token")]
-    (js/console.log "sessionStorage auth-token:" (if session-token "[PRESENT]" "[MISSING]"))
-    (when session-token
-      (js/console.log "sessionStorage token preview:" (subs session-token 0 (min 15 (count session-token))) "...")))
-  
-  ;; Check token in app-db
-  (let [auth-token @(re-frame/subscribe [::subs/auth-token])]
-    (js/console.log "app-db auth token:" (if auth-token "[PRESENT]" "[MISSING]"))
-    (when auth-token
-      (js/console.log "app-db token preview:" (subs auth-token 0 (min 15 (count auth-token))) "...")))
-  
-  (js/console.log "========================"))
 
 ;; Call this function on initialization and after token storage
 (defn store-token-in-storage [token]
@@ -444,7 +448,7 @@
 ;; Re-frame event handler for sign out
 (re-frame/reg-fx
  :sign-out-fx
- (fn []
+  (fn []
    (js/console.log "Signing out via Cognito...")
    ;; Clear tokens from storage
    (remove-token-from-storage)

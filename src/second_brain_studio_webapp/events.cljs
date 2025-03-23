@@ -3,12 +3,25 @@
    [re-frame.core :as re-frame]
    [second-brain-studio-webapp.db :as db]
    [day8.re-frame.tracing :refer-macros [fn-traced]]
-   ))
+   [clojure.string :as string]))
 
 (re-frame/reg-event-db
  ::initialize-db
  (fn [_ _]
-   db/default-db))
+   ;; Check for panel parameter in URL
+   (let [url (js/URL. js/window.location)
+         panel-param (.get (.-searchParams url) "panel")
+         active-panel (if (= "mdx" panel-param) 
+                        :mdx-panel 
+                        (:active-panel db/default-db))]
+     (js/console.log "Initializing with panel:" (name active-panel))
+     (assoc db/default-db :active-panel active-panel))))
+
+(re-frame/reg-event-db
+ ::set-active-panel
+ (fn [db [_ active-panel]]
+   (js/console.log "Setting active panel to:" (name active-panel))
+   (assoc db :active-panel active-panel)))
 
 (re-frame/reg-event-db
  ::login-success
@@ -99,4 +112,10 @@
     :fx [[:dispatch [::clear-auth-token]]
          [:dispatch [::set-user-signed-in false]]
          [:sign-out-fx]]}))
+
+;; User sign-in state
+(re-frame/reg-event-db
+ ::set-user-signed-in
+ (fn [db [_ signed-in?]]
+   (assoc-in db [:auth :signed-in] signed-in?)))
 

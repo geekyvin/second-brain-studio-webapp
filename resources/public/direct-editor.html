@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct MDX Editor Access</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border: 4px solid red;
+        }
+        h1 {
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Direct MDX Editor Access</h1>
+    <div id="editor-container">
+        <iframe src="http://localhost:8280" style="border: none; width: 100%; height: 100%;"></iframe>
+    </div>
+    <script>
+        // Wait for iframe to load
+        document.querySelector('iframe').onload = function() {
+            try {
+                const iframe = document.querySelector('iframe');
+                const iframeWindow = iframe.contentWindow;
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                
+                // Try to click the "Open MDX Editor" button
+                setTimeout(() => {
+                    const editorButton = iframeDoc.querySelector('.primary-cta');
+                    if (editorButton) {
+                        console.log('Found editor button, clicking...');
+                        editorButton.click();
+                    } else {
+                        console.log('Editor button not found');
+                    }
+                }, 1000);
+            } catch(e) {
+                console.error('Error accessing iframe:', e);
+            }
+        };
+    </script>
+</body>
+</html> 
