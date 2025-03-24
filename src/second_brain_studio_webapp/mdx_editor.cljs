@@ -533,7 +533,9 @@ Try creating a visualization using the command field below:
                               (reset! content (-> % .-target .-value))
                               (reset! preview-content (-> % .-target .-value)))
                 :on-key-down #(handle-editor-keydown % @text-area-ref)
-                :placeholder "Write your markdown content here..."}]]
+                :placeholder "Write your markdown content here..."}]
+               ;; Add visualization generator component to split mode
+               [visualization-generator content]]
                [:div.split-preview-container
                 [mdx-viewer/mdx-viewer {:content @preview-content}]]]
                 

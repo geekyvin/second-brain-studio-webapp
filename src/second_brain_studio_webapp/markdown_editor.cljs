@@ -78,18 +78,18 @@
     (js/console.log "=== END AUTH TOKEN DEBUG ===")
     
     (-> (js/fetch "http://localhost:3000/save-note"
-                  #js {:method "POST"
+                #js {:method "POST"
                        :headers headers
                        :body json-body})
-        (.then (fn [response]
+      (.then (fn [response]
                  (js/console.log "Save response status:" (.-status response))
-                 (if (.-ok response)
-                   (.json response)
+               (if (.-ok response)
+                 (.json response)
                    (throw (js/Error. (str "HTTP error! status: " (.-status response)))))))
-        (.then (fn [data]
+      (.then (fn [data]
                  (js/console.log "Note saved successfully:" data)
                  (when on-success (on-success data))))
-        (.catch (fn [error]
+      (.catch (fn [error]
                   (js/console.error "Error saving note:" error)
                   (when on-error (on-error error)))))))
 
@@ -238,18 +238,18 @@
           (reset! auto-save-interval nil)))
       
       :reagent-render
-      (fn []
+    (fn []
         [:div.editor-container
          [:div.action-bar
           [:div.action-bar-left
-           (if @editing-title
+         (if @editing-title
              [:input.note-title
               {:type "text"
-               :value @title
-               :auto-focus true
-               :on-change #(reset! title (-> % .-target .-value))
-               :on-blur #(reset! editing-title false)
-               :on-key-down #(when (= (.-key %) "Enter")
+                    :value @title
+                    :auto-focus true
+                    :on-change #(reset! title (-> % .-target .-value))
+                    :on-blur #(reset! editing-title false)
+                    :on-key-down #(when (= (.-key %) "Enter")
                               (reset! editing-title false))}]
              [:div.title-container
               [:h2.note-title
@@ -260,14 +260,14 @@
             [:button.feature-button
              {:on-click #(sbb-client/call-summarize-api 
                          @content
-                         (fn [summary]
+                                                 (fn [summary]
                            (reset! content (sbb-client/update-summary-section @content summary))
-                           (reset! highlighted true)
-                           (js/setTimeout (fn [] (reset! highlighted false)) 2000)))}
+                                                   (reset! highlighted true)
+                                                   (js/setTimeout (fn [] (reset! highlighted false)) 2000)))}
              [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
               [:path {:d "M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"}]
               [:polyline {:points "14 2 14 8 20 8"}]]
-             "Summarize"]
+         "Summarize"]
 
             [:button.feature-button
              {:class (when @audio-url "has-audio")
@@ -281,9 +281,9 @@
                                 (.play ^js @audio-player)
                                 (reset! is-playing true)))
                             (sbb-client/call-generate-audio-api
-                             @content
-                             (fn [url]
-                               (reset! audio-url url)
+                              @content
+                              (fn [url]
+                                (reset! audio-url url)
                                (let [player (js/Audio. url)]
                                  (reset! audio-player player)
                                  (set! (.-onplay player) #(reset! is-playing true))
@@ -294,7 +294,7 @@
                                  (set! (.-ontimeupdate player) #(reset! audio-progress (.-currentTime player)))
                                  (.play player)
                                  (reset! is-playing true)))
-                             (fn [error]
+                              (fn [error]
                                (js/console.error "Error generating audio:" error)))))}
              [:div.audio-controls
               [:svg.audio-icon {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
@@ -302,10 +302,10 @@
                [:path {:d "M19 10v2a7 7 0 0 1-14 0v-2"}]
                [:line {:x1 "12" :x2 "12" :y1 "19" :y2 "22"}]]
               
-              (when @audio-url
+        (when @audio-url
                 [:div.audio-player
                  [:div.play-pause-button
-                  (if @is-playing
+                                 (if @is-playing
                     [:svg.pause-icon {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
                      [:rect {:x "6" :y "4" :width "4" :height "16"}]
                      [:rect {:x "14" :y "4" :width "4" :height "16"}]]
@@ -316,8 +316,8 @@
              (if @audio-url 
                (if @is-playing "Playing..." "Paused") 
                "Transcribe")]
-
-            [:div
+                
+        [:div
              [:input.hidden
               {:type "file"
                :ref #(reset! file-input-ref %)
@@ -330,7 +330,7 @@
               [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
                [:path {:d "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"}]
                [:circle {:cx "12" :cy "13" :r "3"}]]
-              "Capture"]]
+          "Capture"]]
 
             [:button.feature-button
              [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
