@@ -302,6 +302,129 @@ Try creating a visualization using the command field below:
         "z" (js/console.log "Undo triggered, using browser's native implementation")
         nil))))
 
+(defn drawing-canvas [content-atom]
+  (let [canvas-ref (r/atom nil)
+        is-drawing (r/atom false)
+        ctx (r/atom nil)
+        last-pos (r/atom nil)
+        line-width (r/atom 2)
+        color (r/atom "#000000")
+        save-drawing (fn []
+                      (when-let [canvas @canvas-ref]
+                        (let [image-data (.toDataURL canvas "image/png")
+                              markdown-image (str "\n![Drawing](" image-data ")\n")]
+                          (js/console.log "Saving drawing to editor content")
+                          ;; Update the content-atom directly
+                          (reset! content-atom (str @content-atom markdown-image))
+                          ;; Clear the canvas after saving
+                          (when-let [context (.getContext canvas "2d")]
+                            (.clearRect context 0 0 (.-width canvas) (.-height canvas)))
+                          ;; Log success
+                          (js/console.log "Drawing saved and canvas cleared"))))
+        start-drawing (fn [e]
+                       (reset! is-drawing true)
+                       (let [rect (.getBoundingClientRect @canvas-ref)
+                             x (- (.-clientX e) (.-left rect))
+                             y (- (.-clientY e) (.-top rect))]
+                         (reset! last-pos [x y])))
+        draw (fn [e]
+               (when @is-drawing
+                 (let [rect (.getBoundingClientRect @canvas-ref)
+                       x (- (.-clientX e) (.-left rect))
+                       y (- (.-clientY e) (.-top rect))
+                       [last-x last-y] @last-pos]
+                   (when @ctx
+                     (.beginPath @ctx)
+                     (.moveTo @ctx last-x last-y)
+                     (.lineTo @ctx x y)
+                     (.stroke @ctx))
+                   (reset! last-pos [x y]))))
+        stop-drawing (fn []
+                      (reset! is-drawing false))]
+    
+    (r/create-class
+     {:component-did-mount
+      (fn [_]
+        (when-let [canvas @canvas-ref]
+          (let [context (.getContext canvas "2d")]
+            (reset! ctx context)
+            (set! (.-lineWidth context) @line-width)
+            (set! (.-strokeStyle context) @color)
+            (set! (.-lineCap context) "round")
+            (set! (.-lineJoin context) "round"))))
+      
+      :reagent-render
+      (fn []
+        [:div.drawing-canvas-container
+         {:style {:border "1px solid #ccc"
+                 :padding "10px"
+                 :margin "10px 0"
+                 :background-color "#fff"}}
+         [:div.drawing-tools
+          {:style {:margin-bottom "10px"
+                  :display "flex"
+                  :gap "10px"
+                  :align-items "center"}}
+          [:input.color-picker
+           {:type "color"
+            :value @color
+            :style {:width "40px"
+                   :height "40px"
+                   :padding "0"}
+            :on-change #(do
+                         (reset! color (-> % .-target .-value))
+                         (when @ctx
+                           (set! (.-strokeStyle @ctx) @color)))}]
+          [:input.line-width
+           {:type "range"
+            :min "1"
+            :max "20"
+            :value @line-width
+            :style {:width "150px"}
+            :on-change #(do
+                         (reset! line-width (js/parseInt (-> % .-target .-value)))
+                         (when @ctx
+                           (set! (.-lineWidth @ctx) @line-width)))}]
+          [:button.clear-button
+           {:on-click #(when-let [canvas @canvas-ref]
+                        (let [context (.getContext canvas "2d")]
+                          (.clearRect context 0 0 (.-width canvas) (.-height canvas))))
+            :style {:padding "8px 16px"
+                   :background-color "#f44336"
+                   :color "white"
+                   :border "none"
+                   :border-radius "4px"
+                   :cursor "pointer"}}
+           "Clear"]
+          [:button.save-button
+           {:on-click save-drawing
+            :style {:padding "8px 16px"
+                   :background-color "#4CAF50"
+                   :color "white"
+                   :border "none"
+                   :border-radius "4px"
+                   :cursor "pointer"}}
+           "Save Drawing"]]
+         [:canvas.drawing-canvas
+          {:ref #(reset! canvas-ref %)
+           :width 800
+           :height 400
+           :style {:border "1px solid #ddd"
+                  :border-radius "4px"
+                  :cursor "crosshair"
+                  :touch-action "none"}
+           :on-mouse-down start-drawing
+           :on-mouse-move draw
+           :on-mouse-up stop-drawing
+           :on-mouse-leave stop-drawing
+           :on-touch-start (fn [e]
+                            (.preventDefault e)
+                            (start-drawing (-> e .-touches (aget 0))))
+           :on-touch-move (fn [e]
+                           (.preventDefault e)
+                           (draw (-> e .-touches (aget 0))))
+           :on-touch-end stop-drawing}]])})))
+
 (defn mdx-editor []
   (let [content (r/atom initial-content)
         text-area-ref (r/atom nil)
@@ -320,7 +443,8 @@ Try creating a visualization using the command field below:
         is-playing (r/atom false)
         audio-progress (r/atom 0)
         audio-duration (r/atom 0)
-        highlighted (r/atom false)]
+        highlighted (r/atom false)
+        show-canvas (r/atom false)]  ;; Add state for canvas visibility
     
     (defn reset-audio-state! []
       (when @is-playing
@@ -496,8 +620,14 @@ Try creating a visualization using the command field below:
                  [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
                   [:path {:d "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"}]
                   [:circle {:cx "12" :cy "13" :r "3"}]]
-                 "Capture"]]]
-             
+                 "Capture"]]
+
+               [:button.feature-button
+                {:on-click #(swap! show-canvas not)}
+                [:svg {:xmlns "http://www.w3.org/2000/svg" :viewBox "0 0 24 24" :fill "none" :stroke "currentColor" :stroke-width "2" :stroke-linecap "round" :stroke-linejoin "round"}
+                 [:path {:d "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"}]]
+                "Draw"]
+
               [:div.save-status
                (cond
                  @saving? [:span.saving "Saving..."]
@@ -518,12 +648,10 @@ Try creating a visualization using the command field below:
           [:div.editor-preview-container
            (case @editor-mode
              :preview 
-             ;; Full preview mode shows rendered markdown of entire content
              [:div.preview-container
               [mdx-viewer/mdx-viewer {:content @content}]]
              
              :split
-             ;; Split mode shows editor and preview side by side
              [:div.split-mode-container
               [:div.split-editor-container
                [:textarea.mdx-editor-textarea
@@ -532,14 +660,14 @@ Try creating a visualization using the command field below:
                  :on-change #(do
                               (reset! content (-> % .-target .-value))
                               (reset! preview-content (-> % .-target .-value)))
-                :on-key-down #(handle-editor-keydown % @text-area-ref)
-                :placeholder "Write your markdown content here..."}]
-               ;; Add visualization generator component to split mode
-               [visualization-generator content]]
+                 :on-key-down #(handle-editor-keydown % @text-area-ref)
+                 :placeholder "Write your markdown content here..."}]
+               [visualization-generator content]
+               (when @show-canvas
+                 [drawing-canvas content])]
                [:div.split-preview-container
                 [mdx-viewer/mdx-viewer {:content @preview-content}]]]
-                
-             ;; Default: Edit mode shows textarea and tools
+             
              [:div.editor-container
               [:textarea.mdx-editor-textarea
                {:ref #(reset! text-area-ref %)
@@ -549,9 +677,9 @@ Try creating a visualization using the command field below:
                               (reset! preview-content (-> % .-target .-value)))
                 :on-key-down #(handle-editor-keydown % @text-area-ref)
                 :placeholder "Write your markdown content here..."}]
-              
-              ;; Add visualization generator component
-              [visualization-generator content]])]
+              [visualization-generator content]
+              (when @show-canvas
+                [drawing-canvas content])])]
          
           ;; Footer with status info
           [:div.editor-footer
@@ -561,4 +689,4 @@ Try creating a visualization using the command field below:
                          (str/replace #"<.*?>" "") ; Remove HTML tags
                          (str/split #"\s+")
                          count)]
-              (str words " words"))]]])})))
+              (str words " words"))]]]])})))
